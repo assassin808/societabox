@@ -4,6 +4,11 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-28: Competitive landscape and fundraising prep
+
+- Founder wants to keep the town demo central and frame several paper proposals ahead of fundraising.
+- Reviewed the Artificial Societies Benchmark paper and the funding of Simile, Aaru, Electric Twin and Artificial Societies. See `notes/landscape.md`.
+
 ## 2026-09-28: Company thesis captured
 
 - Wrote down the big idea: the outreach email pitch plus the technical thesis (a verifier-driven RL sandbox that co-evolves with the agent). See `notes/company-thesis.md`.
