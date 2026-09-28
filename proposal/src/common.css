@@ -1,0 +1,19 @@
+@page{size:Letter;margin:0.42in 0.5in 0.38in 0.5in}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;font-family:"Liberation Serif","Times New Roman",serif;font-size:9.35pt;line-height:1.25;color:#111;text-align:justify;hyphens:auto}
+h1{font-size:13.6pt;line-height:1.18;margin:0 0 2pt;text-align:center;font-weight:700}
+.auth{text-align:center;font-size:9pt;margin:0 0 1pt}
+.course{text-align:center;font-size:8.4pt;color:#444;margin:0 0 5pt;font-style:italic}
+h2{font-size:9.8pt;margin:4pt 0 1pt;font-weight:700}
+p{margin:0 0 2.5pt}
+ul{margin:0 0 2.5pt;padding-left:13pt}
+li{margin:0 0 1pt}
+.box{border:0.6pt solid #111;padding:3pt 5pt;margin:2pt 0 3pt}
+.eq{margin:1.5pt 0 2.5pt;text-align:center}
+.small{font-size:8.2pt;line-height:1.22}
+.refs{font-size:7.6pt;line-height:1.2;margin-top:3pt;border-top:0.5pt solid #555;padding-top:2pt;text-align:left}
+table{border-collapse:collapse;width:100%;font-size:8.4pt;margin:1pt 0 3pt}
+td,th{border-top:0.5pt solid #777;border-bottom:0.5pt solid #777;padding:1.2pt 3pt;vertical-align:top;text-align:left}
+th{font-weight:700}
+.katex{font-size:1.02em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10pt}

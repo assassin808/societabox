@@ -1,0 +1,38 @@
+<h1>Compressed Regret Sensing: Environment Design without<br>Reproducing the Data-Generating Process</h1>
+<div class="auth">Haoyang Shang (UBC) &nbsp;·&nbsp; Xuan Liu (UC San Diego)</div>
+<div class="course">Course project proposal, Reinforcement Learning (UBC). Companion to the Machine Learning course proposal; both form one paper.</div>
+
+<h2>1. Motivation</h2>
+<p>Training self-improving, long-horizon agents with RL needs either scarce real interaction data or full rollouts in a simulator that reproduces the whole data-generating process, which is wasteful because most steps of a long episode are routine. Unsupervised environment design (UED) avoids the data problem by generating training environments: PAIRED [1] trains an adversary to maximize the agent's <i>regret</i>, and PLR/ACCEL [2,3] replay and edit high-regret levels. All of them estimate regret <i>one environment at a time with full rollouts</i>, and PAIRED's generator gets one sparse reward per environment. We ask two questions: <b>how few rollouts are needed to know where an agent is deficient, and which parts of an episode need to be rolled out at all?</b></p>
+
+<h2>2. Setting</h2>
+<p>An underspecified POMDP $\mathcal M=\langle A,O,\Theta,S,T,I,R,\gamma\rangle$ yields a POMDP $\mathcal M_\theta$ for each free parameter $\theta\in\Theta$. Let $V(\pi,\theta)$ be the expected discounted return and $\mathrm{Reg}(\pi,\theta)=V(\pi^\star_\theta,\theta)-V(\pi,\theta)$. PAIRED approximates $\pi^\star_\theta$ with an antagonist; at Nash equilibrium the protagonist is minimax-regret. We assume access only to a small evaluation set $\mathcal E=\{\tilde\theta_1,\dots,\tilde\theta_m\}\sim P^\star$ with a verifier, and <i>no</i> generator of $P^\star$.</p>
+
+<h2>3. Structural assumptions: two kinds of sparsity</h2>
+<div class="box"><b>(A1) Skill sparsity.</b> There exist a skill-demand map $\phi:\Theta\to\mathbb R^d$ and a deficiency vector $\delta(\pi)\in\mathbb R^d$ with
+<div class="eq">$\mathrm{Reg}(\pi,\theta)=\phi(\theta)^{\top}\delta(\pi)+\varepsilon,\qquad \|\delta(\pi)\|_0\le k\ll d .$</div>
+Equivalently, the regret matrix $R_{ij}=\mathrm{Reg}(\pi_i,\theta_j)$ over a population of agents and environments has rank $\le d$.<br>
+<b>(A2) Temporal sparsity.</b> In an $H$-step episode, $\big|\{t:\ |A^{\pi}(s_t,a_t)|>\epsilon\}\big|\le s\ll H$: only a few decision-critical steps carry the learning signal.</div>
+
+<h2>4. Method</h2>
+<p><b>(a) Randomize to measure.</b> Pick $n$ probe environments and measure $y_i=\hat V(\pi_{\mathrm{ref}},\theta_i)-\hat V(\pi,\theta_i)$, where $\pi_{\mathrm{ref}}$ is the antagonist or the best agent in the population. Recover the deficiency by basis pursuit:</p>
+<div class="eq">$\hat\delta=\arg\min_{\delta}\|\delta\|_1\ \ \text{s.t.}\ \ \|y-\Phi\delta\|_2\le\eta,\qquad \Phi=[\phi(\theta_1),\dots,\phi(\theta_n)]^{\top}.$</div>
+<p>If $\Phi$ satisfies the RIP of order $2k$ with $\delta_{2k}<\sqrt2-1$, then $\|\hat\delta-\delta\|_2\le C_0k^{-1/2}\|\delta-\delta_k\|_1+C_1\eta$ [4], and for sub-Gaussian designs $n=O(k\log(d/k))$ probes suffice. <i>Domain randomization is a poor training distribution but a good sensing design</i>; we use it only to measure.</p>
+<p><b>(b) Learn $\phi$ by regret-matrix completion.</b> $\phi$ is unknown for rich $\Theta$. A population of agents gives sparse entries $\Omega$ of $R$; we solve $\min_X\|X\|_*$ s.t. $P_\Omega(X)=P_\Omega(\hat R)$ (or factorized ALS), which needs $|\Omega|=O(r(N+M)\,\mathrm{polylog})$ entries instead of $NM$ [5]. A regressor $g_\omega(\theta)\approx\phi(\theta)$ extends it to unseen $\theta$.</p>
+<p><b>(c) Target to train.</b> The generator $G_\psi$, an RL policy that writes $\theta$ step by step as in PAIRED, receives a dense predicted-regret reward with a solvability term:</p>
+<div class="eq">$r_G(\theta)=g_\omega(\theta)^{\top}\hat\delta\;-\;\lambda\,\mathbb 1\!\left[\hat V(\pi_{\mathrm{ref}},\theta)<\tau\right].$</div>
+<p>This replaces PAIRED's sparse reward and removes per-environment antagonist rollouts; $\hat\delta$ is re-sensed every $K$ updates.</p>
+<p><b>(d) Sparse rollouts.</b> Flag critical steps by ensemble value disagreement or policy entropy, run routine segments with cached macro-actions (options) [6], and branch Monte-Carlo rollouts only at flagged states: cost $O(sKL)$ instead of $O(NH)$ for $K$ branches of length $L$.</p>
+
+<h2>5. Experiments</h2>
+<table>
+<tr><th>Testbeds</th><td>JAX <code>minimax</code> library: MiniGrid mazes (the PAIRED benchmark) with zero-shot transfer to Labyrinth, FourRooms and SixteenRooms. For long horizons, Craftax.</td></tr>
+<tr><th>Baselines</th><td>Domain randomization, minimax adversary, PAIRED, Robust PLR, ACCEL.</td></tr>
+<tr><th>Metrics</th><td>Zero-shot solve rate vs. environment steps; error in $\hat\delta$ vs. number of probes $n$; singular spectrum of $\hat R$; fraction of steps flagged critical and compute saved.</td></tr>
+</table>
+<p><b>H1</b> (tests A1): the top $k$ singular values of $\hat R$ capture most of its energy. <b>H2</b>: CRS matches PAIRED/PLR transfer with substantially fewer environment steps. <b>H3</b> (tests A2): sparse rollouts reduce simulation cost on Craftax without lowering return. <b>Risk:</b> if $R$ is not low-rank, we report the spectrum as a finding and fall back to PLR-style replay prioritized by predicted regret.</p>
+
+<h2>6. Plan</h2>
+<p class="small"><b>Wk 1–3</b> reproduce PAIRED/PLR in <code>minimax</code>; <b>4–6</b> probes, matrix completion, test A1; <b>7–10</b> CRS generator, sparse rollouts; <b>11–13</b> transfer experiments, write-up. <b>Deliverables:</b> code, report, method section of the joint paper.</p>
+
+<div class="refs">[1] Dennis et al. Emergent Complexity and Zero-shot Transfer via Unsupervised Environment Design (PAIRED). NeurIPS 2020. [2] Jiang et al. Replay-Guided Adversarial Environment Design (Robust PLR). NeurIPS 2021. [3] Parker-Holder et al. Evolving Curricula with Regret-Based Environment Design (ACCEL). ICML 2022. [4] Candès. The restricted isometry property and its implications for compressed sensing. C. R. Math. 2008. [5] Candès, Recht. Exact matrix completion via convex optimization. FoCM 2009. [6] Sutton, Precup, Singh. Between MDPs and semi-MDPs (options). AIJ 1999.</div>

@@ -1,0 +1,37 @@
+<h1>Where Is the Agent Socially Deficient? Low-Rank Skill Sensing<br>for LLM Agents in a Generative Social Sandbox</h1>
+<div class="auth">Haoyang Shang (UBC) &nbsp;·&nbsp; Xuan Liu (UC San Diego)</div>
+<div class="course">Course project proposal, Machine Learning (UBC). Companion to the Reinforcement Learning course proposal; both form one paper.</div>
+
+<h2>1. Motivation</h2>
+<p>Social abilities such as small talk, negotiation and leadership have no rule-based simulator and little real training data, and reproducing the human data-generating process is infeasible. What we <i>can</i> get is a small evaluation set of social tasks with a verifier: SOTOPIA-style goal-completion scores [1] or human ratings. Everyday social life is also highly compressible: most of it follows cultural scripts (ordering, greeting, a class), and individual differences show up at a few choice points [2]. LLM-based synthetic populations are known to answer too consistently and to distort relationships between traits [3]. We turn these observations into an ML problem: <b>learn a low-dimensional map of which social skills a scenario demands and which ones an agent lacks, from a few (agent, scenario) scores.</b></p>
+
+<h2>2. The social sandbox as an underspecified POMDP</h2>
+<p>A scenario $\theta=(\sigma,\xi,g_{1:n})$ has three parts:</p>
+<ul>
+<li>a <b>script graph</b> $\sigma$, whose nodes are options (roles, stages, norms, exits) [4];</li>
+<li>a <b>perturbation</b> $\xi$, either a break (something disrupts the script) or an opportunity (a cue that can trigger a new goal);</li>
+<li><b>cognitive genomes</b> $g_j\in[0,1]^p$ for the non-player characters. Each coordinate is one mechanism, such as loss aversion, conformity or social anxiety, calibrated on behavioural assays (Psych-101, choices13k). It is expressed in a frozen LLM through a prompt template or a steering vector, $h_\ell\leftarrow h_\ell+\textstyle\sum_{c}g_{jc}\,v_c$.</li>
+</ul>
+<p>The agent $\pi_w$ is an LLM with a LoRA adapter $w$. It observes the dialogue and scene, acts with utterances and moves, and is scored by a verifier $J(\tau)\in[0,10]$. We release the sandbox as a Gym-style multi-agent text environment. The pixel-art town demo is its visual front end, and it currently runs on hand-set rules, not on trained models.</p>
+
+<h2>3. Learning problem</h2>
+<p><b>Regret matrix.</b> A population of $N$ agents (checkpoints, base models, prompting strategies) is scored on $M$ scenarios, with $R_{ij}=J(\pi_{\mathrm{ref}},\theta_j)-J(\pi_i,\theta_j)$. Only a sparse set of entries $\Omega$ is observed, because each entry costs a full multi-turn rollout.</p>
+<p><b>Inductive matrix completion with sparse deficiencies.</b> We learn a scenario encoder $\phi_\omega(\theta)=f_\omega(\mathrm{text}(\sigma,\xi),g_{1:n})\in\mathbb R^d$ and agent deficiency vectors $u_i$:</p>
+<div class="eq">$\min_{\omega,U}\ \sum_{(i,j)\in\Omega}\big(R_{ij}-u_i^{\top}\phi_\omega(\theta_j)\big)^2+\lambda\|U\|_F^2+\mu\sum_i\|u_i\|_1 .$</div>
+<p>Side information (the text and genomes) lets the model generalize to unseen scenarios, which plain completion [5] cannot do. For a <i>new</i> agent we probe $n$ scenarios and recover its deficiency with a LASSO; the RL companion project analyses $n=O(k\log(d/k))$ under RIP-type conditions.</p>
+<p><b>Targeted scenario generation.</b> An LLM scenario writer is conditioned on a target demand vector $\phi^\dagger\propto\hat u$. Its outputs pass an <b>admission classifier</b>, trained to reject implausible scenarios, and are ranked by predicted regret $\phi_\omega(\theta)^{\top}\hat u$. The agent is then fine-tuned on the admitted scenarios.</p>
+<p><b>Critical-turn detection (temporal compression).</b> For logged dialogues we measure counterfactual turn influence, $\Delta_t=\mathbb E\,[J\mid \text{resample turn }t]-J$, and train a cheap classifier to predict high $|\Delta_t|$ from context. Training focuses on the predicted critical turns, and routine script segments reuse cached transcripts instead of fresh rollouts.</p>
+
+<h2>4. Evaluation</h2>
+<table>
+<tr><th>Data</th><td>SOTOPIA scenarios and its hard subset; our genome-parameterized NPC partners; behavioural assays for calibrating the genomes.</td></tr>
+<tr><th>Models</th><td>Qwen2.5-1.5B/7B-Instruct with LoRA as agents; a frozen LLM with steering vectors for NPCs.</td></tr>
+<tr><th>Baselines</th><td>Uniformly random scenarios (domain randomization); SOTOPIA-$\pi$-style behaviour cloning plus self-reinforcement [6]; PLR-style replay of high-score-gap scenarios.</td></tr>
+<tr><th>Metrics</th><td>Goal completion on held-out hard scenarios; RMSE of held-out entries of $R$ vs. $|\Omega|$; number of probes needed to recover $\hat u$; canonical correlation between learned axes and genome dimensions; training compute saved by critical-turn selection; spread of NPC behaviour vs. a single-persona baseline.</td></tr>
+</table>
+<p><b>Q1</b> Is $R$ approximately low-rank for social tasks? <b>Q2</b> Do the learned skill axes line up with cognitive mechanisms, making skills readable and editable? <b>Q3</b> Does targeted generation beat random and replay baselines at equal rollout budget? <b>Risk:</b> verifier noise can inflate the rank of $R$. We average several verifier samples and report agreement with human ratings on a subset.</p>
+
+<h2>5. Plan</h2>
+<p class="small"><b>Wk 1–3</b> text sandbox API, scripts, genome expression for 4–6 mechanisms; <b>4–6</b> agent population, sparse score matrix, test Q1; <b>7–10</b> inductive completion, admission classifier, targeted generation, critical-turn detection; <b>11–13</b> held-out evaluation, write-up, demo. <b>Joint paper:</b> the RL project supplies the method and theory (MiniGrid, Craftax); this project supplies the social application.</p>
+
+<div class="refs">[1] Zhou et al. SOTOPIA: Interactive Evaluation for Social Intelligence in Language Agents. ICLR 2024. [2] Schank, Abelson. Scripts, Plans, Goals, and Understanding. 1977. [3] Chidichimo, Jung, Wallis, He. Artificial Societies Benchmark: A Validation Framework for Synthetic Research. arXiv 2609.30030, 2026. [4] Sutton, Precup, Singh. Between MDPs and semi-MDPs. AIJ 1999. [5] Candès, Recht. Exact matrix completion via convex optimization. FoCM 2009. [6] Wang et al. SOTOPIA-π: Interactive Learning of Socially Intelligent Language Agents. ACL 2024. [7] Park et al. Generative Agents: Interactive Simulacra of Human Behavior. UIST 2023. [8] Dennis et al. PAIRED. NeurIPS 2020.</div>

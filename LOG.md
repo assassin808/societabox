@@ -4,6 +4,17 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-28: Course proposals as one-page PDFs (technical)
+
+- Correction: we do not have an RL environment yet. The town demo runs on hand-set rules.
+- New framing, "Compressed Regret Sensing" (CRS), with PAIRED/PLR/ACCEL as the main related work:
+  - (A1) Skill sparsity: regret factorizes as phi(theta)^T delta(pi) with a k-sparse deficiency, i.e. a low-rank regret matrix.
+  - (A2) Temporal sparsity: the advantage is concentrated on a few decision-critical steps.
+  - Method: randomize to measure (basis pursuit, RIP, n = O(k log(d/k)) probes); learn phi by regret-matrix completion; target to train (a generator with a dense predicted-regret reward); sparse rollouts (options for routine segments, branching only at critical steps).
+- `proposal/rl_proposal.pdf` (RL course): the pure-RL method on minimax/MiniGrid and Craftax against DR, PAIRED, Robust PLR, ACCEL.
+- `proposal/ml_proposal.pdf` (ML course): the social sandbox as a UPOMDP (scripts × perturbations × NPC genomes); inductive matrix completion with sparse deficiencies; admission classifier; critical-turn detection; SOTOPIA evaluation.
+- Sources are in `proposal/src/`. Rebuild with `node proposal/src/build.js` (needs katex from npm and playwright).
+
 ## 2026-09-28: One-page proposal and demo v2
 
 - Proposal (Chinese, one page): `proposal/proposal.html`, live at https://claude.ai/artifact/K8MpVUM4jX1MEjM42aPWFd
