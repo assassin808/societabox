@@ -6,34 +6,37 @@
   --bg:#e9ece4; --surface:#f7f8f3; --surface-2:#eff2ea; --ink:#1e2521; --muted:#5b665e; --line:#d2d8cb;
   --accent:#2d6a8f; --accent-soft:#d6e5ee; --talk:#b7791f; --talk-soft:#f6e7c8; --walk:#2d6a8f; --away:#7a847c;
   --busy:#3f7d4c; --frame:#2a231c; --bubble:#fffdf7; --bubble-ink:#1e2521;
-  --display:"Pixelify Sans", "Courier New", monospace;
-  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ml:#3f7d4c; --ml-soft:#dfeee2; --rl:#a86b12; --rl-soft:#f5e8cf;
+  --display:"Pixelify Sans","Courier New",monospace;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --bg:#141915; --surface:#1c231e; --surface-2:#222a24; --ink:#e6ebe3; --muted:#9aa69c; --line:#2f3a32;
     --accent:#72b2d8; --accent-soft:#1f3645; --talk:#e0a849; --talk-soft:#3a2f1a; --walk:#72b2d8; --away:#8a948c;
-    --busy:#7cc28a; --frame:#0d0b09; --bubble:#fffdf7; --bubble-ink:#1e2521;
+    --busy:#7cc28a; --frame:#0d0b09; --ml:#7cc28a; --ml-soft:#1f3325; --rl:#e2a84c; --rl-soft:#3a2e18;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#141915; --surface:#1c231e; --surface-2:#222a24; --ink:#e6ebe3; --muted:#9aa69c; --line:#2f3a32;
   --accent:#72b2d8; --accent-soft:#1f3645; --talk:#e0a849; --talk-soft:#3a2f1a; --walk:#72b2d8; --away:#8a948c;
-  --busy:#7cc28a; --frame:#0d0b09; --bubble:#fffdf7; --bubble-ink:#1e2521;
+  --busy:#7cc28a; --frame:#0d0b09; --ml:#7cc28a; --ml-soft:#1f3325; --rl:#e2a84c; --rl-soft:#3a2e18;
 }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:14px 32px}
-.wrap{max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-header.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.wrap{max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header.top{display:flex;flex-direction:column;gap:10px}
+.row1{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .brand h1{font-family:var(--display);font-weight:700;font-size:26px;margin:0;letter-spacing:.5px}
 .brand p{margin:0;color:var(--muted);font-size:13px}
+.brand a{color:var(--accent);font-size:13px}
 .controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .clock{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);min-width:168px;text-align:center}
-.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);flex-wrap:wrap}
 .seg button,.btn{font:500 13px var(--body);color:var(--ink);background:transparent;border:0;padding:6px 11px;cursor:pointer}
 .seg button+button{border-left:1px solid var(--line)}
 .seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
@@ -41,21 +44,27 @@ header.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-
 .btn:hover,.seg button:hover{background:var(--surface-2)}
 .seg button[aria-pressed="true"]:hover{background:var(--accent)}
 button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-main.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:14px;align-items:start}
-@media (max-width:960px){main.grid{grid-template-columns:minmax(0,1fr)}}
-.world{display:flex;flex-direction:column;gap:10px}
+.levelbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.levelbar .lbl{font:500 11px var(--mono);letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+.levelbar .seg button{font-family:var(--mono);font-size:12.5px}
+.levelbar .desc{font-size:13px;color:var(--ink);flex:1;min-width:220px}
+main.grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
+@media (max-width:1000px){main.grid{grid-template-columns:minmax(0,1fr)}}
+.world{display:flex;flex-direction:column;gap:10px;min-width:0}
 .scenebar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .tabs{display:flex;gap:6px;flex-wrap:wrap}
 .tab{font:600 13px var(--body);padding:6px 12px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:flex;gap:8px;align-items:center}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tab .count{font:500 11px var(--mono);opacity:.75}
 .follow{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:13px;cursor:pointer}
-.stage{position:relative;background:var(--frame);border-radius:8px;padding:8px;box-shadow:0 1px 0 var(--line)}
+.stage{position:relative;background:var(--frame);border-radius:8px;padding:8px}
 .stage-inner{position:relative}
+.evbanner{position:absolute;left:8px;right:8px;top:8px;z-index:2;display:flex;justify-content:center;pointer-events:none}
+.evbanner span{background:rgba(20,16,12,.85);color:#fff;font:600 12.5px var(--body);padding:5px 10px;border-radius:4px;display:flex;gap:8px;align-items:center;max-width:100%}
 canvas#world{display:block;width:100%;height:auto;aspect-ratio:32/20;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer;border-radius:3px}
 .overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .tag[hidden]{display:none}
-.tag{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:3px;will-change:left,top}
+.tag{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:3px}
 .bubble{background:var(--bubble);color:var(--bubble-ink);border:2px solid #2b2230;border-radius:6px;padding:3px 7px;font:500 12px/1.3 var(--body);max-width:210px;text-align:left;box-shadow:2px 2px 0 rgba(0,0,0,.25);position:relative}
 .bubble.emoji{font-size:15px;padding:1px 6px;line-height:1.35}
 .bubble.say{min-width:90px}
@@ -63,15 +72,44 @@ canvas#world{display:block;width:100%;height:auto;aspect-ratio:32/20;image-rende
 .bubble::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:5px solid transparent;border-top-color:#2b2230}
 .name{font:700 11px var(--display);letter-spacing:.4px;background:rgba(20,16,12,.78);color:#fff;padding:1px 6px;border-radius:3px;white-space:nowrap}
 .tag.sel .name{background:var(--accent);color:#fff}
-.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+.tag.npc .name{background:rgba(90,70,40,.85)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:8px}
-.feed{padding:12px 14px}
-.feed h2,.panel h2{font:700 15px var(--display);letter-spacing:.4px;margin:0 0 8px}
-.feed ol{list-style:none;margin:0;padding:0;max-height:220px;overflow:auto;display:flex;flex-direction:column;gap:4px}
+.engine{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:1180px){.engine{grid-template-columns:minmax(0,1fr)}}
+.eng{padding:12px 13px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.eng h2,.feed h2,.panel h2{font:700 15px var(--display);letter-spacing:.4px;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip-rl,.chip-ml{font:600 10.5px/1 var(--mono);padding:3px 5px;border-radius:3px;letter-spacing:.5px}
+.chip-rl{background:var(--rl-soft);color:var(--rl);border:1px solid var(--rl)}
+.chip-ml{background:var(--ml-soft);color:var(--ml);border:1px solid var(--ml)}
+.note{font-size:12px;color:var(--muted);margin:0}
+.evnow{font-size:13px;display:flex;flex-direction:column;gap:2px}
+.evnow b{font-weight:600}
+.cands{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.cands li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;font-size:12.5px}
+.cands li .bar{grid-column:1/3}
+.cands li.pick{font-weight:600}
+.cands .meta{font:400 11px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden;position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--rl);border-radius:3px}
+.bar.acc i{background:var(--accent)}
+.bar.ml i{background:var(--ml)}
+.bar.neg i{background:var(--talk)}
+.bar .base{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.55}
+.genes{display:flex;flex-direction:column;gap:6px}
+.grow{display:grid;grid-template-columns:112px minmax(0,1fr) 34px;gap:8px;align-items:center;font-size:12.5px}
+.grow .v{font:400 11.5px var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.mods{margin:0;padding-left:1.1em;font-size:12px;color:var(--ink)}
+canvas#pop{width:100%;height:130px;display:block;background:var(--surface-2);border-radius:6px}
+.stats{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-size:12.5px}
+.stats .k{color:var(--muted)}
+.feed{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.feed ol{list-style:none;margin:0;padding:0;max-height:200px;overflow:auto;display:flex;flex-direction:column;gap:4px}
 .feed li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;font-size:13px}
 .feed time,.mem time,.plan time{font:400 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
 .feed li.say b{color:var(--talk)}
-.panel{display:flex;flex-direction:column;gap:14px}
+.feed li.dm span::before{content:"WORLD";font:600 10px var(--mono);color:var(--rl);border:1px solid var(--rl);border-radius:3px;padding:0 4px;margin-right:6px}
+.feed li.dec span::before{content:"DECISION";font:600 10px var(--mono);color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:0 4px;margin-right:6px}
+.panel{display:flex;flex-direction:column;gap:14px;min-width:0}
 .residents{padding:12px;display:flex;flex-direction:column;gap:6px}
 .res{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px;border-radius:6px;border:1px solid transparent;background:transparent;color:inherit;text-align:left;cursor:pointer;font:inherit;width:100%}
 .res:hover{background:var(--surface-2)}
@@ -84,23 +122,39 @@ canvas#world{display:block;width:100%;height:auto;aspect-ratio:32/20;image-rende
 .chip.Walking{color:var(--walk)}
 .chip.Busy{color:var(--busy)}
 .chip.Away{color:var(--away)}
-.detail{padding:14px;display:flex;flex-direction:column;gap:12px}
+.chip.Deciding{color:var(--rl);background:var(--rl-soft)}
+.detail{padding:14px;display:flex;flex-direction:column;gap:14px}
 .detail .head{display:flex;gap:12px;align-items:center}
 .detail .head canvas{width:64px;height:64px;image-rendering:pixelated;background:var(--surface-2);border-radius:8px}
 .detail h3{font:700 22px var(--display);margin:0;letter-spacing:.4px}
 .detail .sub{color:var(--muted);font-size:13px}
 .detail .bio{margin:0;font-size:13.5px}
-.traits{display:flex;gap:6px;flex-wrap:wrap}
-.traits span{font-size:12px;padding:2px 8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line)}
-.now{font-size:13px;padding:8px 10px;border-radius:6px;background:var(--surface-2);display:flex;flex-direction:column;gap:2px}
-.now .lbl,.sec-lbl{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+.sec{display:flex;flex-direction:column;gap:7px}
+.sec-lbl{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.8px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.now{font-size:13px;padding:8px 10px;border-radius:6px;background:var(--surface-2);display:flex;flex-direction:column;gap:4px}
+.stages{display:flex;flex-wrap:wrap;gap:4px}
+.stages span{font-size:11.5px;padding:1px 6px;border-radius:3px;border:1px solid var(--line);color:var(--muted)}
+.stages span.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.gslider{display:grid;grid-template-columns:minmax(0,1fr) 34px;gap:2px 8px;align-items:center;font-size:12.5px}
+.gslider label{grid-column:1/3;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.gslider input{width:100%;accent-color:var(--accent)}
+.gslider .v{font:400 11.5px var(--mono);text-align:right}
+.gslider .ex{font:500 10.5px var(--mono);color:var(--muted)}
+.decision{display:flex;flex-direction:column;gap:6px;font-size:12.5px}
+.opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.opts li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px;align-items:center;padding:4px 6px;border-radius:4px}
+.opts li.win{background:var(--accent-soft);font-weight:600}
+.src{font:500 10px var(--mono);padding:1px 4px;border-radius:3px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.src.self{border-color:var(--rl);color:var(--rl)}
+.u{font:400 11px var(--mono);font-variant-numeric:tabular-nums;color:var(--muted)}
 .subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line)}
 .subtabs button{font:600 13px var(--body);background:none;border:0;border-bottom:2px solid transparent;padding:6px 8px;color:var(--muted);cursor:pointer;margin-bottom:-1px}
 .subtabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
-.plan,.mem{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;max-height:250px;overflow:auto}
+.plan,.mem{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;max-height:230px;overflow:auto}
 .plan li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;padding:5px 6px;border-radius:4px;font-size:13px}
 .plan li.cur{background:var(--accent-soft)}
 .plan li.done{color:var(--muted)}
+.plan .alt{font-size:11.5px;color:var(--muted);display:block}
 .mem li{display:grid;grid-template-columns:64px minmax(0,1fr) 34px;gap:8px;padding:5px 6px;font-size:13px;border-bottom:1px solid var(--line)}
 .mem .imp{font:500 11px var(--mono);color:var(--muted);text-align:right}
 .mem li.hi .imp{color:var(--talk);font-weight:600}
@@ -109,24 +163,36 @@ form.whisper .row{display:flex;gap:6px}
 form.whisper input{flex:1;min-width:0;font:14px var(--body);padding:7px 9px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 form.whisper button{background:var(--accent);color:#fff;border-color:var(--accent)}
 form.whisper small{color:var(--muted);font-size:12px}
-@media (prefers-reduced-motion: reduce){ .tag{transition:none} }
 </style>
 
 <div class="wrap">
   <header class="top">
-    <div class="brand">
-      <h1>SocietaBox</h1>
-      <p>A small town of generative agents: three residents, two places, one day on loop.</p>
-    </div>
-    <div class="controls">
-      <div class="clock" id="clock" aria-live="off">Day 1 · 8:10 AM</div>
-      <button class="btn" id="pause" type="button">Pause</button>
-      <div class="seg" role="group" aria-label="Simulation speed" id="speed">
-        <button type="button" data-s="1" aria-pressed="false">1×</button>
-        <button type="button" data-s="2" aria-pressed="true">2×</button>
-        <button type="button" data-s="5" aria-pressed="false">5×</button>
-        <button type="button" data-s="12" aria-pressed="false">12×</button>
+    <div class="row1">
+      <div class="brand">
+        <h1>SocietaBox</h1>
+        <p>A cognitive-genome sandbox: residents with editable genomes, a world that throws new situations at them, and the RL and ML modules that drive both.</p>
+        <a href="https://claude.ai/artifact/K8MpVUM4jX1MEjM42aPWFd">Read the proposal</a>
       </div>
+      <div class="controls">
+        <div class="clock" id="clock">Day 1 · 8:10 AM</div>
+        <button class="btn" id="pause" type="button">Pause</button>
+        <div class="seg" role="group" aria-label="Simulation speed" id="speed">
+          <button type="button" data-s="1" aria-pressed="false">1×</button>
+          <button type="button" data-s="2" aria-pressed="true">2×</button>
+          <button type="button" data-s="5" aria-pressed="false">5×</button>
+          <button type="button" data-s="12" aria-pressed="false">12×</button>
+        </div>
+      </div>
+    </div>
+    <div class="levelbar">
+      <span class="lbl">Freedom level</span>
+      <div class="seg" role="group" aria-label="Freedom level" id="level">
+        <button type="button" data-l="0" aria-pressed="false">L0 Loop</button>
+        <button type="button" data-l="1" aria-pressed="false">L1 Choice</button>
+        <button type="button" data-l="2" aria-pressed="false">L2 Encounters</button>
+        <button type="button" data-l="3" aria-pressed="true">L3 Open</button>
+      </div>
+      <span class="desc" id="level-desc"></span>
     </div>
   </header>
 
@@ -143,8 +209,34 @@ form.whisper small{color:var(--muted);font-size:12px}
         <div class="stage-inner">
           <canvas id="world" width="512" height="320" aria-label="Pixel-art view of the town"></canvas>
           <div class="overlay" id="overlay"></div>
+          <div class="evbanner" id="evbanner" hidden><span id="evbanner-text"></span></div>
         </div>
       </div>
+
+      <div class="engine">
+        <div class="card eng">
+          <h2>World generator <span class="chip-rl">RL · M4</span></h2>
+          <div class="evnow" id="dm-now"></div>
+          <ul class="cands" id="dm-cands"></ul>
+          <button class="btn" type="button" id="dm-next">Trigger next event</button>
+          <p class="note">Picks the situation where the simulated population is most split (highest decision entropy), a cheap proxy for learning signal. In the paper this generator is trained with RL against held-out human data.</p>
+        </div>
+        <div class="card eng">
+          <h2>Gene controller <span class="chip-rl">RL · M3</span></h2>
+          <div class="sub note" id="gc-who"></div>
+          <div class="genes" id="gc-genes"></div>
+          <ul class="mods" id="gc-mods"></ul>
+          <p class="note">The bar shows the gene strength expressed at this step; the tick marks the stable genome. Here a hand-set rule drives it; in the paper a small policy network trained with RL outputs it, and the LLM stays frozen.</p>
+        </div>
+        <div class="card eng">
+          <h2>Population check <span class="chip-ml">ML · M2</span></h2>
+          <div class="note" id="pop-title"></div>
+          <canvas id="pop" width="320" height="130" aria-label="Histogram of decision margins across 300 simulated people"></canvas>
+          <div class="stats" id="pop-stats"></div>
+          <p class="note">300 sampled genomes face the same situation. One persona prompt with no genome gives everyone the same answer, the "too consistent" failure. Human reference bands will come from experience-sampling data once calibrated.</p>
+        </div>
+      </div>
+
       <div class="card feed">
         <h2>Town log</h2>
         <ol id="feed" aria-live="polite"></ol>
@@ -157,8 +249,21 @@ form.whisper small{color:var(--muted);font-size:12px}
         <div class="head"><canvas id="d-avatar" width="16" height="16"></canvas>
           <div><h3 id="d-name"></h3><div class="sub" id="d-sub"></div></div></div>
         <p class="bio" id="d-bio"></p>
-        <div class="traits" id="d-traits"></div>
-        <div class="now"><span class="lbl">Right now</span><span id="d-now"></span><span class="sub" id="d-where"></span></div>
+        <div class="now"><span class="sec-lbl">Right now</span><span id="d-now"></span><span class="sub" id="d-where"></span>
+          <span class="sec-lbl">Script</span><span id="d-script"></span><div class="stages" id="d-stages"></div></div>
+        <div class="sec">
+          <span class="sec-lbl">Cognitive genome <span class="chip-ml">ML · M1</span></span>
+          <div id="d-genome" class="genes"></div>
+          <p class="note">Drag to edit. Each gene lists how it is expressed in the model (prompt template or steering vector) and the assay that will calibrate it.</p>
+        </div>
+        <div class="sec">
+          <span class="sec-lbl">State</span>
+          <div id="d-state" class="genes"></div>
+        </div>
+        <div class="sec">
+          <span class="sec-lbl">Last decision</span>
+          <div id="d-dec" class="decision"></div>
+        </div>
         <div>
           <div class="subtabs" role="tablist">
             <button type="button" role="tab" id="st-plan" aria-selected="true">Daily plan</button>
@@ -170,7 +275,7 @@ form.whisper small{color:var(--muted);font-size:12px}
         <form class="whisper" id="whisper">
           <span class="sec-lbl">Whisper an idea</span>
           <div class="row"><input id="whisper-input" type="text" maxlength="90" placeholder="e.g. the café is hosting a hackathon tonight" autocomplete="off"><button class="btn" type="submit">Whisper</button></div>
-          <small>It goes into their memory. They will bring it up in their next conversation.</small>
+          <small>It goes into their memory. They bring it up in their next conversation.</small>
         </form>
       </div>
     </aside>
@@ -310,20 +415,71 @@ const BASE_DOWN=['','....oooooooo','...ohhhhhhhho','...ohhhhhhhho','...ohssssssh
 const BASE_UP=BASE_DOWN.slice();BASE_UP[4]=BASE_UP[5]=BASE_UP[6]='...ohhhhhhhho';BASE_UP[7]='....ohhhhhho';
 const BASE_SIDE=BASE_DOWN.slice();BASE_SIDE[4]='...ohhhhsssso';BASE_SIDE[5]='...ohhhssseso';BASE_SIDE[6]='...ohhsssssso';BASE_SIDE[9]='...otttttttto';BASE_SIDE[10]='...otttttstto';
 const OUT='#2b2230';
+
+/* ---------- genes, scripts, residents ---------- */
+const GENES=[
+  {id:'appr',name:'Social approach',expr:'steering vector',assay:'stranger-approach vignettes'},
+  {id:'anx',name:'Social anxiety',expr:'steering vector',assay:'social-evaluation vignettes'},
+  {id:'nov',name:'Novelty seeking',expr:'prompt template',assay:'explore/exploit bandit'},
+  {id:'imp',name:'Impulsivity',expr:'prompt template',assay:'delay discounting'},
+  {id:'loss',name:'Loss aversion',expr:'steering vector',assay:'mixed gambles (choices13k)'},
+  {id:'conf',name:'Conformity',expr:'prompt template',assay:'group-judgment task'},
+];
+const SCR={
+  sleep:{name:'Sleep',stages:['Asleep']},
+  open:{name:'Open the café',stages:['Unlock','Grind beans','Warm the machine','Chalk the menu']},
+  counter:{name:'Run the counter',stages:['Greet','Take order','Pull shot','Hand over','Wipe down']},
+  lunch:{name:'Lunch break',stages:['Find a seat','Eat','People-watch']},
+  bake:{name:'Bake',stages:['Mix','Portion','Bake','Cool']},
+  close:{name:'Close up',stages:['Wipe tables','Count the till','Stack chairs']},
+  home:{name:'Evening at home',stages:['Cook','Read','Wind down']},
+  paint:{name:'Paint outdoors',stages:['Mix colors','Block in','Add detail','Step back']},
+  cafe:{name:'Café visit',stages:['Order','Sit down','Sketch','Sip']},
+  walk:{name:'Walk',stages:['Stroll','Stop and look','Stroll on']},
+  deep:{name:'Deep work',stages:['Launch run','Wait for training','Read logs','Fix bug']},
+  read:{name:'Read a paper',stages:['Skim','Read closely','Take notes']},
+  call:{name:'Phone call',stages:['Catch up','Discuss project','Plan next steps']},
+  campus:{name:'Campus life',stages:['Class','Lab meeting','Dorm']},
+};
 const AGENTS_DEF=[
-  {id:'mei',name:'Mei Tanaka',age:29,role:'Owns Juniper Café',bio:'Warm and organized. Knows every regular\'s order by heart and is planning a poetry night for Friday.',traits:['warm','organized','chatty'],
+  {id:'mei',name:'Mei Tanaka',age:29,role:'Owns Juniper Café',bio:'Warm and organized. Knows every regular\'s order by heart and is planning a poetry night for Friday.',
    pal:{h:'#2a2238',s:'#f1c9a5',t:'#c9503a',p:'#3a3f58',b:'#2b2230',a:'#f4efe4'},style:'apron',home:'home_mei',
-   plan:[{s:0,place:'home_mei',act:'Sleeping',emo:'😴'},{s:420,place:'barista',act:'Opening up, grinding the first beans',emo:'☕🔑'},{s:480,place:'barista',act:'Serving the morning rush',emo:'☕🥐',wander:['serve1','serve2','shelf']},{s:720,place:'bench_w',act:'Eating lunch in the park',emo:'🥪🌳'},{s:775,place:'barista',act:'Baking muffins for the afternoon',emo:'🧁🔥',wander:['serve1','shelf']},{s:1020,place:'wipe',act:'Closing up and wiping tables',emo:'🧽✨'},{s:1080,place:'home_mei',act:'Resting at home',emo:'🏠📖'}],
+   genes:{appr:.82,anx:.18,nov:.4,imp:.35,loss:.6,conf:.55},
+   plan:[{s:0,place:'home_mei',act:'Sleeping',emo:'😴',scr:'sleep'},
+     {s:420,place:'barista',act:'Opening up, grinding the first beans',emo:'☕🔑',scr:'open'},
+     {s:480,place:'barista',act:'Serving the morning rush',emo:'☕🥐',scr:'counter',wander:['serve1','serve2','shelf']},
+     {s:720,place:'bench_w',act:'Eating lunch in the park',emo:'🥪🌳',scr:'lunch',w:{nov:.4,appr:.2},alt:[{place:'barista',act:'Eating lunch behind the counter',emo:'🥪☕',w:{loss:.4,anx:.2}}]},
+     {s:775,place:'barista',act:'Baking muffins for the afternoon',emo:'🧁🔥',scr:'bake',wander:['serve1','shelf']},
+     {s:1020,place:'wipe',act:'Closing up and wiping tables',emo:'🧽✨',scr:'close'},
+     {s:1080,place:'home_mei',act:'Resting at home',emo:'🏠📖',scr:'home'}],
    mem:[['Opened Juniper Café three years ago with savings from a bakery job',8],['Rafael always orders a flat white around 10:30',4],['Poetry night is Friday at 7 pm and still needs a poster',6]]},
-  {id:'raf',name:'Rafael Ortiz',age:34,role:'Painter',bio:'Painting a series about the pond for a gallery show next month. Works slowly and keeps second-guessing the light.',traits:['dreamy','perfectionist','generous'],
+  {id:'raf',name:'Rafael Ortiz',age:34,role:'Painter',bio:'Painting a series about the pond for a gallery show next month. Works slowly and keeps second-guessing the light.',
    pal:{h:'#6b3e1f',s:'#c98e62',t:'#3d7fb3',p:'#5a4a3a',b:'#2b2230',r:'#a33a3a'},style:'beret',home:'home_raf',
-   plan:[{s:0,place:'home_raf',act:'Sleeping',emo:'😴'},{s:470,place:'easel',act:'Painting the pond in morning light',emo:'🎨🌅'},{s:630,place:'t2b',act:'Flat white and a sketchbook',emo:'☕✏️'},{s:700,place:'pond_walk',act:'Studying reflections on the pond',emo:'🌊👀'},{s:760,place:'easel',act:'Painting, round two',emo:'🎨'},{s:960,place:'t3a',act:'Sketching the café regulars',emo:'✏️☕'},{s:1110,place:'home_raf',act:'Stretching canvases at home',emo:'🏠🖼️'}],
+   genes:{appr:.45,anx:.55,nov:.88,imp:.62,loss:.3,conf:.22},
+   plan:[{s:0,place:'home_raf',act:'Sleeping',emo:'😴',scr:'sleep'},
+     {s:470,place:'easel',act:'Painting the pond in morning light',emo:'🎨🌅',scr:'paint'},
+     {s:630,place:'t2b',act:'Flat white and a sketchbook',emo:'☕✏️',scr:'cafe'},
+     {s:700,place:'pond_walk',act:'Studying reflections on the pond',emo:'🌊👀',scr:'walk',w:{nov:.5},alt:[{place:'t2b',act:'Staying for a second coffee',emo:'☕☕',scr:'cafe',w:{appr:.3,imp:.25}}]},
+     {s:760,place:'easel',act:'Painting, round two',emo:'🎨',scr:'paint'},
+     {s:960,place:'t3a',act:'Sketching the café regulars',emo:'✏️☕',scr:'cafe'},
+     {s:1110,place:'home_raf',act:'Stretching canvases at home',emo:'🏠🖼️',scr:'home'}],
    mem:[['Eastside Gallery wants six paintings by next month',8],['Has finished two of the six pond paintings',6],['Mei offered wall space in the café',5]]},
-  {id:'pri',name:'Priya Nair',age:23,role:'UBC grad student, ML',bio:'Trains reinforcement learning agents from the café and debugs reward functions. Wants to model the town\'s routines for a course project.',traits:['curious','blunt','night owl'],
+  {id:'pri',name:'Priya Nair',age:23,role:'UBC grad student, ML',bio:'Trains reinforcement learning agents from the café and debugs reward functions. Wants to model the town\'s routines for a course project.',
    pal:{h:'#1e1a1a',s:'#b7825a',t:'#e7b53f',p:'#2f4a6d',b:'#2b2230'},style:'long',home:'campus',
-   plan:[{s:0,place:'campus',act:'At the UBC dorm',emo:'😴'},{s:500,place:'t1a',act:'Training an RL agent on her laptop',emo:'💻📈'},{s:720,place:'pond_bench',act:'Reading a paper on reward shaping',emo:'📄🤔'},{s:800,place:'t4b',act:'Debugging a reward function',emo:'🐛💻'},{s:1000,place:'bench_e',act:'Calling her project partner',emo:'📞'},{s:1070,place:'campus',act:'Back on campus for a lab meeting',emo:'🏫'}],
+   genes:{appr:.38,anx:.46,nov:.7,imp:.25,loss:.52,conf:.3},
+   plan:[{s:0,place:'campus',act:'At the UBC dorm',emo:'😴',scr:'campus'},
+     {s:500,place:'t1a',act:'Training an RL agent on her laptop',emo:'💻📈',scr:'deep'},
+     {s:720,place:'pond_bench',act:'Reading a paper on reward shaping',emo:'📄🤔',scr:'read',w:{nov:.4},alt:[{place:'t1a',act:'Working through lunch',emo:'💻🥪',scr:'deep',w:{loss:.4,conf:.1}}]},
+     {s:800,place:'t4b',act:'Debugging a reward function',emo:'🐛💻',scr:'deep'},
+     {s:1000,place:'bench_e',act:'Calling her project partner',emo:'📞',scr:'call',w:{nov:.2},alt:[{place:'t4b',act:'Calling from the café',emo:'📞☕',scr:'call',w:{anx:.4}}]},
+     {s:1070,place:'campus',act:'Back on campus for a lab meeting',emo:'🏫',scr:'campus'}],
    mem:[['Her RL agent learned to spin in circles to farm reward',6],['Course project proposal is due in two weeks',7],['Juniper Café has the best Wi-Fi near campus',3]]},
 ];
+const NPC_DEF={
+  leo:{id:'leo',name:'Leo',pal:{h:'#3b2a20',s:'#e0b48e',t:'#5a6b7a',p:'#2b2b33',b:'#2b2230'},style:'',emo:'👋'},
+  busker:{id:'busker',name:'Busker',pal:{h:'#c9a13a',s:'#f0c8a4',t:'#6a8f3a',p:'#4a3a2a',b:'#2b2230',r:'#2b2230'},style:'beret',emo:'🎸🎶'},
+};
+
 function template(dir,style){
   let rows=(dir==='up'?BASE_UP:dir==='down'?BASE_DOWN:BASE_SIDE).map(r=>pad(r).split(''));
   const set=(x,y,ch)=>{if(rows[y][x]!=='.'||ch==='o')rows[y][x]=ch;};
@@ -345,6 +501,8 @@ function sprite(a,dir,frame){
   return spriteCache[key]=cv;
 }
 
+
+
 /* ---------- places ---------- */
 const PLACES={
   bench_w:{scene:'town',x:6,y:11,label:'Park bench',face:'down'},
@@ -352,6 +510,10 @@ const PLACES={
   easel:{scene:'town',x:17,y:9,label:'Easel by the pond',face:'right'},
   pond_bench:{scene:'town',x:18,y:13,label:'Pond bench',face:'right'},
   pond_walk:{scene:'town',x:24,y:17,label:'Pond path',face:'up'},
+  store:{scene:'town',x:2,y:5,label:'Corner store',face:'left'},
+  listen_mei:{scene:'town',x:17,y:14,label:'Near the busker',face:'left'},
+  listen_raf:{scene:'town',x:16,y:16,label:'Near the busker',face:'up'},
+  listen_pri:{scene:'town',x:17,y:16,label:'Near the busker',face:'left'},
   barista:{scene:'cafe',x:10,y:6,label:'Espresso counter',face:'down'},
   serve1:{scene:'cafe',x:18,y:7,label:'Window table',face:'up',act:'Bringing a latte to the window table'},
   serve2:{scene:'cafe',x:23,y:10,label:'Back table',face:'down',act:'Checking on the back table'},
@@ -361,6 +523,11 @@ const PLACES={
   t2b:{scene:'cafe',x:24,y:6,label:'Corner table',face:'left'},
   t3a:{scene:'cafe',x:17,y:11,label:'Back table',face:'right'},
   t4b:{scene:'cafe',x:24,y:11,label:'Back corner table',face:'left'},
+  leo_seat:{scene:'cafe',x:19,y:11,label:'Back table',face:'left'},
+  leo_visit:{scene:'cafe',x:20,y:11,label:'Leo\'s table',face:'left'},
+  shelter_mei:{scene:'cafe',x:20,y:14,label:'Café, out of the rain',face:'up'},
+  shelter_raf:{scene:'cafe',x:21,y:14,label:'Café, out of the rain',face:'up'},
+  shelter_pri:{scene:'cafe',x:22,y:14,label:'Café, out of the rain',face:'up'},
   home_mei:{off:true,entry:{scene:'town',x:21,y:4},label:"Mei's house"},
   home_raf:{off:true,entry:{scene:'town',x:28,y:4},label:"Rafael's house"},
   campus:{off:true,entry:{scene:'town',x:0,y:6},label:'UBC campus'},
@@ -395,29 +562,174 @@ const SCRIPTS={
     {topic:'simulating the town',lines:[['raf','What are you working on? Your screen is all graphs.'],['pri','Agents that live in a tiny simulated town.'],['raf','Like this town? Do they drink too much coffee?'],['pri','One of them keeps painting the same pond.'],['raf','...I feel seen.']]},
   ],
 };
+
+
 const REPLIES=['Really? I hadn\'t heard that.','Huh. Tell me more later.','That changes my plans a bit.','Interesting. I\'ll keep that in mind.'];
+const LEO_LINES={
+  mei:[['mei','Welcome! First time at Juniper?'],['leo','Yes, I just moved in down the street.'],['mei','Then your first coffee is on me.'],['leo','Best welcome I\'ve had in this city.']],
+  mei_cookie:[['mei','Welcome! Have a cookie, it\'s on the house.'],['leo','That\'s kind. I just moved in down the street.'],['mei','Then I hope I\'ll see you every morning.']],
+  raf:[['raf','Mind if I sketch the room? You\'re sitting in the good light.'],['leo','Go ahead. Do I get a copy?'],['raf','Only if it turns out well.']],
+  pri:[['pri','Is that a robotics sticker on your laptop?'],['leo','Yeah, I work on warehouse robots.'],['pri','Then we should compare notes on reward functions.'],['leo','Deal. Mine keep optimizing for the wrong thing.']],
+};
+
+/* ---------- small utils ---------- */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+const clamp=v=>Math.max(0,Math.min(1,v));
+const first=a=>a.name.split(' ')[0];
+function ent(p){if(p<=0||p>=1)return 0;return -(p*Math.log2(p)+(1-p)*Math.log2(1-p));}
 
 /* ---------- state ---------- */
-let sim=8*60+10,speed=2,paused=false,view='town',selected='mei',follow=false,convo=null;
-const cooldown={},convoCount={};
-const feed=[];
-const agents=AGENTS_DEF.map(d=>({...d,x:0,y:0,tx:0,ty:0,dir:'down',scene:'off',offAt:d.home,path:[],hop:null,goalKey:null,settled:true,blockIdx:-1,sub:null,walkT:0,convo:null,thought:null,whisper:null,
+let sim=8*60+10,speed=2,paused=false,view='town',selected='mei',follow=false,level=3;
+const cooldown={},convoCount={};const convos=[];const npcs=[];
+const feed=[];let feedDirty=true;
+const agents=AGENTS_DEF.map(d=>({...d,genes:{...d.genes},st:{energy:.86,social:.45,mood:.62},x:0,y:0,tx:0,ty:0,dir:'down',scene:'off',offAt:d.home,path:[],hop:null,goalKey:null,settled:true,blockIdx:-1,cur:null,sub:null,walkT:0,convo:null,thought:null,whisper:null,dec:null,
   memories:d.mem.map(([t,i])=>({t:sim-60*(3+Math.random()*20),text:t,imp:i}))}));
 const byId=Object.fromEntries(agents.map(a=>[a.id,a]));
 function tod(){return ((sim%1440)+1440)%1440;}
+function dayNo(){return Math.floor(sim/1440)+1;}
 function blockIndex(a){const t=tod();let i=0;a.plan.forEach((b,k)=>{if(b.s<=t)i=k;});return i;}
-function addMem(a,text,imp){a.memories.push({t:sim,text,imp});if(a.memories.length>60)a.memories.shift();}
-function log(text,cls){feed.push({t:sim,text,cls});if(feed.length>80)feed.shift();feedDirty=true;}
-let feedDirty=true;
+function addMem(a,text,imp){if(!a.memories)return;a.memories.push({t:sim,text,imp});if(a.memories.length>60)a.memories.shift();}
+function log(text,cls){feed.push({t:sim,text,cls});if(feed.length>90)feed.shift();feedDirty=true;}
 
+/* ---------- genome expression (gene controller) ---------- */
+function hurryOf(a){const t=tod();let nx=null;for(const b of a.plan)if(b.s>t){nx=b.s;break;}if(nx===null)nx=1440+a.plan[0].s;const m=nx-t;return clamp((25-m)/25+(a.settled?0:.15));}
+function expressedFrom(g,s,h,talk){
+  const e={appr:g.appr*(.7+.6*s.mood)*(.6+.4*s.energy),anx:g.anx*(1+.35*(1-s.energy)),nov:g.nov*(.8+.4*s.mood),imp:g.imp*(1+.3*(1-s.energy))*(1-.3*h),loss:g.loss*(1+.45*h),conf:g.conf*(1+.25*talk)};
+  for(const k in e)e[k]=clamp(e[k]);return e;}
+function expressed(a){const h=hurryOf(a),s=a.st,talk=a.convo?1:0;const mods=[];
+  if(h>.2)mods.push('Short on time: loss aversion up, impulsivity down');
+  if(s.energy<.45)mods.push('Tired: anxiety and impulsivity up');
+  if(s.mood>.68)mods.push('Good mood: approach and novelty up');
+  if(s.mood<.42)mods.push('Low mood: approach and novelty down');
+  if(talk)mods.push('In a conversation: conformity up');
+  if(!mods.length)mods.push('Calm, unhurried: genes expressed near baseline');
+  return {e:expressedFrom(a.genes,s,h,talk),h,mods};}
+
+/* ---------- appraisal and arbitration ---------- */
+function appraise(ev,e,s,h){
+  const sal=ev.sal*(.55+.45*e.nov),mot=ev.motive(e,s),risk=ev.social*e.anx*.8,intr=.6*h+.2+.2*e.loss;
+  return {sal,mot,risk,intr,net:sal*mot-risk-intr*(1-.5*e.imp)};}
+function optUtil(o,ap,e,extra){let u=(o.go||o.act)?ap.net:0;u+=o.base||0;for(const k in(o.w||{}))u+=o.w[k]*e[k];return u+(o.bonus||0)+(extra||0);}
+
+/* ---------- events (the world generator's action space) ---------- */
+const inScene=sc=>agents.filter(a=>a.scene===sc&&!a.convo);
+const awake=()=>agents.filter(a=>a.scene!=='off');
+const KEEP={label:'Keep doing what I was doing',passive:true};
+const EVENTS=[
+  {id:'newcomer',kind:'Opportunity',title:'A newcomer, Leo, walks into Juniper Café',scene:'cafe',dur:70,sal:.9,social:1,
+   motive:(e,s)=>.6*e.appr+.4*s.social+.1*s.mood,
+   when:()=>tod()>=480&&tod()<1000&&inScene('cafe').length>0,affected:()=>inScene('cafe'),
+   generic:[{label:'Say hello',go:1,w:{appr:.2}},KEEP],
+   designer:()=>[{label:'Say hello to Leo',go:'leo_visit',talk:'leo',w:{appr:.2}},KEEP],
+   self:{mei:[{label:'Bring Leo a free cookie',go:'leo_visit',talk:'mei_cookie',w:{appr:.2,imp:.1},bonus:.08,adm:.93}],
+         raf:[{label:'Sketch Leo from across the room',act:'Sketching the newcomer',emo:'✏️👀',w:{nov:.35},bonus:-.05,adm:.88}],
+         pri:[{label:'Ask about the robotics sticker on his laptop',go:'leo_visit',talk:'pri',w:{nov:.25},adm:.84}]},
+   onStart(){spawnNpc(NPC_DEF.leo,'cafe',16,16,PLACES.leo_seat);},onEnd(){despawn('leo');}},
+  {id:'oatmilk',kind:'Break',title:'Juniper Café runs out of oat milk',scene:'cafe',dur:40,sal:1,social:0,
+   motive:(e,s)=>.5*e.loss+.5*e.imp,
+   when:()=>byId.mei.scene==='cafe'&&tod()<1000,affected:()=>inScene('cafe'),
+   generic:[{label:'Go get more',go:1,w:{imp:.3,loss:.2}},{label:'Make do',passive:true,base:.1}],
+   designer:a=>a.id==='mei'?[{label:'Apologize and offer almond milk',act:'Apologizing, offering almond milk',emo:'🥛🙏',base:.2,w:{anx:.2,conf:.1}},{label:'Take oat drinks off the menu today',act:'Rewriting the menu board',emo:'🖊️',base:.05,w:{conf:.3}}]
+                                :[{label:'Switch to black coffee',act:'Drinking black coffee',emo:'☕',base:.15,w:{conf:.2}},{label:'Skip coffee today',act:'Skipping coffee',emo:'🚫☕',base:.05,w:{loss:.2}}],
+   self:{mei:[{label:'Run to the corner store for more',go:'store',act:'Running to the corner store',emo:'🏃🥛',dur:18,w:{imp:.3,loss:.3},adm:.9}],
+         raf:[{label:'Paint the empty carton as a still life',act:'Painting an oat milk carton',emo:'🎨🥛',w:{nov:.4},bonus:-.1,adm:.66}],
+         pri:[{label:'Joke that her RL agent would have hoarded oat milk',act:'Joking about reward hacking',emo:'😄',w:{appr:.3},bonus:-.05,adm:.71}]}},
+  {id:'rain',kind:'Nature',title:'Rain starts over Maple Square',scene:'town',dur:45,sal:1,social:0,
+   motive:(e,s)=>.5*e.loss+.3*e.conf+.2,
+   when:()=>tod()>=480&&tod()<1100&&inScene('town').length>0,affected:()=>inScene('town'),
+   generic:[{label:'Seek shelter',go:1,w:{loss:.3,conf:.2}},KEEP],
+   designer:()=>[{label:'Take shelter in the café',go:a=>'shelter_'+a.id,act:'Sheltering from the rain',emo:'🌧️☕',w:{loss:.3,conf:.2}},{label:'Head home early',go:'home',act:'Heading home out of the rain',emo:'🌧️🏠',w:{anx:.3},bonus:-.15},{label:'Ignore the rain and keep going',act:'Ignoring the rain',emo:'🌧️',w:{imp:.25}}],
+   self:{mei:[{label:'Hand out café umbrellas to people outside',go:a=>'shelter_'+a.id,act:'Handing out umbrellas',emo:'☂️',w:{appr:.3},adm:.82}],
+         raf:[{label:'Paint the rain hitting the pond',act:'Painting the rain on the pond',emo:'🎨🌧️',w:{nov:.5},adm:.9}],
+         pri:[{label:'Film the rain for a time-lapse dataset',act:'Filming a rain time-lapse',emo:'📹🌧️',w:{nov:.35},bonus:-.05,adm:.74}]},
+   onStart(){},onEnd(){}},
+  {id:'busker',kind:'Opportunity',title:'A street musician starts playing by the pond',scene:'town',dur:50,sal:.8,social:.4,
+   motive:(e,s)=>.6*e.nov+.4*s.mood,
+   when:()=>tod()>=540&&tod()<1080&&awake().length>0,affected:()=>awake().filter(a=>!a.convo),
+   generic:[{label:'Go listen',go:1,w:{nov:.2}},KEEP],
+   designer:()=>[{label:'Go listen to the music',go:a=>'listen_'+a.id,act:'Listening to the busker',emo:'🎶',w:{nov:.2}},KEEP],
+   self:{mei:[{label:'Bring the musician a coffee',go:a=>'listen_'+a.id,act:'Bringing the busker a coffee',emo:'☕🎸',w:{appr:.3},adm:.88}],
+         raf:[{label:'Sketch the musician',go:a=>'listen_'+a.id,act:'Sketching the busker',emo:'✏️🎸',w:{nov:.3},adm:.9}],
+         pri:[{label:'Ask for a song request',go:a=>'listen_'+a.id,act:'Requesting a song',emo:'🎵',w:{appr:.25},adm:.8}]},
+   onStart(){spawnNpc(NPC_DEF.busker,'town',16,15,null);},onEnd(){despawn('busker');}},
+  {id:'signup',kind:'Social',title:'Mei pins up a sign-up sheet for Friday\'s poetry night',scene:'cafe',dur:60,sal:.7,social:.6,
+   motive:(e,s)=>.5*e.appr+.3*e.conf+.2*s.social,
+   when:()=>byId.mei.scene==='cafe'&&signupDay!==dayNo()&&tod()<1020,affected:()=>awake().filter(a=>a.id!=='mei'),
+   generic:[{label:'Sign up',act:1,w:{appr:.2,conf:.3}},{label:'Skip it',passive:true,w:{anx:.3}}],
+   designer:()=>[{label:'Sign up to read a poem',act:'Signing up to read',emo:'📝🎤',w:{appr:.3},signup:true},{label:'Sign up to watch',act:'Signing up to watch',emo:'📝',w:{conf:.3},base:.05,signup:true},{label:'Skip it',passive:true,w:{anx:.3}}],
+   self:{raf:[{label:'Offer to paint the stage backdrop',act:'Offering to paint the backdrop',emo:'🎨📝',w:{nov:.35},signup:true,adm:.9}],
+         pri:[{label:'Propose a haiku about gradient descent',act:'Drafting a gradient descent haiku',emo:'📝🤖',w:{nov:.2,appr:.2},signup:true,adm:.77}]},
+   extra:(o,a,e)=>o.signup?e.conf*.35*(ev?ev.signups:0):0,
+   onStart(){signupDay=dayNo();ev.signups=0;},onEnd(){}},
+];
+let ev=null,lastEv=null,nextEventAt=sim+15,recent=[],dmView=null,signupDay=-1;
+const POP=(()=>{const r=mulberry32(7),u=()=>r();return Array.from({length:300},()=>({g:Object.fromEntries(GENES.map(x=>[x.id,(u()+u()+u())/3])),s:{energy:.35+.6*u(),social:u(),mood:.3+.6*u()},h:u()<.3?u()*.8:0}));})();
+function margins(evd,pop){return pop.map(p=>{const e=expressedFrom(p.g,p.s,p.h,0),ap=appraise(evd,e,p.s,p.h);const us=evd.generic.map(o=>optUtil(o,ap,e));return us[0]-Math.max(...us.slice(1));});}
+function baselineMargin(evd){const g=Object.fromEntries(GENES.map(x=>[x.id,.5])),s={energy:.7,social:.5,mood:.6};return margins(evd,[{g,s,h:0}])[0];}
+
+function optionsFor(e,a){let o=e.designer(a).map(x=>({...x,src:'designer'}));if(level>=3&&e.self[a.id])o=o.concat(e.self[a.id].map(x=>({...x,src:'self'})));return o;}
+function decide(a){
+  if(!ev||a.scene==='off'||a.convo)return;
+  const {e,h}=expressed(a),ap=appraise(ev,e,a.st,h);
+  const opts=optionsFor(ev,a).map(o=>({...o,u:optUtil(o,ap,e,ev.extra?ev.extra(o,a,e):0)+gauss()*.05}));
+  const best=opts.reduce((p,q)=>q.u>p.u?q:p);
+  a.dec={kind:'event',title:ev.title,ap,opts,chosen:best.label,t:sim};
+  addMem(a,`${ev.title}: decided to ${best.label.charAt(0).toLowerCase()+best.label.slice(1)}`,best.src==='self'?6:4);
+  log(`${first(a)} ${best.src==='self'?'came up with a new option':'chose'}: ${best.label}.`,'dec');
+  if(best.signup&&ev.signups!=null)ev.signups++;
+  if(best.passive)return;
+  a.thought={text:(best.src==='self'?'💡 ':'')+best.label,until:sim+12};
+  const until=sim+Math.min(best.dur||40,Math.max(10,ev.end-sim));
+  if(best.go){const place=typeof best.go==='function'?best.go(a):best.go==='home'?a.home:best.go;
+    const talk=best.talk;a.sub={until,act:best.act||best.label,emo:best.emo||'❗',onArrive:talk?()=>talkTo(a,talk):null};setGoal(a,place);}
+  else a.sub={until:sim+Math.min(30,Math.max(8,ev.end-sim)),act:best.act||best.label,emo:best.emo||'💭'};
+}
+function startEvent(x){
+  ev={...x,start:sim,end:sim+x.dur,pending:[]};lastEv=x;recent.push(x.id);if(recent.length>3)recent.shift();
+  if(x.onStart)x.onStart.call(ev);
+  log(`${x.title}.`,'dm');
+  x.affected().forEach((a,i)=>ev.pending.push({a,at:sim+1+i*1.5+Math.random()*2}));
+}
+function endEvent(){if(!ev)return;if(ev.onEnd)ev.onEnd();log(`${ev.title.replace(/^A |^An /,'The ')}: event over.`,'dm');ev=null;nextEventAt=sim+22+Math.random()*25;}
+function dmTick(){
+  if(level<2){if(ev)endEvent();return;}
+  if(ev){ev.pending=ev.pending.filter(p=>{if(sim<p.at)return true;if(p.a.convo){p.at=sim+2;return true;}decide(p.a);return false;});if(sim>=ev.end)endEvent();return;}
+  if(sim<nextEventAt)return;
+  const cands=EVENTS.filter(x=>x.when()).map(x=>{const m=margins(x,POP);const p=m.filter(v=>v>0).length/m.length;const aff=x.affected().length;const rec=recent.includes(x.id)?.6:0;return{x,p,H:ent(p),aff,score:ent(p)+.25*aff/3-rec};});
+  if(!cands.length){nextEventAt=sim+10;return;}
+  cands.sort((a,b)=>b.score-a.score);dmView={cands,at:sim};startEvent(cands[0].x);
+}
+
+/* ---------- npcs ---------- */
+function spawnNpc(def,scene,x,y,goal){if(npcs.find(n=>n.id===def.id))return;
+  const n={...def,memories:[],x,y,tx:x,ty:y,dir:'down',scene,path:[],settled:true,walkT:0,convo:null,thought:null,npc:true,goalFace:goal?goal.face:'down'};
+  if(goal){n.path=bfs(scene,x,y,goal.x,goal.y)||[];n.settled=!n.path.length;}
+  npcs.push(n);makeTag(n);}
+function despawn(id){const i=npcs.findIndex(n=>n.id===id);if(i<0)return;const n=npcs[i];if(n.convo){n.leaving=true;return;}npcs.splice(i,1);if(tags[id]){tags[id].t.remove();delete tags[id];}}
+function talkTo(a,key){const leo=npcs.find(n=>n.id==='leo');
+  if(!leo||leo.convo||!leo.settled){log(`${first(a)} saw Leo was busy and went back.`,'dec');if(a.sub)a.sub.until=sim;return;}
+  const lines=LEO_LINES[key]||LEO_LINES[a.id];startCustomConvo(a,leo,lines.map(([w,t])=>({who:w==='leo'?leo:byId[w],text:t})),'settling into the neighborhood',null);}
+
+/* ---------- movement ---------- */
 function placeAt(a,key){const p=PLACES[key];a.goalKey=key;a.settled=true;a.hop=null;a.path=[];
   if(p.off){a.scene='off';a.offAt=key;}else{a.scene=p.scene;a.x=a.tx=p.x;a.y=a.ty=p.y;a.dir=p.face||'down';}}
-agents.forEach(a=>{a.blockIdx=blockIndex(a);placeAt(a,a.plan[a.blockIdx].place);});
+function resolveBlock(a,b,quiet){
+  const base={place:b.place,act:b.act,emo:b.emo,scr:b.scr};
+  if(!b.alt||level<1)return base;
+  const {e}=expressed(a);
+  const opts=[{...base,label:b.act,w:b.w||{},src:'designer'},...b.alt.map(x=>({scr:b.scr,...x,label:x.act,src:'designer'}))].map(o=>{let u=0;for(const k in o.w)u+=o.w[k]*e[k];return{...o,u:u+gauss()*.05};});
+  const best=opts.reduce((p,q)=>q.u>p.u?q:p);
+  a.dec={kind:'choice',title:`Choice point at ${fmt(b.s)}`,opts,chosen:best.label,t:sim};
+  if(!quiet)log(best.label===b.act?`${first(a)} kept the usual plan: ${b.act}.`:`${first(a)} chose "${best.act}" over the usual plan.`,'dec');
+  return {place:best.place,act:best.act,emo:best.emo,scr:best.scr||b.scr};
+}
+agents.forEach(a=>{a.blockIdx=blockIndex(a);a.cur=resolveBlock(a,a.plan[a.blockIdx],true);placeAt(a,a.cur.place);});
 
 function setGoal(a,key){a.goalKey=key;a.settled=false;planHop(a);}
 function planHop(a){
   const pl=PLACES[a.goalKey];
-  if(a.scene==='off'){if(a.offAt===a.goalKey){a.settled=true;return;}const e=PLACES[a.offAt].entry;a.scene=e.scene;a.x=a.tx=e.x;a.y=a.ty=e.y;log(`${a.name.split(' ')[0]} left ${PLACES[a.offAt].label}.`);}
+  if(a.scene==='off'){if(a.offAt===a.goalKey){a.settled=true;return;}const e=PLACES[a.offAt].entry;a.scene=e.scene;a.x=a.tx=e.x;a.y=a.ty=e.y;log(`${first(a)} left ${PLACES[a.offAt].label}.`);}
   const ts=pl.off?pl.entry.scene:pl.scene,dst=pl.off?pl.entry:pl;
   let hop;if(a.scene===ts)hop={x:dst.x,y:dst.y};else{const p=PORTALS.find(p=>p.scene===a.scene&&p.to.scene===ts);hop={x:p.x,y:p.y,portal:p};}
   a.hop=hop;a.path=bfs(a.scene,a.tx,a.ty,hop.x,hop.y)||[];
@@ -425,55 +737,75 @@ function planHop(a){
 function arrive(a){
   const h=a.hop;a.hop=null;
   if(h.portal){a.scene=h.portal.to.scene;a.x=a.tx=h.portal.to.x;a.y=a.ty=h.portal.to.y;
-    log(`${a.name.split(' ')[0]} ${a.scene==='cafe'?'walked into Juniper Café':'stepped out onto Maple Square'}.`);planHop(a);return;}
+    log(`${first(a)} ${a.scene==='cafe'?'walked into Juniper Café':'stepped out onto Maple Square'}.`);planHop(a);return;}
   const pl=PLACES[a.goalKey];
-  if(pl.off){a.scene='off';a.offAt=a.goalKey;log(`${a.name.split(' ')[0]} went to ${pl.label}.`);}
+  if(pl.off){a.scene='off';a.offAt=a.goalKey;log(`${first(a)} went to ${pl.label}.`);}
   else a.dir=pl.face||a.dir;
   a.settled=true;
+  const f=a.sub&&a.sub.onArrive;if(f){a.sub.onArrive=null;f();}
+}
+function stepPath(a,dt){
+  if(!a.path.length)return true;
+  const n=a.path[0],sp=3.2*Math.pow(speed,.7)*dt,dx=n.x-a.x,dy=n.y-a.y,d=Math.hypot(dx,dy);
+  if(Math.abs(dx)>Math.abs(dy))a.dir=dx>0?'right':'left';else if(dy)a.dir=dy>0?'down':'up';
+  a.walkT+=dt;
+  if(d<=sp){a.x=a.tx=n.x;a.y=a.ty=n.y;a.path.shift();return !a.path.length;}
+  a.x+=dx/d*sp;a.y+=dy/d*sp;return false;
 }
 function updateAgent(a,dt){
   if(a.convo)return;
   const bi=blockIndex(a);
-  if(bi!==a.blockIdx){a.blockIdx=bi;a.sub=null;const b=a.plan[bi];addMem(a,`Started: ${b.act.toLowerCase()}`,2);setGoal(a,b.place);}
-  if(a.sub&&a.settled&&sim>=a.sub.until){a.sub=null;setGoal(a,a.plan[a.blockIdx].place);}
+  if(bi!==a.blockIdx){a.blockIdx=bi;a.sub=null;const b=a.plan[bi];a.cur=resolveBlock(a,b,false);addMem(a,`Started: ${a.cur.act.toLowerCase()}`,2);setGoal(a,a.cur.place);}
+  if(a.sub&&a.settled&&sim>=a.sub.until){a.sub=null;setGoal(a,a.cur.place);}
   if(a.settled||!a.hop)return;
-  if(!a.path.length){arrive(a);return;}
-  const n=a.path[0],sp=3.2*Math.pow(speed,.7)*dt,dx=n.x-a.x,dy=n.y-a.y,d=Math.hypot(dx,dy);
-  if(Math.abs(dx)>Math.abs(dy))a.dir=dx>0?'right':'left';else if(dy)a.dir=dy>0?'down':'up';
-  a.walkT+=dt;
-  if(d<=sp){a.x=a.tx=n.x;a.y=a.ty=n.y;a.path.shift();if(!a.path.length)arrive(a);}else{a.x+=dx/d*sp;a.y+=dy/d*sp;}
+  if(stepPath(a,dt))arrive(a);
 }
+function updateNpc(n,dt){if(n.convo||n.settled)return;if(stepPath(n,dt)){n.settled=true;n.dir=n.goalFace;}}
+
+/* ---------- minute tick ---------- */
 function onMinute(){
-  for(const a of agents){const b=a.plan[a.blockIdx];
-    if(b.wander&&a.settled&&!a.sub&&!a.convo&&a.goalKey===b.place&&Math.random()<.05){const w=b.wander[Math.random()*b.wander.length|0];a.sub={until:sim+6+Math.random()*10,act:PLACES[w].act};setGoal(a,w);}}
-  if(convo)return;
+  for(const a of agents){const s=a.st;
+    const resting=a.scene==='off'&&['sleep','home','campus'].includes(a.cur.scr);
+    s.energy=resting?Math.min(1,s.energy+.004):Math.max(.05,s.energy-.0011);
+    s.social=a.convo?Math.max(0,s.social-.02):Math.min(1,s.social+.0025);
+    s.mood=clamp(s.mood+(.58-s.mood)*.01+(Math.random()-.5)*.02+(a.convo?.004:0)-(ev&&ev.id==='rain'&&a.scene==='town'?.006:0));
+    const b=a.plan[a.blockIdx];
+    if(b.wander&&a.settled&&!a.sub&&!a.convo&&a.goalKey===a.cur.place&&a.cur.place===b.place&&Math.random()<.05){const w=b.wander[Math.random()*b.wander.length|0];a.sub={until:sim+6+Math.random()*10,act:PLACES[w].act,emo:'🫖'};setGoal(a,w);}
+  }
+  dmTick();
   for(let i=0;i<agents.length;i++)for(let j=i+1;j<agents.length;j++){
-    const a=agents[i],b=agents[j];if(a.scene==='off'||a.scene!==b.scene||!a.settled||!b.settled)continue;
+    const a=agents[i],b=agents[j];if(a.convo||b.convo||a.scene==='off'||a.scene!==b.scene||!a.settled||!b.settled)continue;
     const key=[a.id,b.id].sort().join('|');if((cooldown[key]||-1e9)>sim)continue;
     if(Math.hypot(a.x-b.x,a.y-b.y)>(a.scene==='cafe'?8:5))continue;
     if(Math.random()<.3){startConvo(a,b,key);return;}
   }
 }
+
+/* ---------- conversations ---------- */
 function face(a,b){const dx=b.x-a.x,dy=b.y-a.y;a.dir=Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up');}
+function isSitting(a){return a.settled&&SEAT.has(SCENES[a.scene].g[a.ty][a.tx]);}
 function startConvo(a,b,key){
   const list=SCRIPTS[key],n=convoCount[key]=(convoCount[key]||0);convoCount[key]++;
   const sc=list[n%list.length];let lines=sc.lines.map(([w,t])=>({who:byId[w],text:t}));
-  for(const x of[a,b])if(x.whisper){const o=x===a?b:a;lines.splice(1,0,{who:x,text:`By the way, ${x.whisper}`},{who:o,text:REPLIES[Math.random()*REPLIES.length|0]});addMem(o,`${x.name.split(' ')[0]} mentioned: "${x.whisper}"`,6);x.whisper=null;}
-  convo={a,b,lines,i:0,t:0,topic:sc.topic,key};a.convo=b.convo=convo;
-  const sitA=SEAT.has(SCENES[a.scene].g[a.ty][a.tx]),sitB=SEAT.has(SCENES[b.scene].g[b.ty][b.tx]);
-  if(!sitA)face(a,b);if(!sitB)face(b,a);
-  log(`${a.name.split(' ')[0]} and ${b.name.split(' ')[0]} started talking about ${sc.topic}.`,'ev');
-  sayLine();
+  for(const x of[a,b])if(x.whisper){const o=x===a?b:a;lines.splice(1,0,{who:x,text:`By the way, ${x.whisper}`},{who:o,text:REPLIES[Math.random()*REPLIES.length|0]});addMem(o,`${first(x)} mentioned: "${x.whisper}"`,6);x.whisper=null;}
+  startCustomConvo(a,b,lines,sc.topic,key);
 }
-function sayLine(){const l=convo.lines[convo.i];log(`${l.who.name.split(' ')[0]}: ${l.text}`,'say');}
-function updateConvo(dt){
-  if(!convo)return;convo.t+=dt;
-  if(convo.t>=Math.max(1.8,3.6/Math.sqrt(speed))){convo.t=0;convo.i++;
-    if(convo.i>=convo.lines.length){const{a,b,topic,key}=convo;
-      addMem(a,`Talked with ${b.name.split(' ')[0]} about ${topic}`,5);addMem(b,`Talked with ${a.name.split(' ')[0]} about ${topic}`,5);
-      cooldown[key]=sim+100;a.convo=b.convo=null;convo=null;if(a.sub)a.sub.until=sim;const pa=PLACES[a.goalKey],pb=PLACES[b.goalKey];if(a.settled&&pa.face)a.dir=pa.face;if(b.settled&&pb.face)b.dir=pb.face;return;}
-    sayLine();}
+function startCustomConvo(a,b,lines,topic,key){
+  const c={a,b,lines,i:0,t:0,topic,key};convos.push(c);a.convo=b.convo=c;
+  if(!isSitting(a))face(a,b);if(!isSitting(b))face(b,a);
+  log(`${first(a)} and ${first(b)} started talking about ${topic}.`,'ev');sayLine(c);
 }
+function sayLine(c){const l=c.lines[c.i];log(`${first(l.who)}: ${l.text}`,'say');}
+function endConvo(c){
+  const{a,b,topic,key}=c;
+  addMem(a,`Talked with ${first(b)} about ${topic}`,5);addMem(b,`Talked with ${first(a)} about ${topic}`,5);
+  if(key)cooldown[key]=sim+100;
+  a.convo=b.convo=null;convos.splice(convos.indexOf(c),1);
+  for(const x of[a,b]){if(x.st){x.st.social=Math.max(0,x.st.social-.3);x.st.mood=clamp(x.st.mood+.05);}
+    if(x.npc){x.dir=x.goalFace;if(x.leaving)despawn(x.id);}
+    else{if(x.sub&&x.sub.onArrive===null&&PLACES[x.goalKey]&&x.goalKey==='leo_visit')x.sub.until=sim;const p=PLACES[x.goalKey];if(x.settled&&p&&p.face)x.dir=p.face;}}
+}
+function updateConvos(dt){for(const c of convos.slice()){c.t+=dt;if(c.t>=Math.max(1.8,3.6/Math.sqrt(speed))){c.t=0;c.i++;if(c.i>=c.lines.length)endConvo(c);else sayLine(c);}}}
 
 /* ---------- rendering ---------- */
 const cv=document.getElementById('world'),ctx=cv.getContext('2d');ctx.imageSmoothingEnabled=false;
@@ -481,9 +813,9 @@ function darkness(t){const h=t/60;if(h<5)return .58;if(h<7)return .58*(7-h)/2;if
 function draw(time){
   ctx.drawImage(BG[view],0,0);
   if(view==='town'){const b=Math.floor(time*2.5);for(const[x,y]of WATER){if(rng(x,y,b)<.22)R(ctx,x*T+3+(rng(x,y,b+1)*8|0),y*T+4+(rng(x,y,b+2)*8|0),3,1,'#a8d6f0');}}
-  const vis=agents.filter(a=>a.scene===view).sort((p,q)=>p.y-q.y);
+  const vis=[...agents,...npcs].filter(a=>a.scene===view).sort((p,q)=>p.y-q.y);
   for(const a of vis){
-    const sit=a.settled&&SEAT.has(SCENES[a.scene].g[a.ty][a.tx]);
+    const sit=isSitting(a);
     const moving=!a.settled&&!a.convo;const fr=moving?['A','B','A','C'][Math.floor(a.walkT*8)%4]:'A';
     const X=Math.round(a.x*T),Y=Math.round(a.y*T)-3+(sit?3:0)-(fr!=='A'?1:0);
     if(a.id===selected){ctx.fillStyle='rgba(114,178,216,.55)';for(let dx=-6;dx<=6;dx++){const h=Math.round(Math.sqrt(1-(dx/7)**2)*2.5);ctx.fillRect(X+8+dx,Y+16+(sit?-2:0)-h+1,1,h*2);}}
@@ -491,6 +823,8 @@ function draw(time){
     const sp=sprite(a,a.dir,fr);
     if(sit)ctx.drawImage(sp,0,0,16,13,X,Y,16,13);else ctx.drawImage(sp,X,Y);
   }
+  const raining=ev&&ev.id==='rain'&&view==='town';
+  if(raining){ctx.fillStyle='rgba(40,52,84,.2)';ctx.fillRect(0,0,cv.width,cv.height);const b=Math.floor(time*12);ctx.fillStyle='rgba(205,222,255,.65)';for(let i=0;i<160;i++){const x=rng(i,1,b)*cv.width|0,y=rng(i,2,b)*cv.height|0;ctx.fillRect(x,y,1,4);}}
   const d=darkness(tod())*(view==='cafe'?.3:1);
   if(d>0){ctx.fillStyle=`rgba(16,22,58,${d})`;ctx.fillRect(0,0,cv.width,cv.height);
     if(view==='town'){const g=Math.min(.95,d*1.7);for(const[x,y]of WINDOWS){ctx.fillStyle=`rgba(255,214,130,${g})`;ctx.fillRect(x*T+3,y*T+4,10,9);}
@@ -501,84 +835,160 @@ function draw(time){
 
 /* ---------- overlay ---------- */
 const overlay=document.getElementById('overlay');const tags={};
-agents.forEach(a=>{const t=el('div','tag');const b=el('div','bubble emoji');const n=el('div','name',a.name.split(' ')[0]);t.append(b,n);overlay.append(t);tags[a.id]={t,b,n};});
+function makeTag(a){const t=el('div','tag'+(a.npc?' npc':''));const b=el('div','bubble emoji');const n=el('div','name',a.npc?a.name:first(a));t.append(b,n);overlay.append(t);tags[a.id]={t,b,n};}
+agents.forEach(makeTag);
 function updateOverlay(){
   const s=cv.clientWidth/cv.width;
-  for(const a of agents){const tg=tags[a.id];if(a.scene!==view){tg.t.hidden=true;continue;}tg.t.hidden=false;
-    const sit=a.settled&&SEAT.has(SCENES[a.scene].g[a.ty][a.tx]);
+  for(const a of[...agents,...npcs]){const tg=tags[a.id];if(!tg)continue;if(a.scene!==view){tg.t.hidden=true;continue;}tg.t.hidden=false;
+    const sit=isSitting(a);
     tg.t.style.left=((a.x*T+8)*s)+'px';tg.t.style.top=((a.y*T-3+(sit?3:0))*s)+'px';
     tg.t.classList.toggle('sel',a.id===selected);
-    let txt,cls;
-    if(a.convo&&a.convo.lines[a.convo.i]&&a.convo.lines[a.convo.i].who===a){txt=a.convo.lines[a.convo.i].text;cls='bubble say';}
-    else if(a.convo){txt='💬';cls='bubble emoji';}
+    let txt,cls;const c=a.convo;
+    if(c&&c.lines[c.i]&&c.lines[c.i].who===a){txt=c.lines[c.i].text;cls='bubble say';}
+    else if(c){txt='💬';cls='bubble emoji';}
     else if(a.thought&&sim<a.thought.until){txt=a.thought.text;cls='bubble think';}
     else if(!a.settled){txt='🚶';cls='bubble emoji';}
-    else if(a.sub){txt='🫖';cls='bubble emoji';}
-    else{txt=a.plan[a.blockIdx].emo;cls='bubble emoji';}
+    else if(a.npc){txt=a.emo;cls='bubble emoji';}
+    else if(a.sub){txt=a.sub.emo||'🫖';cls='bubble emoji';}
+    else{txt=a.cur.emo;cls='bubble emoji';}
     if(tg.b.textContent!==txt)tg.b.textContent=txt;if(tg.b.className!==cls)tg.b.className=cls;
   }
 }
 
-/* ---------- panel ---------- */
+/* ---------- panels ---------- */
+const $=id=>document.getElementById(id);
 function avatar(a,c){const x=c.getContext('2d');x.imageSmoothingEnabled=false;x.clearRect(0,0,16,16);x.drawImage(sprite(a,'down','A'),0,2,16,14,0,2,16,14);}
-const resEl=document.getElementById('residents');const resRows={};
-resEl.append(Object.assign(el('h2',null,'Residents'),{style:'font:700 15px var(--display);margin:2px 4px 4px;letter-spacing:.4px'}));
+function bar(v,cls,base){const b=el('div','bar'+(cls?' '+cls:''));const i=el('i');i.style.width=Math.round(clamp(v)*100)+'%';b.append(i);if(base!=null){const m=el('span','base');m.style.left=`calc(${Math.round(clamp(base)*100)}% - 1px)`;b.append(m);}return b;}
+const resEl=$('residents');const resRows={};
+resEl.append(Object.assign(el('h2',null,'Residents'),{style:'margin:2px 4px 4px'}));
 agents.forEach(a=>{const b=el('button','res');b.type='button';const c=mk(16,16);avatar(a,c);const mid=el('div');const who=el('div','who',a.name);const doing=el('div','doing');mid.append(who,doing);const chip=el('span','chip');b.append(c,mid,chip);
   b.addEventListener('click',()=>select(a.id));resEl.append(b);resRows[a.id]={b,doing,chip};});
 function status(a){
-  if(a.convo){const o=a.convo.a===a?a.convo.b:a.convo.a;return{st:'Talking',text:`Talking with ${o.name.split(' ')[0]} about ${a.convo.topic}`};}
-  if(a.scene==='off')return{st:'Away',text:a.plan[a.blockIdx].act};
+  if(a.convo){const o=a.convo.a===a?a.convo.b:a.convo.a;return{st:'Talking',text:`Talking with ${first(o)} about ${a.convo.topic}`};}
+  if(ev&&ev.pending.some(p=>p.a===a))return{st:'Deciding',text:`Reacting to: ${ev.title}`};
+  if(a.scene==='off')return{st:'Away',text:a.cur.act};
+  if(a.sub&&!a.settled)return{st:'Walking',text:a.sub.act};
   if(!a.settled)return{st:'Walking',text:`Walking to ${PLACES[a.goalKey].label}`};
   if(a.sub)return{st:'Busy',text:a.sub.act};
-  return{st:'Busy',text:a.plan[a.blockIdx].act};
+  return{st:'Busy',text:a.cur.act};
 }
 function where(a){if(a.scene==='off')return PLACES[a.offAt].label;const sc=SCENES[a.scene].name;return a.settled&&PLACES[a.goalKey]&&!PLACES[a.goalKey].off?`${sc} · ${PLACES[a.goalKey].label}`:sc;}
-let memTab=false,lastMemLen=-1,lastSel=null;
-const $=id=>document.getElementById(id);
+let lastMemLen=-1,lastSel=null;
 function select(id){selected=id;lastMemLen=-1;renderDetail(true);if(follow)followNow();}
+function buildGenome(a){
+  const box=$('d-genome');box.replaceChildren();
+  GENES.forEach(g=>{const row=el('div','gslider');const lab=el('label');lab.htmlFor='gene-'+g.id;lab.append(document.createTextNode(g.name),el('span','ex',`${g.expr} · ${g.assay}`));
+    const inp=el('input');inp.type='range';inp.min='0';inp.max='100';inp.id='gene-'+g.id;inp.value=Math.round(a.genes[g.id]*100);
+    const v=el('span','v',a.genes[g.id].toFixed(2));
+    inp.addEventListener('input',()=>{a.genes[g.id]=inp.value/100;v.textContent=a.genes[g.id].toFixed(2);popDirty=true;});
+    row.append(lab,inp,v);box.append(row);});
+}
 function renderDetail(full){
   const a=byId[selected];
   if(full||lastSel!==selected){lastSel=selected;avatar(a,$('d-avatar'));$('d-name').textContent=a.name;$('d-sub').textContent=`${a.age} · ${a.role}`;$('d-bio').textContent=a.bio;
-    const tr=$('d-traits');tr.replaceChildren(...a.traits.map(t=>el('span',null,t)));
-    $('whisper-input').placeholder=`Tell ${a.name.split(' ')[0]} something…`;}
+    $('whisper-input').placeholder=`Tell ${first(a)} something…`;buildGenome(a);popDirty=true;}
   const s=status(a);$('d-now').textContent=s.text;$('d-where').textContent=where(a);
-  const pl=$('d-plan');pl.replaceChildren(...a.plan.map((b,i)=>{const li=el('li',i===a.blockIdx?'cur':i<a.blockIdx?'done':'');li.append(el('time',null,fmt(b.s)),el('span',null,`${b.emo} ${b.act}`));return li;}));
-  if(a.memories.length!==lastMemLen){lastMemLen=a.memories.length;const m=$('d-mem');m.replaceChildren(...a.memories.slice().reverse().map(x=>{const li=el('li',x.imp>=6?'hi':'');li.append(el('time',null,fmt(x.t)),el('span',null,x.text),el('span','imp',`★${x.imp}`));return li;}));}
+  const scr=a.settled&&!a.sub?SCR[a.cur.scr]:(a.sub?{name:'Detour: '+a.sub.act,stages:[a.settled?'In progress':'Getting there']}:{name:'Getting there',stages:['Walking']});
+  $('d-script').textContent=scr.name;
+  const bi=a.plan[a.blockIdx],k=Math.floor(Math.max(0,tod()-bi.s)/7)%scr.stages.length;
+  $('d-stages').replaceChildren(...scr.stages.map((t,i)=>el('span',i===k?'on':'',t)));
+  const st=a.st,hz=hurryOf(a);
+  $('d-state').replaceChildren(...[['Energy',st.energy],['Social need',st.social],['Mood',st.mood],['Time pressure',hz]].map(([n,v])=>{const r=el('div','grow');r.append(el('span',null,n),bar(v,'acc'),el('span','v',v.toFixed(2)));return r;}));
+  renderDecision(a);
+  $('d-plan').replaceChildren(...a.plan.map((b,i)=>{const li=el('li',i===a.blockIdx?'cur':i<a.blockIdx?'done':'');const sp=el('span',null,`${b.emo} ${b.act}`);
+    if(b.alt){const alt=el('span','alt',`Choice point: or ${b.alt.map(x=>x.act.toLowerCase()).join(', ')}`);sp.append(alt);}
+    if(i===a.blockIdx&&a.cur.act!==b.act){sp.append(el('span','alt',`Chose instead: ${a.cur.act}`));}
+    li.append(el('time',null,fmt(b.s)),sp);return li;}));
+  if(a.memories.length!==lastMemLen){lastMemLen=a.memories.length;$('d-mem').replaceChildren(...a.memories.slice().reverse().map(x=>{const li=el('li',x.imp>=6?'hi':'');li.append(el('time',null,fmt(x.t)),el('span',null,x.text),el('span','imp',`★${x.imp}`));return li;}));}
+}
+function renderDecision(a){
+  const box=$('d-dec');const d=a.dec;
+  if(!d){box.replaceChildren(el('p','note',level===0?'At L0 residents follow their loop and make no choices.':'No decisions yet. Choice points and world events will show up here.'));return;}
+  const kids=[el('div',null,`${fmt(d.t)} · ${d.title}`)];
+  if(d.ap){[['Salience',d.ap.sal],['Motivation',d.ap.mot],['Social risk',d.ap.risk],['Interruption cost',d.ap.intr]].forEach(([n,v],i)=>{const r=el('div','grow');r.append(el('span',null,n),bar(v,i<2?'acc':'neg'),el('span','v',v.toFixed(2)));kids.push(r);});
+    const r=el('div','grow');r.append(el('b',null,'Net pull'),bar((d.ap.net+1)/2,d.ap.net>=0?'acc':'neg'),el('span','v',d.ap.net.toFixed(2)));kids.push(r);}
+  const ul=el('ul','opts');
+  d.opts.slice().sort((p,q)=>q.u-p.u).forEach(o=>{const li=el('li',o.label===d.chosen?'win':'');li.append(el('span',null,(o.label===d.chosen?'✓ ':'')+o.label));
+    li.append(el('span','src'+(o.src==='self'?' self':''),o.src==='self'?`self-generated · admit ${o.adm.toFixed(2)}`:'designer'));li.append(el('span','u',o.u.toFixed(2)));ul.append(li);});
+  kids.push(ul);box.replaceChildren(...kids);
+}
+function renderEngine(){
+  const now=$('dm-now');
+  if(level<2)now.replaceChildren(el('span','note','Events are off at L0 and L1. Switch to L2 or L3 to let the world generator act.'));
+  else if(ev)now.replaceChildren(el('b',null,ev.title),el('span','note',`${ev.kind} · ends in ${Math.max(0,Math.round(ev.end-sim))} min · ${ev.pending.length?`${ev.pending.length} resident(s) still deciding`:'residents have decided'}`));
+  else now.replaceChildren(el('b',null,'Waiting for the next situation'),el('span','note',`Next pick in about ${Math.max(0,Math.round(nextEventAt-sim))} min`));
+  const ul=$('dm-cands');
+  if(dmView&&level>=2){const mx=Math.max(...dmView.cands.map(c=>c.score),.01);ul.replaceChildren(el('li','note',`Candidates scored at ${fmt(dmView.at)}`),...dmView.cands.map((c,i)=>{const li=el('li',i===0?'pick':'');li.append(el('span',null,(i===0?'✓ ':'')+c.x.title),el('span','meta',`p=${c.p.toFixed(2)} H=${c.H.toFixed(2)}`),bar(Math.max(0,c.score)/mx));return li;}));}
+  else ul.replaceChildren();
+  $('dm-next').disabled=level<2;
+  const a=byId[selected],{e,mods}=expressed(a);
+  $('gc-who').textContent=`${a.name}, at ${fmt(tod())}`;
+  $('gc-genes').replaceChildren(...GENES.map(g=>{const r=el('div','grow');r.append(el('span',null,g.name),bar(e[g.id],'',a.genes[g.id]),el('span','v',e[g.id].toFixed(2)));return r;}));
+  $('gc-mods').replaceChildren(...mods.map(m=>el('li',null,m)));
+}
+let popDirty=true,popT=0;
+function renderPop(){
+  const evd=ev?EVENTS.find(x=>x.id===ev.id):(lastEv||EVENTS[0]);
+  $('pop-title').textContent=`${ev?'Now':lastEv?'Last event':'Preview'}: ${evd.title}. Action tested: "${evd.generic[0].label}".`;
+  const m=margins(evd,POP),b=baselineMargin(evd);
+  const c=$('pop'),dpr=window.devicePixelRatio||1,W2=Math.max(200,Math.round(c.clientWidth*dpr)),H2=Math.round(130*dpr);
+  if(c.width!==W2)c.width=W2;if(c.height!==H2)c.height=H2;
+  const x=c.getContext('2d'),cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim();
+  x.clearRect(0,0,W2,H2);
+  const bins=30,lo=-1,hi=1,cnt=Array(bins).fill(0);m.forEach(v=>{const i=Math.max(0,Math.min(bins-1,Math.floor((v-lo)/(hi-lo)*bins)));cnt[i]++;});
+  const pad=14*dpr,bw=(W2-2*pad)/bins,top=16*dpr,bot=H2-22*dpr,mx=Math.max(...cnt,1);
+  x.fillStyle=col('--accent');cnt.forEach((n,i)=>{const h=(bot-top)*n/mx;x.fillRect(pad+i*bw+1,bot-h,bw-2,h);});
+  const px=v=>pad+(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*(W2-2*pad);
+  x.fillStyle=col('--rl');x.fillRect(px(b)-1.5*dpr,top,3*dpr,bot-top);
+  x.strokeStyle=col('--ink');x.setLineDash([4*dpr,3*dpr]);x.beginPath();x.moveTo(px(0),top-6*dpr);x.lineTo(px(0),bot);x.stroke();x.setLineDash([]);
+  x.fillStyle=col('--muted');x.font=`${11*dpr}px IBM Plex Mono, monospace`;x.textAlign='left';x.fillText('stays put',pad,H2-6*dpr);x.textAlign='right';x.fillText('acts',W2-pad,H2-6*dpr);x.textAlign='center';x.fillText('0',px(0),H2-6*dpr);
+  x.fillStyle=col('--rl');x.textAlign=px(b)>W2/2?'right':'left';x.fillText('one persona',px(b)+(px(b)>W2/2?-5:5)*dpr,top+8*dpr);
+  const p=m.filter(v=>v>0).length/m.length,mean=m.reduce((s,v)=>s+v,0)/m.length,sd=Math.sqrt(m.reduce((s,v)=>s+(v-mean)**2,0)/m.length);
+  const st=$('pop-stats');st.replaceChildren(el('span','k','Genome population'),el('span',null,`${Math.round(p*100)}% act · spread σ = ${sd.toFixed(2)}`),el('span','k','One persona prompt'),el('span',null,`${b>0?100:0}% act · spread σ = 0.00`),el('span','k','Human reference'),el('span',null,'pending calibration'));
 }
 function renderPanel(){
-  const t=tod();$('clock').textContent=`Day ${Math.floor(sim/1440)+1} · ${fmt(t)}`;
+  $('clock').textContent=`Day ${dayNo()} · ${fmt(tod())}`;
   for(const a of agents){const s=status(a),r=resRows[a.id];r.doing.textContent=s.text;r.chip.textContent=s.st;r.chip.className='chip '+s.st;r.b.setAttribute('aria-pressed',a.id===selected);}
   $('count-town').textContent=agents.filter(a=>a.scene==='town').length+'/3';$('count-cafe').textContent=agents.filter(a=>a.scene==='cafe').length+'/3';
-  renderDetail(false);
-  if(feedDirty){feedDirty=false;const f=$('feed');f.replaceChildren(...feed.slice().reverse().map(e=>{const li=el('li',e.cls||'');li.append(el('time',null,fmt(e.t)));const sp=el('span');
+  renderDetail(false);renderEngine();
+  const bn=$('evbanner');if(ev&&ev.scene===view){bn.hidden=false;$('evbanner-text').textContent=`${ev.kind}: ${ev.title}`;}else if(ev){bn.hidden=false;$('evbanner-text').textContent=`${ev.kind} at ${SCENES[ev.scene].name}: ${ev.title}`;}else bn.hidden=true;
+  if(feedDirty){feedDirty=false;$('feed').replaceChildren(...feed.slice().reverse().map(e=>{const li=el('li',e.cls||'');li.append(el('time',null,fmt(e.t)));const sp=el('span');
     if(e.cls==='say'){const i=e.text.indexOf(':');sp.append(el('b',null,e.text.slice(0,i+1)),document.createTextNode(e.text.slice(i+1)));}else sp.textContent=e.text;li.append(sp);return li;}));}
 }
 
 /* ---------- controls ---------- */
+const LEVEL_DESC=['Loop: every resident repeats a fixed daily schedule, A → B → C → A. No choices, no surprises.',
+  'Choice: at choice points residents pick among designer-given options, pulled by their genome and state.',
+  'Encounters: the world generator also injects breaks and opportunities, and residents arbitrate against their current script.',
+  'Open: residents also come up with their own options. Each one passes an admission check before it can be chosen.'];
+function setLevel(l){const prev=level;level=l;document.querySelectorAll('#level button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.l===l));$('level-desc').textContent=LEVEL_DESC[l];if(l<2&&ev)endEvent();if(l>=2&&!ev&&prev<2)nextEventAt=sim+5;}
+document.querySelectorAll('#level button').forEach(b=>b.addEventListener('click',()=>setLevel(+b.dataset.l)));
 function setView(v){view=v;document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.scene===v));}
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{setView(t.dataset.scene);if(follow){follow=false;$('follow').checked=false;}}));
 $('follow').addEventListener('change',e=>{follow=e.target.checked;if(follow)followNow();});
 function followNow(){const a=byId[selected];if(a.scene!=='off'&&a.scene!==view)setView(a.scene);}
 $('pause').addEventListener('click',()=>{paused=!paused;$('pause').textContent=paused?'Resume':'Pause';});
 document.querySelectorAll('#speed button').forEach(b=>b.addEventListener('click',()=>{speed=+b.dataset.s;document.querySelectorAll('#speed button').forEach(x=>x.setAttribute('aria-pressed',x===b));}));
-$('st-plan').addEventListener('click',()=>{memTab=false;$('d-plan').hidden=false;$('d-mem').hidden=true;$('st-plan').setAttribute('aria-selected','true');$('st-mem').setAttribute('aria-selected','false');});
-$('st-mem').addEventListener('click',()=>{memTab=true;$('d-plan').hidden=true;$('d-mem').hidden=false;$('st-plan').setAttribute('aria-selected','false');$('st-mem').setAttribute('aria-selected','true');});
+$('dm-next').addEventListener('click',()=>{if(level<2)return;if(ev)endEvent();nextEventAt=sim;dmTick();popDirty=true;});
+$('st-plan').addEventListener('click',()=>{$('d-plan').hidden=false;$('d-mem').hidden=true;$('st-plan').setAttribute('aria-selected','true');$('st-mem').setAttribute('aria-selected','false');});
+$('st-mem').addEventListener('click',()=>{$('d-plan').hidden=true;$('d-mem').hidden=false;$('st-plan').setAttribute('aria-selected','false');$('st-mem').setAttribute('aria-selected','true');});
 $('whisper').addEventListener('submit',e=>{e.preventDefault();const inp=$('whisper-input');const v=inp.value.trim();if(!v)return;const a=byId[selected];
-  a.whisper=v.replace(/[.!?]+$/,'')+'.';a.thought={text:`Hmm… ${v}`,until:sim+25};addMem(a,`Heard a whisper: "${v}"`,8);log(`You whispered to ${a.name.split(' ')[0]}: "${v}"`,'ev');inp.value='';lastMemLen=-1;});
+  a.whisper=v.replace(/[.!?]+$/,'')+'.';a.thought={text:`Hmm… ${v}`,until:sim+25};addMem(a,`Heard a whisper: "${v}"`,8);log(`You whispered to ${first(a)}: "${v}"`,'ev');inp.value='';lastMemLen=-1;});
 cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect(),s=cv.width/r.width,mx=(e.clientX-r.left)*s/T,my=(e.clientY-r.top)*s/T;
   let best=null,bd=1.4;for(const a of agents){if(a.scene!==view)continue;const d=Math.hypot(a.x+.5-mx,a.y+.3-my);if(d<bd){bd=d;best=a;}}if(best)select(best.id);});
 
 /* ---------- loop ---------- */
 log('Day 1 begins. Mei is already behind the counter at Juniper Café.','ev');
-renderDetail(true);
+setLevel(3);renderDetail(true);
 let last=performance.now(),acc=0,uiT=0;
 function frame(now){
   const dt=Math.min(.1,(now-last)/1000);last=now;
-  if(!paused){const dm=dt*speed;sim+=dm;acc+=dm;while(acc>=1){acc-=1;onMinute();}agents.forEach(a=>updateAgent(a,dt));updateConvo(dt);if(follow)followNow();}
+  if(!paused){const dm=dt*speed;sim+=dm;acc+=dm;while(acc>=1){acc-=1;onMinute();}agents.forEach(a=>updateAgent(a,dt));npcs.forEach(n=>updateNpc(n,dt));updateConvos(dt);if(follow)followNow();}
   draw(now/1000);updateOverlay();
-  uiT+=dt;if(uiT>.25){uiT=0;renderPanel();}
+  uiT+=dt;popT+=dt;if(uiT>.25){uiT=0;renderPanel();}
+  if(popT>1||popDirty){popT=0;popDirty=false;renderPop();}
   requestAnimationFrame(frame);
 }
-renderPanel();requestAnimationFrame(frame);
+renderPanel();renderPop();requestAnimationFrame(frame);
 })();
 </script>

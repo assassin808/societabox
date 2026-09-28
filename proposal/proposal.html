@@ -1,0 +1,254 @@
+<title>认知基因组沙盒</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#eef0e9; --paper:#f9faf6; --ink:#1e2521; --muted:#58635b; --line:#d3d9cc; --soft:#e6eae0;
+  --accent:#2d6a8f; --ml:#3f7d4c; --ml-soft:#dfeee2; --rl:#a86b12; --rl-soft:#f5e8cf;
+  --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#131815; --paper:#1a201c; --ink:#e5eae2; --muted:#9ba79e; --line:#2e3831; --soft:#222a24;
+    --accent:#74b3d8; --ml:#7cc28a; --ml-soft:#1f3325; --rl:#e2a84c; --rl-soft:#3a2e18;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#131815; --paper:#1a201c; --ink:#e5eae2; --muted:#9ba79e; --line:#2e3831; --soft:#222a24;
+  --accent:#74b3d8; --ml:#7cc28a; --ml-soft:#1f3325; --rl:#e2a84c; --rl-soft:#3a2e18;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.7;padding-inline:16px;padding-block:24px 40px}
+.page{max-width:1120px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:clamp(18px,3.5vw,40px);display:flex;flex-direction:column;gap:22px}
+header{display:flex;flex-direction:column;gap:6px;border-bottom:2px solid var(--ink);padding-bottom:16px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+h1{font:700 clamp(28px,4.4vw,40px)/1.2 var(--serif);margin:0;text-wrap:balance}
+.lede{font-size:17px;color:var(--ink);margin:0;max-width:60ch}
+.byline{font-size:13px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
+.byline a{color:var(--accent)}
+.cols{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:860px){.cols{grid-template-columns:minmax(0,1fr)}}
+main,aside{display:flex;flex-direction:column;gap:22px}
+section{display:flex;flex-direction:column;gap:8px}
+h2{font:700 18px/1.35 var(--serif);margin:0;display:flex;align-items:baseline;gap:10px}
+h2 .n{font:500 12px var(--mono);color:var(--muted)}
+p{margin:0}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.thesis{background:var(--ink);color:var(--paper);border-radius:8px;padding:16px 18px;font:600 16.5px/1.7 var(--serif)}
+.thesis .k{font:500 11px var(--mono);letter-spacing:1px;opacity:.7;display:block;margin-bottom:4px;text-transform:uppercase}
+.tag{display:inline-block;font:600 11px/1 var(--mono);padding:4px 6px;border-radius:4px;letter-spacing:.5px;vertical-align:middle}
+.tag.ml{background:var(--ml-soft);color:var(--ml);border:1px solid var(--ml)}
+.tag.rl{background:var(--rl-soft);color:var(--rl);border:1px solid var(--rl)}
+.fig{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:10px;overflow-x:auto}
+.fig svg{display:block;width:100%;min-width:640px;height:auto}
+.fig svg text{fill:var(--ink);font-family:var(--sans)}
+.fig svg .sub{fill:var(--muted);font-size:11px}
+.fig svg .box{fill:var(--paper);stroke:var(--line);stroke-width:1.5}
+.fig svg .box.rl{fill:var(--rl-soft);stroke:var(--rl)}
+.fig svg .box.ml{fill:var(--ml-soft);stroke:var(--ml)}
+.fig svg .ar{stroke:var(--muted);stroke-width:1.6;fill:none}
+.fig svg .ar.rl{stroke:var(--rl)}
+.fig svg .ar.ml{stroke:var(--ml)}
+.fig svg .lbl{fill:var(--muted);font-size:11.5px}
+.caption{font-size:12.5px;color:var(--muted)}
+.terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px}
+@media (max-width:560px){.terms{grid-template-columns:minmax(0,1fr)}}
+.terms div{font-size:13.5px}
+.terms b{font-family:var(--serif)}
+.ladder{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+@media (max-width:560px){.ladder{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ladder div{border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:13px;background:var(--paper)}
+.ladder b{font:600 12px var(--mono);display:block;color:var(--accent)}
+.mods{width:100%;border-collapse:collapse;font-size:13.5px}
+.mods th{text-align:left;font:500 11.5px var(--mono);color:var(--muted);letter-spacing:.6px;border-bottom:1px solid var(--ink);padding:6px 8px}
+.mods td{vertical-align:top;padding:9px 8px;border-bottom:1px solid var(--line)}
+.mods td:first-child{white-space:nowrap;font-family:var(--serif);font-weight:700}
+.tbl{overflow-x:auto}
+.side{background:var(--soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.side h3{font:700 15px var(--serif);margin:0}
+.map{display:flex;flex-direction:column;gap:8px}
+.map div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;font-size:13.5px}
+.tl{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.tl li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;font-size:13.5px}
+.tl time{font:500 12px var(--mono);color:var(--muted);padding-top:2px}
+.h{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;font-size:13.5px}
+.h b{font:600 12px var(--mono);color:var(--accent);padding-top:2px}
+.demo-link{display:flex;flex-direction:column;gap:4px;border:1px solid var(--accent);border-radius:8px;padding:12px 14px}
+.demo-link a{color:var(--accent);font-weight:700}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+</style>
+
+<div class="page">
+  <header>
+    <span class="eyebrow">研究提案 · 草案 v0.1 · 2026-09-28 · UBC 机器学习课程 × 强化学习课程 联合项目</span>
+    <h1>认知基因组沙盒</h1>
+    <p class="lede">一个会生长的社会沙盒：用认知基因组模拟真实的人，用强化学习学出世界本身，让模拟人群像真人，也让在里面训练的 agent 学会真实的社会能力。</p>
+    <div class="byline"><span>Haoyang Shang（UBC）· Xuan Liu（UC San Diego）</span><span>交互式 demo：<a href="https://claude.ai/artifact/3D84mk61m1s81WzinTaWe4">SocietaBox Town</a></span></div>
+  </header>
+
+  <div class="cols">
+    <main>
+      <div class="thesis"><span class="k">一句话主张</span>模拟人群最难的不是平均值，而是人与人的差异，以及人如何随情境改变。我们把人拆成可测、可调的认知基因，把世界做成可以生长的脚本图，再用强化学习同时学会两件事：这个人此刻会怎么做，以及世界下一步该出什么题。</div>
+
+      <section>
+        <h2><span class="n">1</span>问题</h2>
+        <ul>
+          <li><b>合成人群平均对、差异错。</b>它们能复现平均答案，却答得过于一致、压缩量表、扭曲特质间关系，对条件变化的反应也失真（Artificial Societies Benchmark, 2026）。</li>
+          <li><b>现有模拟停在固定脚本。</b>NPC 在 A→B→C 里循环，最多在设计好的选项里挑一个，个体差异没有机会出现。</li>
+          <li><b>社会能力没有规则，也没有判定器。</b>它无法像围棋那样靠自博弈变强。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2><span class="n">2</span>框架</h2>
+        <div class="fig" role="img" aria-label="框架图：基因组与状态进入评估与仲裁，选出脚本，产生行为片段；世界生成器注入线索和新情境；基因调度策略设定基因表达强度；保真度检验用人类数据给出奖励和外层目标。">
+          <svg viewBox="0 0 760 292" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker>
+              <marker id="mr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--rl)"/></marker>
+              <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ml)"/></marker>
+            </defs>
+            <rect class="box rl" x="300" y="14" width="230" height="46" rx="6"/>
+            <text x="415" y="34" text-anchor="middle" font-size="14" font-weight="700">世界生成器（地下城主）</text>
+            <text x="415" y="51" text-anchor="middle" class="sub">RL · 生成 脚本 × 扰动 × NPC 基因组</text>
+
+            <rect class="box" x="16" y="92" width="160" height="44" rx="6"/>
+            <text x="96" y="112" text-anchor="middle" font-size="14" font-weight="700">认知基因组</text>
+            <text x="96" y="128" text-anchor="middle" class="sub">稳定的人</text>
+            <rect class="box" x="16" y="150" width="160" height="44" rx="6"/>
+            <text x="96" y="170" text-anchor="middle" font-size="14" font-weight="700">状态</text>
+            <text x="96" y="186" text-anchor="middle" class="sub">此刻的人：精力、情绪、需求</text>
+
+            <rect class="box" x="228" y="118" width="160" height="50" rx="6"/>
+            <text x="308" y="139" text-anchor="middle" font-size="14" font-weight="700">评估 → 仲裁</text>
+            <text x="308" y="156" text-anchor="middle" class="sub">新目标 vs 当前脚本</text>
+
+            <rect class="box" x="434" y="118" width="170" height="50" rx="6"/>
+            <text x="519" y="139" text-anchor="middle" font-size="14" font-weight="700">脚本（option）</text>
+            <text x="519" y="156" text-anchor="middle" class="sub">继续 · 嵌套 · 切换 · 放弃</text>
+
+            <rect class="box" x="640" y="118" width="104" height="50" rx="6"/>
+            <text x="692" y="139" text-anchor="middle" font-size="14" font-weight="700">片段</text>
+            <text x="692" y="156" text-anchor="middle" class="sub">行为轨迹</text>
+
+            <rect class="box rl" x="150" y="232" width="220" height="44" rx="6"/>
+            <text x="260" y="252" text-anchor="middle" font-size="14" font-weight="700">基因调度策略</text>
+            <text x="260" y="268" text-anchor="middle" class="sub">RL · 每步输出基因强度 α_t</text>
+
+            <rect class="box ml" x="440" y="232" width="250" height="44" rx="6"/>
+            <text x="565" y="252" text-anchor="middle" font-size="14" font-weight="700">保真度检验</text>
+            <text x="565" y="268" text-anchor="middle" class="sub">ML · 对照真实人类数据</text>
+
+            <path class="ar" d="M176,114 L226,136" marker-end="url(#m)"/>
+            <path class="ar" d="M176,172 L226,154" marker-end="url(#m)"/>
+            <path class="ar" d="M388,143 L432,143" marker-end="url(#m)"/>
+            <path class="ar" d="M604,143 L638,143" marker-end="url(#m)"/>
+            <path class="ar rl" d="M360,60 L322,116" marker-end="url(#mr)"/>
+            <text x="262" y="88" class="lbl">线索：机会 / 断裂</text>
+            <path class="ar rl" d="M470,60 L506,116" marker-end="url(#mr)"/>
+            <text x="496" y="88" class="lbl">新情境节点</text>
+            <path class="ar rl" d="M284,232 L300,170" marker-end="url(#mr)"/>
+            <text x="300" y="206" class="lbl">基因表达强度</text>
+            <path class="ar" d="M692,168 L660,230" marker-end="url(#m)"/>
+            <path class="ar ml" d="M440,254 L372,254" marker-end="url(#mg)"/>
+            <text x="388" y="246" class="lbl">奖励</text>
+            <path class="ar ml" d="M690,248 L748,248 L748,37 L532,37" marker-end="url(#mg)"/>
+            <text x="620" y="30" class="lbl">外层目标</text>
+          </svg>
+        </div>
+        <div class="terms">
+          <div><b>认知基因</b>：一个接口契约，包含构念、参数、表达方式（prompt 模板或 steering vector）、测定任务和组合规则。</div>
+          <div><b>状态</b>：此刻的人，包括精力、社交需求、情绪和时间压力。同一个人赶时间和闲逛时，行为不同。</div>
+          <div><b>脚本</b>：文化共享的情境，比如点餐、上课、闲聊。在 RL 里，它就是 option。</div>
+          <div><b>仲裁</b>：线索经过基因组和状态的评估，新目标与当前脚本竞争。个体差异主要出现在选择点和脚本断裂的时刻。</div>
+        </div>
+        <div class="ladder" aria-label="自由度阶梯">
+          <div><b>L0 循环</b>固定日程 A→B→C→A</div>
+          <div><b>L1 选择</b>在设计好的选项里挑</div>
+          <div><b>L2 遭遇</b>世界弹出新状态：断裂、机会</div>
+          <div><b>L3 开放</b>agent 自己生成选项，经检验器准入</div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span class="n">3</span>方法：四个模块</h2>
+        <div class="tbl"><table class="mods">
+          <thead><tr><th>模块</th><th>类型</th><th>做什么</th><th>产出</th></tr></thead>
+          <tbody>
+            <tr><td>M1 认知基因库</td><td><span class="tag ml">ML</span></td><td>从行为实验数据（Psych-101、choices13k）中提取 4–6 个基因。每个基因用两种方式表达：prompt 模板，以及激活空间的 steering vector。用测定任务校准参数，并检验它们是否可辨识、可控、特异、可组合。</td><td>基因库 v0，剂量–反应曲线</td></tr>
+            <tr><td>M2 选择点保真度</td><td><span class="tag ml">ML</span></td><td>在选择点上预测群体层面的两件事：人们会考虑哪些选项，最后选哪个。另外训练一个选项准入检验器，过滤 L3 自生成选项中不合理的部分。</td><td>群体级保真度指标，准入检验器</td></tr>
+            <tr><td>M3 基因调度策略</td><td><span class="tag rl">RL</span></td><td>冻结 LLM，每一步由一个小型策略网络输出各基因的表达强度。奖励是群体级保真度：方差、相关结构和处理效应。模拟轨迹会与人类记录分叉，奖励无法求导，所以用 RL。</td><td>调度策略，可读的调度轨迹</td></tr>
+            <tr><td>M4 世界生成器</td><td><span class="tag rl">RL</span></td><td>学出一个"地下城主"，生成 脚本 × 扰动（断裂或机会）× NPC 基因组。这是一个双层优化问题，外层目标是训练出的 agent 在真实评测（SOTOPIA 等）上的表现。群体分歧和 regret 作为便宜的代理信号。</td><td>生成器，自动课程</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section>
+        <h2><span class="n">4</span>实验与评估</h2>
+        <div class="h">
+          <b>H1</b><span>同一个小镇分别在 L0 到 L3 上运行。L0–L1 会复现"过于一致"的问题；L2–L3 加上基因组能修复它，而且不会滑向虚构。</span>
+          <b>H2</b><span>RL 调度在群体保真度上优于固定基因组，也优于纯 prompt 人设。</span>
+          <b>H3</b><span>在学出的世界里训练的 agent，在未见过的评测上优于手写场景、随机基因组和普通 UED。</span>
+        </div>
+        <ul>
+          <li><b>数据：</b>Psych-101 和 choices13k 用于基因测定；Artificial Societies Benchmark 的公开测试用于群体保真度，可以与它报告的 9 个模型直接比较；SOTOPIA 用于社会能力评测。</li>
+          <li><b>基线：</b>人口统计人设 prompt、我们 CHI 2026 的模板方法、在人类数据上直接微调。</li>
+          <li><b>风险与对策：</b>LLM 可能记住了经典实验，所以使用改写和扰动过的版本。生成器可能过拟合评测集，所以把评测集拆成指导集和报告集。</li>
+        </ul>
+      </section>
+    </main>
+
+    <aside>
+      <div class="side">
+        <h3>两门课如何分工</h3>
+        <div class="map">
+          <div><span class="tag ml">ML 课</span><span>M1 认知基因库 + M2 选择点保真度。回答"人是什么、像不像"。</span></div>
+          <div><span class="tag rl">RL 课</span><span>M3 基因调度 + M4 世界生成器。回答"此刻怎么做、世界出什么题"。M4 是延伸目标。</span></div>
+          <div><span class="tag" style="border:1px solid var(--ink)">合并</span><span>两门课共同产出一篇论文，目标是 ICML poster 水平。</span></div>
+        </div>
+      </div>
+
+      <div class="side">
+        <h3>交付物</h3>
+        <ul>
+          <li>一篇论文，含消融实验：自由度 L0–L3、基因表达方式（prompt vs steering）。</li>
+          <li>交互式论文，也就是小镇 demo。它同时用于课程展示和融资演示。</li>
+          <li>开源的基因库 v0 和评测脚本。</li>
+        </ul>
+      </div>
+
+      <div class="side">
+        <h3>时间线</h3>
+        <ol class="tl">
+          <li><time>第 1–3 周</time><span>选定基因，搭建测定任务，提取 steering vector</span></li>
+          <li><time>第 4–6 周</time><span>小镇引擎支持 L0–L3，实现选择点和准入检验器</span></li>
+          <li><time>第 7–10 周</time><span>训练 RL 调度策略和世界生成器，跑基线</span></li>
+          <li><time>第 11–13 周</time><span>完整实验，写论文，定稿 demo</span></li>
+        </ol>
+        <p class="caption">按 13 周学期估算，之后按两门课的实际截止日期调整。</p>
+      </div>
+
+      <div class="side">
+        <h3>对公司的意义</h3>
+        <p>两个市场，一套引擎。</p>
+        <ul>
+          <li><b>决策模拟</b>（市场研究、公共沟通）：卖的是群体保真度。</li>
+          <li><b>社会能力训练环境</b>（面向做 agent 的团队）：卖的是学出来的世界。</li>
+        </ul>
+        <p>基因库和不断生长的脚本图都会持续积累，这是竞品只做"合成用户"所没有的资产。</p>
+      </div>
+
+      <div class="demo-link">
+        <span class="eyebrow">交互式 demo</span>
+        <a href="https://claude.ai/artifact/3D84mk61m1s81WzinTaWe4">SocietaBox Town</a>
+        <span class="caption">可以切换自由度 L0–L3，编辑居民的基因组，并查看世界生成器、基因调度和群体保真度三个面板。面板里的数值为示意，尚未用真实数据训练。</span>
+      </div>
+    </aside>
+  </div>
+
+  <footer>草案，供两位创始人讨论。数据集和基线均为计划内容，结果尚未产生。</footer>
+</div>

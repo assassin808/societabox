@@ -4,6 +4,19 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-28: One-page proposal and demo v2
+
+- Proposal (Chinese, one page): `proposal/proposal.html`, live at https://claude.ai/artifact/K8MpVUM4jX1MEjM42aPWFd
+  - Framework: genome + state → appraisal and arbitration → scripts (options) → episodes. Freedom ladder L0–L3.
+  - Four modules: M1 gene library (ML), M2 choice-point fidelity and admission checker (ML), M3 gene controller (RL), M4 world generator (RL).
+  - Course split: ML course takes M1+M2, RL course takes M3+M4; one joint paper.
+- Demo v2: `prototypes/town-sim.html`, same link as before (https://claude.ai/artifact/3D84mk61m1s81WzinTaWe4)
+  - L0–L3 switch; editable genomes (6 genes, each with an expression type and assay); state bars; script stages; arbitration breakdown with designer vs self-generated options.
+  - World generator panel: picks events by population decision entropy. Events: a newcomer (Leo), oat milk running out, rain, a busker, the poetry sign-up.
+  - Gene controller panel: per-step expressed gene strengths.
+  - Population check: 300 sampled genomes vs a single persona.
+  - All panel numbers are illustrative. The rules are hand-set stand-ins for the trained RL and ML modules.
+
 ## 2026-09-28: Competitive landscape and fundraising prep
 
 - Founder wants to keep the town demo central and frame several paper proposals ahead of fundraising.
