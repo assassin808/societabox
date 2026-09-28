@@ -1,7 +1,5 @@
 <style>body{font-size:9.3pt;line-height:1.25}</style>
 <h1>Beyond Learnability: Discrimination-Aware Curricula<br>for Generative Environments</h1>
-<div class="auth">Haoyang Shang (UBC) &nbsp;·&nbsp; Xuan Liu (UC San Diego)</div>
-<div class="course">Research proposal: method</div>
 
 <h2>1. Problem</h2>
 <p>Environment-design methods pick training tasks by a priority score. PAIRED [1] and PLR [2] target <i>regret</i>, but in practice their regret approximations track success rate instead [3]. SFL [3] replaces regret with <i>learnability</i> $p(1-p)$, which picks tasks the agent solves only sometimes, and it works well; its authors note that it assumes deterministic, binary outcomes. LLM self-play task generators show the failure that follows when that assumption breaks. Optimizing a generator for medium difficulty invites <i>reward hacking</i>: it writes ill-posed or unsolvable tasks that look hard [4]. Current fixes are hand-designed binary quality filters. We ask for a principled, continuous priority score that rules these tasks out by construction.</p>
