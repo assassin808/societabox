@@ -54,3 +54,9 @@ p = sigma(a(s)^T theta - b(s)).
   - Novelty would have to come from: policy-dependent measurement matrices; threshold (1-bit) outcomes; order and interaction effects; adaptive design driven by IRT information.
   - Validation needs planted ground truth plus an external check against real outcomes, because recovery otherwise only reveals the simulator's own structure.
   - The action-sparsity part depends on a hand-chosen feature map and on controlled text generation, which is hard. Park it.
+
+## Literature update (founder search, 2026-09-28)
+- **Taken:** IRT for UED (PERM, Tio & Varakantham: 1PL, checkpoints as students); learnability (Tzannetos et al. 2023 first, used by SFL; NCC generalizes it to any deterministic setting as the variance of success rate); reward hacking by generators (Skill Self-Play, binary filter).
+- **Still open (as far as searched):** 2PL discrimination as the environment objective; regret and learnability as special cases; learnability under stochastic outcomes; state-level items in generative environments.
+- **Sharper positioning:** learnability methods are restricted to deterministic environments, and LLM-generated environments are stochastic. By the law of total variance, Var(y) = Var_theta(E[y|theta]) + E_theta[Var(y|theta)], i.e. learnable plus aleatoric. Learnability uses the total; the discrimination a isolates the learnable part.
+- **To read:** SAMPLR (Jiang et al. 2022). From memory, it addresses curriculum-induced covariate shift over aleatoric parameters (the policy becomes suboptimal under the true aleatoric distribution), which is a different problem from selecting levels by learnable versus noise variance. Verify.
