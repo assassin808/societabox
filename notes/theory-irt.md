@@ -45,3 +45,12 @@ p = sigma(a(s)^T theta - b(s)).
 - **Predictive validity is not realism.** A high a against real outcome labels means the state is predictive, not that it is natural.
 - **Local independence fails within a trajectory.** Use testlets or sequential IRT. Ability can also drift within an episode during training.
 - **Dyadic traits** (compatibility) need a pair-level latent variable.
+
+## Proposal under discussion: critical-moment discovery as sparse recovery (2026-09-28)
+- Idea: randomly inject subsets of N candidate events into simulated trajectories and regress outcomes (Lasso/OMP). This needs m = O(k log(N/k)) simulations instead of N ablations. Action-level version: ZORO-style sparse gradients over response features.
+- Claude's assessment:
+  - Good as a component: it answers the finder's cost question. It is not a standalone topic.
+  - Close prior art: factorial screening designs and effect sparsity (Box & Meyer 1986), group testing, Datamodels (random-subset regression for attribution), KernelSHAP/RISE-style random masking.
+  - Novelty would have to come from: policy-dependent measurement matrices; threshold (1-bit) outcomes; order and interaction effects; adaptive design driven by IRT information.
+  - Validation needs planted ground truth plus an external check against real outcomes, because recovery otherwise only reveals the simulator's own structure.
+  - The action-sparsity part depends on a hand-chosen feature map and on controlled text generation, which is hard. Park it.
