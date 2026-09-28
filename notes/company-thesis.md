@@ -63,3 +63,10 @@ The four layers are top-down. Spontaneous behaviour (for example, seeing an attr
 - **L3 Option generation:** the agent also decides what can be chosen. It proposes new options, which are admitted if feasible and plausible.
 - Formal view: an open-ended semi-MDP. Scripts are options (initiation set, policy, termination). L2 grows the state space; L3 grows the option set.
 - Other actors as state: valid from one agent's point of view (standard in multi-agent RL). Keep internal state separate. Scale with levels of detail: nearby actors run as full agents; the distant crowd is an aggregate (mean-field) process, and a crowd member is promoted to a full agent when interacted with. Caveat: aggregation drops feedback loops, which is fine for bystanders and wrong for persuasion or leadership.
+
+## Research direction v3 (2026-09-28, discussion)
+- Founder framing: agent and environment are both generative. The agent produces actions; the environment produces states ("compile while playing"), because a static sandbox cannot represent the full state space or transitions. The agent's training algorithm A_agent is held fixed. PAIRED is motivation only, not a template. Aim for novelty over incrementality. Compressed sensing is not required.
+- Claude's proposal for the core idea: the environment is a *teacher* policy inside the episode. Its objective is the agent's improvement on the real target after A_agent updates, not regret.
+  - First-order dense reward per generated step = alignment between that step's learning gradient and the gradient of the real evaluation objective.
+  - A KL term to the pretrained world prior keeps the world realistic.
+  - Critical moments then emerge as the high-alignment steps, instead of being assumed.
