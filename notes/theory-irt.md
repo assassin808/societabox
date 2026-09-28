@@ -60,3 +60,14 @@ p = sigma(a(s)^T theta - b(s)).
 - **Still open (as far as searched):** 2PL discrimination as the environment objective; regret and learnability as special cases; learnability under stochastic outcomes; state-level items in generative environments.
 - **Sharper positioning:** learnability methods are restricted to deterministic environments, and LLM-generated environments are stochastic. By the law of total variance, Var(y) = Var_theta(E[y|theta]) + E_theta[Var(y|theta)], i.e. learnable plus aleatoric. Learnability uses the total; the discrimination a isolates the learnable part.
 - **To read:** SAMPLR (Jiang et al. 2022). From memory, it addresses curriculum-induced covariate shift over aleatoric parameters (the policy becomes suboptimal under the true aleatoric distribution), which is a different problem from selecting levels by learnable versus noise variance. Verify.
+
+## Pipeline sketch: rollouts and finding critical states (2026-09-28)
+1. **Full rollouts.** Run a few full trajectories per scenario with the current agent. Every turn's prefix is saved as a restorable state (text history plus the world state).
+2. **Cheap screening of candidates.**
+   - Large |ΔV| under a judge or critic.
+   - One-step disagreement across checkpoints at the same prefix (if they agree, a ≈ 0 and the state is skipped).
+   - Event nodes the environment injected.
+3. **Branching at the candidates.** M checkpoints × K continuations from the prefix. Within-checkpoint spread gives the aleatoric noise; between-checkpoint spread gives a. Fit 2PL with anchor-bank abilities.
+4. **Train from critical states.** Episodes reset to buffered high-a·p(1-p) prefixes. The GRPO group (K samples from the same prefix) gives the current agent's p for free; only a needs the checkpoints.
+5. **Amortization.** Train a predictor â(s) from state text to screen new states without branching. Use sequential early stopping when the checkpoints agree.
+6. **Staging.** Start with scenario-level items (comparable to SFL and PERM), then move to state-level items (the novel part).
