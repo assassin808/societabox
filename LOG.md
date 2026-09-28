@@ -4,6 +4,11 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-28: Company thesis captured
+
+- Wrote down the big idea: the outreach email pitch plus the technical thesis (a verifier-driven RL sandbox that co-evolves with the agent). See `notes/company-thesis.md`.
+- Next: discuss the thesis, then write a short purpose statement and reframe the town demo around it.
+
 ## 2026-09-27: Course projects as a startup vehicle, VC outreach, Simile-style town prototype
 
 **Context**
