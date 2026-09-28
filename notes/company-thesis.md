@@ -39,3 +39,12 @@ Source: founder outreach email draft (Haoyang Shang to Allen) and founder discus
 2. **The basic unit of the "cognitive genome".** Not yet defined. Open question: should it be an abstract interface that different implementations (prompt templates, steering vectors, adapters, and so on) can plug into?
 
 Working answer (Claude): define the gene as an interface contract: construct, parameter, expression operator, assay, and composition. Then the sandbox's environment space is genome space × scenario space, which joins the two ideas. Details are in the chat of 2026-09-28.
+
+## Ontology draft: how everyday life is represented (2026-09-28)
+Four layers:
+1. **Genome** (person-level, stable): cognitive mechanism parameters.
+2. **Script** (situation-level, shared by a culture): a typed structure of roles, stages, slots, norms, expected transitions, and repair moves. Examples: ordering at a café, greeting, a class, small talk. See Schank & Abelson's scripts.
+3. **Episode** (instantiation): script × genome × context (time, state, the other people, a disruption) → a concrete behaviour trajectory.
+4. **Ability** (a competence dimension that cuts across scripts): how well someone reaches goals within and across scripts, especially when a script breaks. Negotiation, persuasion and leadership are high-stakes scripts plus the ability to reshape other people's scripts.
+
+Key claim: routine behaviour mostly follows the script, and the genome mostly shows at choice points and breaks. LLMs are "too consistent" because they execute the most common version of each script.
