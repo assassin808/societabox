@@ -55,3 +55,11 @@ The four layers are top-down. Spontaneous behaviour (for example, seeing an attr
 - Every tick runs **perceive → appraise → arbitrate**. Cues in the world are appraised through genome and state; a candidate goal competes with the current script's goal (value minus interruption cost, norm cost, and social risk); if it wins, the agent continues, nests, switches, or abandons the script.
 - Environment perturbations come in two kinds: **breaks** (outside events disrupt a script) and **opportunities** (cues that can trigger internal goals).
 - Fidelity needs calibrated base rates: how often real people act on such cues, and how that varies by person and context.
+
+## Freedom ladder ("Free Guy" framing, 2026-09-28)
+- **L0 Loop:** a fixed script cycle A → B → C → A. Background NPCs; the current demo.
+- **L1 Choice:** a closed graph with designer-given options at each node. The agent picks; the option set is fixed.
+- **L2 Encounters:** the world can pop up new states (events and people), not just actions. A world-side generator (the "dungeon master") grows the graph at runtime.
+- **L3 Option generation:** the agent also decides what can be chosen. It proposes new options, which are admitted if feasible and plausible.
+- Formal view: an open-ended semi-MDP. Scripts are options (initiation set, policy, termination). L2 grows the state space; L3 grows the option set.
+- Other actors as state: valid from one agent's point of view (standard in multi-agent RL). Keep internal state separate. Scale with levels of detail: nearby actors run as full agents; the distant crowd is an aggregate (mean-field) process, and a crowd member is promoted to a full agent when interacted with. Caveat: aggregation drops feedback loops, which is fine for bystanders and wrong for persuasion or leadership.
