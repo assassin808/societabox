@@ -1,0 +1,33 @@
+<style>body{font-size:9.3pt;line-height:1.25}</style>
+<h1>Beyond Learnability: Discrimination-Aware Curricula<br>for Generative Environments</h1>
+<div class="auth">Haoyang Shang (UBC) &nbsp;·&nbsp; Xuan Liu (UC San Diego)</div>
+<div class="course">Research proposal: method</div>
+
+<h2>1. Problem</h2>
+<p>Environment-design methods pick training tasks by a priority score. PAIRED [1] and PLR [2] target <i>regret</i>, but in practice their regret approximations track success rate instead [3]. SFL [3] replaces regret with <i>learnability</i> $p(1-p)$, which picks tasks the agent solves only sometimes, and it works well; its authors note that it assumes deterministic, binary outcomes. LLM self-play task generators show the failure that follows when that assumption breaks. Optimizing a generator for medium difficulty invites <i>reward hacking</i>: it writes ill-posed or unsolvable tasks that look hard [4]. Current fixes are hand-designed binary quality filters. We ask for a principled, continuous priority score that rules these tasks out by construction.</p>
+
+<h2>2. Setup: states are items</h2>
+<p>In a generative environment, states are produced mid-trajectory, and each state $s$ can be treated as a test item. The agent's latent ability is $\theta(w)$, and its outcome at $s$ follows a two-parameter logistic (2PL) model [5]: $p(s,\theta)=\sigma\big(a(s)(\theta-b(s))\big)$, with discrimination $a$ and difficulty $b$. A <b>critical moment</b> is defined as a state with high information about the ability of interest.</p>
+
+<h2>3. Results we will develop</h2>
+<div class="box"><b>(R1) One family.</b> One expected-gradient step on $J_s(w)=p(s,\theta(w))$ moves the ability by
+<div class="eq">$\Delta\theta\approx\eta\,a\,p(1-p)\,\|\nabla_w\theta\|^2,\qquad I(s)=\dfrac{(\partial_\theta p)^2}{p(1-p)}=a^2p(1-p),\qquad \mathrm{Reg}(s)\approx a\,p(1-p)\,(\theta^\star-\theta).$</div>
+All three are members of $\;\mathrm{Pri}_\kappa(s)=a^{\kappa}\,p(1-p)$: learnability ($\kappa{=}0$), learning progress and linearized regret ($\kappa{=}1$), and measurement information ($\kappa{=}2$). <i>Training and evaluation therefore want different curricula</i>; they agree on which items are useless and differ by one power of $a$.<br>
+<b>(R2) Learnability is fooled by noise.</b> $p(1-p)$ is maximized by a coin-flip item that ignores ability ($a{=}0$, $p{=}\tfrac12$), so the SFL score cannot separate "at the frontier" from "random". Any $\kappa\ge1$ gives such items zero weight.<br>
+<b>(R3) Bad items have signatures.</b> Ill-posed, unsolvable or ability-irrelevant items have $a\approx0$. Mis-keyed items, where the reference answer or verifier is wrong, have $a<0$: stronger agents fail more often. Both are detected without hand-written rules.<br>
+<b>(R4) When regret degenerates.</b> Regret carries no signal when the reference agent is not ahead on the dimension the item measures (multidimensional case, $a^{\top}(\theta^\star-\theta)\approx0$). It favours items with $p\approx0,\ p^\star\approx1$, where progress is near zero, and it is biased upward on noise items.</div>
+<p>In the multidimensional case, $p=\sigma(a(s)^{\top}\theta-b)$, and progress along a target direction $u$ is $p(1-p)\,a(s)^{\top}Gu$ with $G=\nabla_w\theta\,\nabla_w\theta^{\top}$. <i>A useful state is one whose discrimination points along the agent's deficiency</i>, and the off-diagonal entries of $G$ capture transfer and interference between abilities.</p>
+
+<h2>4. Method</h2>
+<p><b>Estimating $a,b$ at the state level.</b> Estimating $a$ requires examinees of different ability, which a single agent cannot supply. The checkpoints saved during training provide such a population for free. Because a generative environment can <i>rewind</i>, we branch at a state $s$ and let $M$ checkpoints respond from the same point. This is impossible in the real world, and it makes the 2PL parameters of individual states estimable. Checkpoint abilities are anchored on a fixed item bank, so that $a$ measures ability rather than training time.<br>
+<b>Generator reward.</b> $r_G(s)=\max(a(s),0)\,p(1-p)$ for training ($\kappa{=}1$), and $a^2p(1-p)$ for adaptive evaluation ($\kappa{=}2$). Items with negative $a$ are logged as suspected mis-keys. The agent's training algorithm is held fixed.</p>
+
+<h2>5. Experiments</h2>
+<table>
+<tr><th>E1: minimal falsification</th><td>A controlled environment family mixed with planted noise items ($a{=}0$) and mis-keyed items ($a{<}0$). Prediction: SFL and entropy-based priorities over-sample the noise items; $\mathrm{Pri}_{1}$ does not. We also measure how accurately R3 flags the planted items.</td></tr>
+<tr><th>E2: UED benchmark</th><td>JAX <code>minimax</code> mazes, with a stochastic-tile variant to break SFL's determinism assumption. Baselines: DR, PAIRED, PLR, ACCEL, SFL. Metric: zero-shot transfer.</td></tr>
+<tr><th>E3: LLM task generator</th><td>A self-play task generator for reasoning tasks, compared against the binary quality filter of [4] at an equal generation budget.</td></tr>
+</table>
+<p><b>Risks.</b> Checkpoints also drift in nuisance properties such as verbosity and format, so we use an anchor bank and multidimensional IRT to separate them. States within one trajectory are not locally independent, so we treat a critical event and its follow-up turns as a testlet. Neighbouring work [6,7] uses IRT difficulty or regret-trained LLM environment designers; neither estimates state-level discrimination or relates the priority scores to one another.</p>
+
+<div class="refs">[1] Dennis et al. Emergent Complexity and Zero-shot Transfer via Unsupervised Environment Design (PAIRED). NeurIPS 2020. [2] Jiang et al. Prioritized Level Replay / Robust PLR. ICML 2021, NeurIPS 2021. [3] Rutherford et al. No Regrets: Investigating and Improving Regret Approximations for Curriculum Discovery (SFL). NeurIPS 2024. [4] Skill Self-Play, 2026. [5] Lord. Applications of Item Response Theory to Practical Testing Problems. 1980. [6] Transferable Curricula through Difficulty Conditioned Generators. [7] SPADE: Self-Play in Adaptive Synthetic Executable Environments. arXiv:2608.19197, 2026.</div>

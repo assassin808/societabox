@@ -4,6 +4,21 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-28: Two simple proposals (method + application) and demo v3
+
+- `proposal/method_proposal.pdf`, "Beyond Learnability: Discrimination-Aware Curricula for Generative Environments":
+  - States are items (2PL).
+  - One family Pri_k = a^k p(1-p): SFL learnability (k=0), progress and linearized regret (k=1), information (k=2).
+  - Learnability is fooled by coin-flip items; bad items have signatures (a≈0 ill-posed, a<0 mis-keyed); regret degeneracy.
+  - a is estimated from checkpoints by rewinding and branching.
+  - Experiments E1 (planted noise and mis-keys), E2 (minimax mazes with stochastic tiles), E3 (LLM task generator vs a binary filter).
+- `proposal/app_proposal.pdf`, "Juniper Town: Surfacing the Moments That Matter in a Generative Social Sandbox":
+  - Café owner "what if" scenario; simple tech (prompted LLM residents plus an LLM world engine).
+  - Critical-moment finder ranks situations by a·p(1-p); includes a demo screenshot.
+- Demo v3 (same link): the world-generator panel is now the "Critical-moment finder" scoring a·p(1-p). New events: an oat-milk surcharge and a chance raffle. The raffle shows split 0.99 but a 0.08, so the finder picks the surcharge (loss aversion, a≈0.50). Numbers come from hand-set rules.
+- The joint proposal is moved to `proposal/archive/`.
+- Literature to verify: Skill Self-Play (2026), DEGen (2026), IDGen, IrtNet, and "Transferable Curricula through Difficulty Conditioned Generators" (already uses IRT difficulty), SPADE (arXiv 2608.19197).
+
 ## 2026-09-28: Joint one-page proposal (replaces the two separate ones)
 
 - Founder feedback:

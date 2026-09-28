@@ -170,8 +170,7 @@ form.whisper small{color:var(--muted);font-size:12px}
     <div class="row1">
       <div class="brand">
         <h1>SocietaBox</h1>
-        <p>A cognitive-genome sandbox: residents with editable genomes, a world that throws new situations at them, and the RL and ML modules that drive both.</p>
-        <a href="https://claude.ai/artifact/K8MpVUM4jX1MEjM42aPWFd">Read the proposal</a>
+        <p>A generative town for testing decisions before you make them. Residents with cognitive profiles live their day, the world throws situations at them, and the finder surfaces the moments where people split.</p>
       </div>
       <div class="controls">
         <div class="clock" id="clock">Day 1 · 8:10 AM</div>
@@ -215,25 +214,25 @@ form.whisper small{color:var(--muted);font-size:12px}
 
       <div class="engine">
         <div class="card eng">
-          <h2>World generator <span class="chip-rl">RL · M4</span></h2>
+          <h2>Critical-moment finder <span class="chip-rl">a · p(1−p)</span></h2>
           <div class="evnow" id="dm-now"></div>
           <ul class="cands" id="dm-cands"></ul>
           <button class="btn" type="button" id="dm-next">Trigger next event</button>
-          <p class="note">Picks the situation where the simulated population is most split (highest decision entropy), a cheap proxy for learning signal. In the paper this generator is trained with RL against held-out human data.</p>
+          <p class="note">For each candidate situation the town is rewound and 300 sampled residents respond. <b>Split</b> is p(1−p); <b>a</b> is how strongly one cognitive attribute explains who acts. The finder ranks by a·p(1−p), so a coin-flip situation that splits people at random scores near zero.</p>
         </div>
         <div class="card eng">
-          <h2>Gene controller <span class="chip-rl">RL · M3</span></h2>
+          <h2>Profile in context</h2>
           <div class="sub note" id="gc-who"></div>
           <div class="genes" id="gc-genes"></div>
           <ul class="mods" id="gc-mods"></ul>
-          <p class="note">The bar shows the gene strength expressed at this step; the tick marks the stable genome. Here a hand-set rule drives it; in the paper a small policy network trained with RL outputs it, and the LLM stays frozen.</p>
+          <p class="note">Bars show each attribute as expressed right now; the tick marks the resident's stable profile. State (time pressure, energy, mood, conversation) shifts expression. The rules here are hand-set.</p>
         </div>
         <div class="card eng">
-          <h2>Population check <span class="chip-ml">ML · M2</span></h2>
+          <h2>Population check <span class="chip-ml">300 residents</span></h2>
           <div class="note" id="pop-title"></div>
           <canvas id="pop" width="320" height="130" aria-label="Histogram of decision margins across 300 simulated people"></canvas>
           <div class="stats" id="pop-stats"></div>
-          <p class="note">300 sampled genomes face the same situation. One persona prompt with no genome gives everyone the same answer, the "too consistent" failure. Human reference bands will come from experience-sampling data once calibrated.</p>
+          <p class="note">300 sampled profiles face the same situation. One persona prompt with no profile gives everyone the same answer, the "too consistent" failure. Human reference bands will come from experience-sampling data once calibrated.</p>
         </div>
       </div>
 
@@ -252,9 +251,9 @@ form.whisper small{color:var(--muted);font-size:12px}
         <div class="now"><span class="sec-lbl">Right now</span><span id="d-now"></span><span class="sub" id="d-where"></span>
           <span class="sec-lbl">Script</span><span id="d-script"></span><div class="stages" id="d-stages"></div></div>
         <div class="sec">
-          <span class="sec-lbl">Cognitive genome <span class="chip-ml">ML · M1</span></span>
+          <span class="sec-lbl">Cognitive profile</span>
           <div id="d-genome" class="genes"></div>
-          <p class="note">Drag to edit. Each gene lists how it is expressed in the model (prompt template or steering vector) and the assay that will calibrate it.</p>
+          <p class="note">Drag to edit. Each attribute lists how it would be expressed in the model (prompt template or steering vector) and the task that would calibrate it.</p>
         </div>
         <div class="sec">
           <span class="sec-lbl">State</span>
@@ -653,6 +652,19 @@ const EVENTS=[
          raf:[{label:'Sketch the musician',go:a=>'listen_'+a.id,act:'Sketching the busker',emo:'✏️🎸',w:{nov:.3},adm:.9}],
          pri:[{label:'Ask for a song request',go:a=>'listen_'+a.id,act:'Requesting a song',emo:'🎵',w:{appr:.25},adm:.8}]},
    onStart(){spawnNpc(NPC_DEF.busker,'town',16,15,null);},onEnd(){despawn('busker');}},
+  {id:'surcharge',kind:'Price change',title:'Mei adds a 50¢ surcharge for oat milk',scene:'cafe',dur:50,sal:.8,social:.3,
+   motive:(e,s)=>.6*e.loss+.2*e.imp+.2*(1-e.conf),
+   when:()=>byId.mei.scene==='cafe'&&tod()<1000,affected:()=>inScene('cafe').filter(a=>a.id!=='mei'),
+   generic:[{label:'Push back on the surcharge',act:1,w:{loss:.4},base:-.1},{label:'Pay it',passive:true,w:{conf:.3}}],
+   designer:()=>[{label:'Ask Mei why prices went up',act:'Asking Mei about the surcharge',emo:'🤨',w:{loss:.3,appr:.2}},{label:'Switch to regular milk',act:'Switching to regular milk',emo:'🥛',w:{loss:.3},base:.05},{label:'Pay without comment',passive:true,w:{conf:.3}}],
+   self:{pri:[{label:'Work out the yearly cost of the surcharge out loud',act:'Calculating the yearly cost',emo:'🧮',w:{nov:.2,loss:.3},adm:.86}],
+         raf:[{label:'Offer a small painting in exchange for oat milk',act:'Bartering a painting for oat milk',emo:'🎨🥛',w:{nov:.4},bonus:-.05,adm:.72}]}},
+  {id:'raffle',kind:'Chance',title:'The café raffles off its last croissant',scene:'cafe',dur:30,sal:.6,social:0,noise:3,
+   motive:(e,s)=>.5,
+   when:()=>inScene('cafe').length>0&&tod()<1000,affected:()=>inScene('cafe'),
+   generic:[{label:'Win the croissant',act:1},{label:'Lose the raffle',passive:true}],
+   designer:()=>[{label:'Enter the raffle',act:'Waiting on the raffle draw',emo:'🎟️🥐'},{label:'Skip the raffle',passive:true}],
+   self:{raf:[{label:'Offer to sketch the winner with the croissant',act:'Sketching the raffle winner',emo:'✏️🥐',adm:.8}]}},
   {id:'signup',kind:'Social',title:'Mei pins up a sign-up sheet for Friday\'s poetry night',scene:'cafe',dur:60,sal:.7,social:.6,
    motive:(e,s)=>.5*e.appr+.3*e.conf+.2*s.social,
    when:()=>byId.mei.scene==='cafe'&&signupDay!==dayNo()&&tod()<1020,affected:()=>awake().filter(a=>a.id!=='mei'),
@@ -668,11 +680,17 @@ const POP=(()=>{const r=mulberry32(7),u=()=>r();return Array.from({length:300},(
 function margins(evd,pop){return pop.map(p=>{const e=expressedFrom(p.g,p.s,p.h,0),ap=appraise(evd,e,p.s,p.h);const us=evd.generic.map(o=>optUtil(o,ap,e));return us[0]-Math.max(...us.slice(1));});}
 function baselineMargin(evd){const g=Object.fromEntries(GENES.map(x=>[x.id,.5])),s={energy:.7,social:.5,mood:.6};return margins(evd,[{g,s,h:0}])[0];}
 
+function corr(x,y){const n=x.length;const mx=x.reduce((s,v)=>s+v,0)/n,my=y.reduce((s,v)=>s+v,0)/n;let sxy=0,sxx=0,syy=0;for(let i=0;i<n;i++){const dx=x[i]-mx,dy=y[i]-my;sxy+=dx*dy;sxx+=dx*dx;syy+=dy*dy;}return sxx&&syy?sxy/Math.sqrt(sxx*syy):0;}
+function eventStats(x){const m=margins(x,POP),r=mulberry32(x.id.length*97+13),nz=x.noise||0;
+  const z=m.map(v=>{let u=0;while(!u)u=r();const w=r();return v+nz*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*w);}),y=z.map(v=>v>0?1:0);
+  const p=y.reduce((t,v)=>t+v,0)/y.length;let a=0,best='none';
+  for(const G of GENES){const c=Math.abs(corr(POP.map(q=>q.g[G.id]),y));if(c>a){a=c;best=G.name;}}
+  return{p,a,best,split:4*p*(1-p),pri:4*a*p*(1-p),m,z};}
 function optionsFor(e,a){let o=e.designer(a).map(x=>({...x,src:'designer'}));if(level>=3&&e.self[a.id])o=o.concat(e.self[a.id].map(x=>({...x,src:'self'})));return o;}
 function decide(a){
   if(!ev||a.scene==='off'||a.convo)return;
   const {e,h}=expressed(a),ap=appraise(ev,e,a.st,h);
-  const opts=optionsFor(ev,a).map(o=>({...o,u:optUtil(o,ap,e,ev.extra?ev.extra(o,a,e):0)+gauss()*.05}));
+  const opts=optionsFor(ev,a).map(o=>({...o,u:optUtil(o,ap,e,ev.extra?ev.extra(o,a,e):0)+gauss()*(ev.noise?.6:.05)}));
   const best=opts.reduce((p,q)=>q.u>p.u?q:p);
   a.dec={kind:'event',title:ev.title,ap,opts,chosen:best.label,t:sim};
   addMem(a,`${ev.title}: decided to ${best.label.charAt(0).toLowerCase()+best.label.slice(1)}`,best.src==='self'?6:4);
@@ -696,7 +714,7 @@ function dmTick(){
   if(level<2){if(ev)endEvent();return;}
   if(ev){ev.pending=ev.pending.filter(p=>{if(sim<p.at)return true;if(p.a.convo){p.at=sim+2;return true;}decide(p.a);return false;});if(sim>=ev.end)endEvent();return;}
   if(sim<nextEventAt)return;
-  const cands=EVENTS.filter(x=>x.when()).map(x=>{const m=margins(x,POP);const p=m.filter(v=>v>0).length/m.length;const aff=x.affected().length;const rec=recent.includes(x.id)?.6:0;return{x,p,H:ent(p),aff,score:ent(p)+.25*aff/3-rec};});
+  const cands=EVENTS.filter(x=>x.when()).map(x=>{const st=eventStats(x);const aff=x.affected().length;const rec=recent.includes(x.id)?.6:0;return{x,...st,aff,score:st.pri+.15*aff/3-rec};});
   if(!cands.length){nextEventAt=sim+10;return;}
   cands.sort((a,b)=>b.score-a.score);dmView={cands,at:sim};startEvent(cands[0].x);
 }
@@ -918,7 +936,7 @@ function renderEngine(){
   else if(ev)now.replaceChildren(el('b',null,ev.title),el('span','note',`${ev.kind} · ends in ${Math.max(0,Math.round(ev.end-sim))} min · ${ev.pending.length?`${ev.pending.length} resident(s) still deciding`:'residents have decided'}`));
   else now.replaceChildren(el('b',null,'Waiting for the next situation'),el('span','note',`Next pick in about ${Math.max(0,Math.round(nextEventAt-sim))} min`));
   const ul=$('dm-cands');
-  if(dmView&&level>=2){const mx=Math.max(...dmView.cands.map(c=>c.score),.01);ul.replaceChildren(el('li','note',`Candidates scored at ${fmt(dmView.at)}`),...dmView.cands.map((c,i)=>{const li=el('li',i===0?'pick':'');li.append(el('span',null,(i===0?'✓ ':'')+c.x.title),el('span','meta',`p=${c.p.toFixed(2)} H=${c.H.toFixed(2)}`),bar(Math.max(0,c.score)/mx));return li;}));}
+  if(dmView&&level>=2){const mx=Math.max(...dmView.cands.map(c=>c.score),.01);const bySplit=dmView.cands.slice().sort((p,q)=>q.split-p.split)[0];ul.replaceChildren(el('li','note',`Candidates scored at ${fmt(dmView.at)}.`+(bySplit!==dmView.cands[0]?` Split alone would pick: ${bySplit.x.title}.`:'')),...dmView.cands.map((c,i)=>{const li=el('li',i===0?'pick':'');li.append(el('span',null,(i===0?'✓ ':'')+c.x.title),el('span','meta',`split ${c.split.toFixed(2)} · a ${c.a.toFixed(2)}`),bar(Math.max(0,c.score)/mx));return li;}));}
   else ul.replaceChildren();
   $('dm-next').disabled=level<2;
   const a=byId[selected],{e,mods}=expressed(a);
@@ -930,7 +948,7 @@ let popDirty=true,popT=0;
 function renderPop(){
   const evd=ev?EVENTS.find(x=>x.id===ev.id):(lastEv||EVENTS[0]);
   $('pop-title').textContent=`${ev?'Now':lastEv?'Last event':'Preview'}: ${evd.title}. Action tested: "${evd.generic[0].label}".`;
-  const m=margins(evd,POP),b=baselineMargin(evd);
+  const es=eventStats(evd),m=es.z,b=baselineMargin(evd);
   const c=$('pop'),dpr=window.devicePixelRatio||1,W2=Math.max(200,Math.round(c.clientWidth*dpr)),H2=Math.round(130*dpr);
   if(c.width!==W2)c.width=W2;if(c.height!==H2)c.height=H2;
   const x=c.getContext('2d'),cs=getComputedStyle(document.documentElement),col=n=>cs.getPropertyValue(n).trim();
@@ -943,8 +961,8 @@ function renderPop(){
   x.strokeStyle=col('--ink');x.setLineDash([4*dpr,3*dpr]);x.beginPath();x.moveTo(px(0),top-6*dpr);x.lineTo(px(0),bot);x.stroke();x.setLineDash([]);
   x.fillStyle=col('--muted');x.font=`${11*dpr}px IBM Plex Mono, monospace`;x.textAlign='left';x.fillText('stays put',pad,H2-6*dpr);x.textAlign='right';x.fillText('acts',W2-pad,H2-6*dpr);x.textAlign='center';x.fillText('0',px(0),H2-6*dpr);
   x.fillStyle=col('--rl');x.textAlign=px(b)>W2/2?'right':'left';x.fillText('one persona',px(b)+(px(b)>W2/2?-5:5)*dpr,top+8*dpr);
-  const p=m.filter(v=>v>0).length/m.length,mean=m.reduce((s,v)=>s+v,0)/m.length,sd=Math.sqrt(m.reduce((s,v)=>s+(v-mean)**2,0)/m.length);
-  const st=$('pop-stats');st.replaceChildren(el('span','k','Genome population'),el('span',null,`${Math.round(p*100)}% act · spread σ = ${sd.toFixed(2)}`),el('span','k','One persona prompt'),el('span',null,`${b>0?100:0}% act · spread σ = 0.00`),el('span','k','Human reference'),el('span',null,'pending calibration'));
+  const p=es.p,mean=m.reduce((s,v)=>s+v,0)/m.length,sd=Math.sqrt(m.reduce((s,v)=>s+(v-mean)**2,0)/m.length);
+  const st=$('pop-stats');st.replaceChildren(el('span','k','Profile population'),el('span',null,`${Math.round(p*100)}% act · spread σ = ${sd.toFixed(2)}`),el('span','k','Explained by profile'),el('span',null,`a = ${es.a.toFixed(2)} (strongest: ${es.best})`),el('span','k','One persona prompt'),el('span',null,evd.noise?'random: no profile to explain it':`${b>0?100:0}% act · spread σ = 0.00`),el('span','k','Human reference'),el('span',null,'pending calibration'));
 }
 function renderPanel(){
   $('clock').textContent=`Day ${dayNo()} · ${fmt(tod())}`;

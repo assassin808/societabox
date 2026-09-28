@@ -1,0 +1,31 @@
+<style>body{font-size:9.3pt;line-height:1.25}
+.fig{text-align:center;margin:3pt 0 2pt}.fig img{max-width:100%;max-height:2.75in;border:0.5pt solid #666}
+.cap{font-size:8pt;color:#333;text-align:center;margin:0 0 3pt}</style>
+<h1>Juniper Town: Surfacing the Moments That Matter<br>in a Generative Social Sandbox</h1>
+<div class="auth">Haoyang Shang (UBC) &nbsp;·&nbsp; Xuan Liu (UC San Diego)</div>
+<div class="course">Research proposal: application and system demo</div>
+
+<h2>1. Why</h2>
+<p>Decision-makers want to know how people will respond <i>before</i> they act: a price change, a new rule, an event. Surveys return averages, and LLM synthetic respondents answer too consistently [1]. The useful questions are <b>which situations will split people, and why?</b> Our earlier work found that outcomes hinge on a few critical moments [2], and that social behaviour can be steered by a few programmable cognitive attributes [3]. Juniper Town turns both findings into a tool you can watch.</p>
+
+<div class="fig"><img src="file:///home/user/societabox/proposal/src/demo_shot.png" alt="Juniper Town demo: pixel-art café with residents, and panels for the critical-moment finder, profile in context, and population check"></div>
+<div class="cap">Figure 1. Working prototype. Residents live a scripted day in a café and a town square. The world injects situations such as a price change, a newcomer, rain or a raffle. The finder ranks them: the chance raffle splits people most (split 0.99), but no attribute explains who wins (a = 0.08), so the finder instead surfaces the oat-milk surcharge (split 0.74, a = 0.50, driven by loss aversion).</div>
+
+<h2>2. Scenario: a café owner's "what if"</h2>
+<p>Mei, who runs Juniper Café, is weighing three changes: a 50¢ oat-milk surcharge, a Friday poetry night, and closing early on rainy days. She runs the town under each option over several simulated days. Juniper Town tells her which moments flip reactions, which residents they flip, and which cognitive attributes drive the flip. Users can edit any resident's profile and watch the town respond.</p>
+
+<h2>3. System (deliberately simple)</h2>
+<ul>
+<li><b>Residents.</b> One LLM, prompted with a persona and a cognitive profile of six attributes (social approach, social anxiety, novelty seeking, impulsivity, loss aversion, conformity), using the prompt templates of [3]. A daily plan built from scripts and a memory stream follow Generative Agents [4].</li>
+<li><b>World engine.</b> An LLM proposes situations from the current town state, either breaks (something disrupts a script) or opportunities (a cue that invites a new goal), and narrates their consequences.</li>
+<li><b>Freedom levels.</b> L0: a fixed loop. L1: choices at choice points. L2: situations injected by the world. L3: residents propose their own options, which pass a plausibility check.</li>
+<li><b>Critical-moment finder.</b> For each situation, the sandbox <i>rewinds</i> and lets $N$ residents with sampled profiles respond from the same point, which is impossible in the real world. It measures the split $p(1-p)$ and the discrimination $a$, i.e. how strongly the profile explains who acts, and ranks situations by $a\,p(1-p)$ (companion method proposal). Chance events therefore score near zero even though they split people the most.</li>
+</ul>
+
+<h2>4. Evaluation</h2>
+<p><b>Planted effects:</b> inject situations whose outcome is known to depend on one attribute (for example, loss aversion for price changes, from the behavioural literature) and check that the finder recovers that attribute. <b>Noise control:</b> the finder must rank chance events low, whereas split alone ranks them high. <b>Spread:</b> response diversity against a single-persona baseline, following the critique in [1]. <b>Plausibility:</b> a small human study (about 20 raters) scoring generated situations and reactions against a single-persona baseline. <b>External check:</b> re-run the critical-event settings of [2] (speed dating, divorce) through the finder.</p>
+
+<h2>5. Deliverables and plan</h2>
+<p>An open-source sandbox and web demo; a short paper for a demo or workshop venue. <b>Weeks 1–2:</b> connect the prototype to an LLM for residents and the world engine. <b>Weeks 3–4:</b> rewind-and-branch finder. <b>Weeks 5–6:</b> the café scenario and planted-effect tests. <b>Weeks 7–8:</b> human study and write-up. The current prototype runs on hand-set rules in place of LLM calls; the numbers in Figure 1 come from these rules and are illustrative only. All residents are fictional.</p>
+
+<div class="refs">[1] Chidichimo, Jung, Wallis, He. Artificial Societies Benchmark: A Validation Framework for Synthetic Research. arXiv:2609.30030, 2026. [2] Shang, Yan, Liu. Love First, Know Later: Persona-Based Romantic Compatibility through LLM Text World Engines. NeurIPS 2025 Workshop on LLM Persona Modeling. [3] Liu, Shang, Jin. Programmable Cognitive Bias in Social Agents. arXiv:2509.13588. [4] Park et al. Generative Agents: Interactive Simulacra of Human Behavior. UIST 2023.</div>
