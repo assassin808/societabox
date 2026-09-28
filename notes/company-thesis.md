@@ -48,3 +48,10 @@ Four layers:
 4. **Ability** (a competence dimension that cuts across scripts): how well someone reaches goals within and across scripts, especially when a script breaks. Negotiation, persuasion and leadership are high-stakes scripts plus the ability to reshape other people's scripts.
 
 Key claim: routine behaviour mostly follows the script, and the genome mostly shows at choice points and breaks. LLMs are "too consistent" because they execute the most common version of each script.
+
+## Revision: spontaneous goals (2026-09-28)
+The four layers are top-down. Spontaneous behaviour (for example, seeing an attractive stranger and deciding to go talk to them) needs a bottom-up loop:
+- Add a **state** layer: dynamic drives and condition (hunger, social need, mood, energy, time pressure).
+- Every tick runs **perceive → appraise → arbitrate**. Cues in the world are appraised through genome and state; a candidate goal competes with the current script's goal (value minus interruption cost, norm cost, and social risk); if it wins, the agent continues, nests, switches, or abandons the script.
+- Environment perturbations come in two kinds: **breaks** (outside events disrupt a script) and **opportunities** (cues that can trigger internal goals).
+- Fidelity needs calibrated base rates: how often real people act on such cues, and how that varies by person and context.
