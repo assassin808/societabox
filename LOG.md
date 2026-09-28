@@ -4,6 +4,26 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-28: Joint one-page proposal (replaces the two separate ones)
+
+- Founder feedback:
+  - "Skill" is the wrong word; use LLM **meta-attributes**.
+  - Aim for novel, not incremental work; don't follow PAIRED closely.
+  - One PDF for both courses.
+  - Temporal sparsity: skip full rollouts and training on non-critical steps.
+  - The algorithm need not be tied to social simulation.
+- Grounded in our own prior work:
+  - Love First, Know Later (NeurIPS 2025 workshop): H1 sparse rewards at critical moments, H2 low-entropy decisions there.
+  - Programmable Cognitive Bias (arXiv 2509.13588): meta-attributes.
+- `proposal/joint_proposal.pdf`, "Where Is the Agent Socially Deficient? Co-Evolving LLM Agents and a Generative Social Sandbox through Critical Moments":
+  - H1 temporal sparsity, H2 decisiveness, H3 attribute sparsity (trait activation, so each moment's sensing vector is sparse).
+  - Compressed episodes: a jump model over routine segments; the agent acts only at critical moments.
+  - Sense / Teach / Calibrate loop. Expander-graph sparse designs give RIP-1 and l1 recovery.
+  - Sandbox reward = information gain + learning progress - unfaithfulness.
+  - Target bound: |J_full - J_comp| <= K(R_max eps_W + L delta).
+  - Track A (RL course): algorithmic, on a synthetic sparse-critical POMDP suite and text games. Track B (ML course): the social sandbox, evaluated on SOTOPIA and on the speed-dating and divorce data.
+- The earlier two separate PDFs are moved to `proposal/archive/`.
+
 ## 2026-09-28: Course proposals as one-page PDFs (technical)
 
 - Correction: we do not have an RL environment yet. The town demo runs on hand-set rules.
