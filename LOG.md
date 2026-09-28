@@ -4,6 +4,15 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-28: Company name and demo video plan
+
+- The company is **YAX**. Working product names: **SocietaBox** (trainable generative social sandbox) and **SocietaGene** (cognitive genome); alternatives are still open.
+- Demo video plan: two 15-second segments, each usable on its own.
+  1. Cognitive genome: composable, readable, editable, portable across scenarios.
+  2. Trainable sandbox: finds where the agent is socially deficient and trains it there; co-evolves.
+- No math on screen.
+- Positioning vs Simile: Simile copies *who* a person is; YAX models *how* people decide and trains agents in a sandbox that learns.
+
 ## 2026-09-28: Two simple proposals (method + application) and demo v3
 
 - `proposal/method_proposal.pdf`, "Beyond Learnability: Discrimination-Aware Curricula for Generative Environments":

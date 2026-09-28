@@ -1,6 +1,6 @@
-# SocietaBox
+# YAX
 
-Foundation repository for the SocietaBox venture: a running record of ideas, decisions, and progress.
+Foundation repository for YAX (products: SocietaBox, a trainable generative social sandbox; SocietaGene, the cognitive genome): a running record of ideas, decisions, and progress.
 
 ## Layout
 
