@@ -70,3 +70,5 @@ The four layers are top-down. Spontaneous behaviour (for example, seeing an attr
   - First-order dense reward per generated step = alignment between that step's learning gradient and the gradient of the real evaluation objective.
   - A KL term to the pretrained world prior keeps the world realistic.
   - Critical moments then emerge as the high-alignment steps, instead of being assumed.
+- Founder concern: gradient alignment with the eval set is a form of data leakage. PAIRED never touches the test mazes (true zero-shot). Agreed. Revised recommendation: real human data calibrates the *world* (the environment's realism), never the curriculum; the curriculum objective is computed inside the simulation; test data stays fully held out. Gradient alignment survives only as an explicit few-shot variant with a guide/test split and a "train directly on the guide data" baseline.
+- Stop anchoring the design on the courses for now.
