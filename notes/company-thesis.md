@@ -27,3 +27,9 @@ Source: founder outreach email draft (Haoyang Shang to Allen) and founder discus
 - Mechanisms are represented two ways: prompt templates, and parameter or activation space (steering vectors, task vectors).
 - The verifier checks agent behaviour against real human data.
 - Course scope: each course delivers one module of the larger system, written up as a research paper at roughly ICML-poster level.
+
+## Research plan direction (2026-09-28, founder)
+- One paper covers both courses. Everything built also serves the startup: the town demo becomes the project demo, an interactive paper, and the VC/customer demo.
+- Simple lab datasets are anchors, not the goal. Use them to choose and extract a small set of cognitive mechanisms (the word "traits" is dropped).
+- Step 1: restrict scope to a few mechanisms. Do not fine-tune the whole model; mechanisms become controllable parameters (for example steering vectors).
+- Step 2: a real simulation sandbox. At each agent action, an RL policy chooses the combination and strength of mechanisms. The mechanisms are the action space.
