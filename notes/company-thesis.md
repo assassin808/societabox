@@ -33,3 +33,9 @@ Source: founder outreach email draft (Haoyang Shang to Allen) and founder discus
 - Simple lab datasets are anchors, not the goal. Use them to choose and extract a small set of cognitive mechanisms (the word "traits" is dropped).
 - Step 1: restrict scope to a few mechanisms. Do not fine-tune the whole model; mechanisms become controllable parameters (for example steering vectors).
 - Step 2: a real simulation sandbox. At each agent action, an RL policy chooses the combination and strength of mechanisms. The mechanisms are the action space.
+
+## Two open ideas (2026-09-28, founder)
+1. **An RL-trained social-ability sandbox.** Given an evaluation dataset for one ability, learn (with RL) an environment such that an agent trained inside it becomes good at that ability. The sandbox is optimised; the eval set only scores it.
+2. **The basic unit of the "cognitive genome".** Not yet defined. Open question: should it be an abstract interface that different implementations (prompt templates, steering vectors, adapters, and so on) can plug into?
+
+Working answer (Claude): define the gene as an interface contract: construct, parameter, expression operator, assay, and composition. Then the sandbox's environment space is genome space × scenario space, which joins the two ideas. Details are in the chat of 2026-09-28.
