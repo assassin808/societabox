@@ -21,3 +21,9 @@ Source: founder outreach email draft (Haoyang Shang to Allen) and founder discus
 - We do not collect human data from the target setting. That would require knowing how the real data is generated, and effectively infinite data.
 - Instead, assume a good verifier that can tell whether the LLM succeeds or fails. Put the LLM in a purpose-built sandbox where it trains itself to acquire the ability.
 - The sandbox is also trained with RL and co-evolves with the agent.
+
+## Clarifications (2026-09-28)
+- Target is **fidelity**: predict what real people will do, not make agents optimally competent.
+- Mechanisms are represented two ways: prompt templates, and parameter or activation space (steering vectors, task vectors).
+- The verifier checks agent behaviour against real human data.
+- Course scope: each course delivers one module of the larger system, written up as a research paper at roughly ICML-poster level.
