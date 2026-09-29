@@ -1,0 +1,22 @@
+[
+ {
+  "i": 0,
+  "text": "Every gene is a dial we calibrate. Take following the crowd, and set it to two point six, out of four.",
+  "dur": 5.902708333333333
+ },
+ {
+  "i": 1,
+  "text": "Then we measure it in classic human studies, like Asch's line test and the hotel towel study, and score every answer.",
+  "dur": 7.1855
+ },
+ {
+  "i": 2,
+  "text": "If it's off, we tune the prompt, the inner state, or the weights, and measure again, until it holds.",
+  "dur": 5.328416666666667
+ },
+ {
+  "i": 3,
+  "text": "And it holds across models.",
+  "dur": 1.3950833333333332
+ }
+]

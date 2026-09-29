@@ -4,6 +4,23 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-29: Film v3 (story fixes)
+
+- Founder feedback on v2:
+  1. A rocket reads as a space launch, not a product launch.
+  2. The film jumps to "one layer deeper" without first showing today's methods, and the tags go by too fast to read.
+  3. Nothing explains what 2.6 means.
+  4. The cut into the sandbox is abrupt, and the opening scene is too short.
+- v3 (`film/v3/`, 92.5 s) changes:
+  - the launch card is now a product box with a NEW! sticker;
+  - a new "how teams guess today" scene (surveys, focus groups, demographic persona);
+  - the tags stay readable longer and are struck out more slowly;
+  - a new "what 2.6 looks like" scene shows the same person at 0.5, 2.6 and 3.8, and the 2.6 panel reads "leans in, can say no";
+  - a bridge scene where calibrated residents walk into the paper town and the pencil draws straight into SocietaBox;
+  - the opening lingers longer.
+- Four new narration lines were generated with Kokoro. The logo stamp is still on a downbeat (bar 34). Voice sits 11.9 dB over the music.
+- Player: https://claude.ai/artifact/KWWM4VGSxHpkasQUMCQjNN
+
 ## 2026-09-29: Film v2 (extended)
 
 - The founder prefers v0. v2 keeps all of v0 and inserts a 25 s calibration section in v1's style after the genome scene: dial set to 2.6 → classic studies and the Cognitive Bias Index → tune prompt, inner state or weights until it holds → holds across models.

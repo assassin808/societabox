@@ -1,0 +1,56 @@
+1
+00:00:01,400 --> 00:00:04,041
+Every big decision is a guess about people.
+
+2
+00:00:06,300 --> 00:00:11,900
+A launch. A new price. A message in a crisis. You can't rehearse them on the real world.
+
+3
+00:00:13,000 --> 00:00:20,076
+Today, teams guess from surveys and focus groups, and personas built from demographics. Age, job, city.
+
+4
+00:00:20,900 --> 00:00:25,709
+So YAX goes one layer deeper. Not who people are, but how they decide.
+
+5
+00:00:27,000 --> 00:00:34,389
+We call it a cognitive genome. Readable, editable, and portable, from a café, to a negotiation, to an evacuation.
+
+6
+00:00:36,100 --> 00:00:42,253
+Every gene is a dial we calibrate. Take following the crowd, and set it to two point six, out of four.
+
+7
+00:00:43,100 --> 00:00:47,458
+At two point six, she leans toward the crowd, but can still hold her ground.
+
+8
+00:00:49,100 --> 00:00:56,536
+Then we measure it in classic human studies, like Asch's line test and the hotel towel study, and score every answer.
+
+9
+00:00:58,400 --> 00:01:03,978
+If it's off, we tune the prompt, the inner state, or the weights, and measure again, until it holds.
+
+10
+00:01:05,900 --> 00:01:07,545
+And it holds across models.
+
+11
+00:01:08,800 --> 00:01:12,869
+Put calibrated people together, and you get a world worth practicing in.
+
+12
+00:01:13,700 --> 00:01:18,695
+SocietaBox gives AI agents that world, and it writes itself as they play.
+
+13
+00:01:19,200 --> 00:01:24,834
+It finds where an agent is socially weak, not where it just got unlucky, and trains it right there.
+
+14
+00:01:25,600 --> 00:01:29,062
+YAX. How people decide, and how agents learn to.
+
