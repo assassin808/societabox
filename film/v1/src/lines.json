@@ -1,0 +1,37 @@
+[
+ {
+  "i": 0,
+  "text": "A cognitive genome is a set of dials.",
+  "dur": 2.424625
+ },
+ {
+  "i": 1,
+  "text": "Pick a trait, like following the crowd. Set it to two point six, out of four.",
+  "dur": 4.120708333333333
+ },
+ {
+  "i": 2,
+  "text": "We measure it in classic human studies, like Asch's line test and the hotel towel study.",
+  "dur": 5.564041666666666
+ },
+ {
+  "i": 3,
+  "text": "Then we tune the prompt, the inner state, or the weights, until it holds.",
+  "dur": 3.6779166666666665
+ },
+ {
+  "i": 4,
+  "text": "And it holds across models.",
+  "dur": 1.3950833333333332
+ },
+ {
+  "i": 5,
+  "text": "If it's measured in humans, we can set it in an agent.",
+  "dur": 2.8724583333333333
+ },
+ {
+  "i": 6,
+  "text": "YAX. Calibrating AI to behave like humans.",
+  "dur": 3.41625
+ }
+]

@@ -4,6 +4,18 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-29: Film v1 (calibration) and v0 archived
+
+- The first film is kept as v0 in `film/v0/`.
+- v1 (`film/v1/`, 32.2 s) expands the cognitive-genome part around YAX calibration, following Deck v4 and CoBRA:
+  - set a trait level on a 0–4 scale;
+  - measure it with classic experiments (Asch, hotel towel), scoring answers 4 to 0 into the Cognitive Bias Index;
+  - adjust via prompt, activations or weights;
+  - the result holds across models;
+  - "Measured in humans? We can set it in an agent."
+- Player: https://claude.ai/artifact/Qgdhdzyt2pnpjsJ4jCTr5C
+- CoBRA facts used: 4 biases (authority, bandwagon, confirmation, framing), 8 paradigms (Milgram, Stanford Prison, Asch, Hotel Towel, Wason, Biased Information, Asian Disease, Investment/Insurance), 0–4 Likert scale, three control spaces.
+
 ## 2026-09-29: YAX film (autonomous production)
 
 - 42.5 s paper-collage film. Story: every decision is a guess about people → launches, prices and crisis messages cannot be rehearsed (clapperboard "TAKE 1 of 1") → one layer deeper: demographic tags crossed out, a cognitive genome tape unrolls → readable, editable, portable (magnifier, pencil, postcards for café, negotiation, evacuation) → SocietaBox: a pencil draws the world ahead of the AI agent → corkboard of moments: weak spots circled, luck notes crumpled, then trained to checkmarks, and new ones appear → YAX ransom-letter logo, "how people decide, and how agents learn to", SocietaGene · SocietaBox.

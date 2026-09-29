@@ -1,0 +1,27 @@
+1
+00:00:00,900 --> 00:00:03,525
+A cognitive genome is a set of dials.
+
+2
+00:00:04,000 --> 00:00:08,321
+Pick a trait, like following the crowd. Set it to two point six, out of four.
+
+3
+00:00:08,900 --> 00:00:14,664
+We measure it in classic human studies, like Asch's line test and the hotel towel study.
+
+4
+00:00:15,300 --> 00:00:19,178
+Then we tune the prompt, the inner state, or the weights, until it holds.
+
+5
+00:00:21,250 --> 00:00:22,845
+And it holds across models.
+
+6
+00:00:23,700 --> 00:00:26,772
+If it's measured in humans, we can set it in an agent.
+
+7
+00:00:27,200 --> 00:00:30,816
+YAX. Calibrating AI to behave like humans.
