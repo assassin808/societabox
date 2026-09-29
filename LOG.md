@@ -4,6 +4,13 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-29: YAX film (autonomous production)
+
+- 42.5 s paper-collage film. Story: every decision is a guess about people → launches, prices and crisis messages cannot be rehearsed (clapperboard "TAKE 1 of 1") → one layer deeper: demographic tags crossed out, a cognitive genome tape unrolls → readable, editable, portable (magnifier, pencil, postcards for café, negotiation, evacuation) → SocietaBox: a pencil draws the world ahead of the AI agent → corkboard of moments: weak spots circled, luck notes crumpled, then trained to checkmarks, and new ones appear → YAX ransom-letter logo, "how people decide, and how agents learn to", SocietaGene · SocietaBox.
+- Narration by Kokoro TTS run locally (no API keys were available; the network allowed only the package registries, so the model came from an npm package that bundles the weights). "YAX" is pronounced like "yaks".
+- The original score and sound design were synthesized in code.
+- Files are in `film/`. Player: https://claude.ai/artifact/Xjr66XcCo45g3Vnzm5ydWp
+
 ## 2026-09-28: Company name and demo video plan
 
 - The company is **YAX**. Working product names: **SocietaBox** (trainable generative social sandbox) and **SocietaGene** (cognitive genome); alternatives are still open.

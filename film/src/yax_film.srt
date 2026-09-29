@@ -1,0 +1,27 @@
+1
+00:00:01,200 --> 00:00:03,791
+Every big decision is a guess about people.
+
+2
+00:00:04,300 --> 00:00:09,850
+A launch. A new price. A message in a crisis. You can't rehearse them on the real world.
+
+3
+00:00:10,500 --> 00:00:15,259
+So YAX goes one layer deeper. Not who people are, but how they decide.
+
+4
+00:00:15,800 --> 00:00:23,139
+We call it a cognitive genome. Readable, editable, and portable, from a café, to a negotiation, to an evacuation.
+
+5
+00:00:24,200 --> 00:00:28,130
+Then we give AI agents a world that writes itself as they play.
+
+6
+00:00:28,500 --> 00:00:34,084
+It finds where an agent is socially weak, not where it just got unlucky, and trains it right there.
+
+7
+00:00:35,600 --> 00:00:39,012
+YAX. How people decide, and how agents learn to.

@@ -1,0 +1,44 @@
+[
+ {
+  "i": 0,
+  "text": "Every big decision is a guess about people.",
+  "dur": 2.3914583333333335,
+  "peak": 0.3162848651409149
+ },
+ {
+  "i": 1,
+  "text": "A launch. A new price. A message in a crisis. You can't rehearse them on the real world.",
+  "dur": 5.35025,
+  "peak": 0.38545796275138855
+ },
+ {
+  "i": 2,
+  "text": "So YAX goes one layer deeper. Not who people are, but how they decide.",
+  "dur": 4.5585,
+  "peak": 0.4807156026363373
+ },
+ {
+  "i": 3,
+  "text": "We call it a cognitive genome. Readable, editable, and portable, from a caf\u00e9, to a negotiation, to an evacuation.",
+  "dur": 7.139375,
+  "peak": 0.3526669442653656
+ },
+ {
+  "i": 4,
+  "text": "Then we give AI agents a world that writes itself as they play.",
+  "dur": 3.7297083333333334,
+  "peak": 0.37812796235084534
+ },
+ {
+  "i": 5,
+  "text": "It finds where an agent is socially weak, not where it just got unlucky, and trains it right there.",
+  "dur": 5.384166666666666,
+  "peak": 0.40377306938171387
+ },
+ {
+  "i": 6,
+  "text": "YAX. How people decide, and how agents learn to.",
+  "dur": 3.212375,
+  "peak": 0.29025998711586
+ }
+]
