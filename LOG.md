@@ -20,6 +20,9 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
   - the opening lingers longer.
 - Four new narration lines were generated with Kokoro. The logo stamp is still on a downbeat (bar 34). Voice sits 11.9 dB over the music.
 - Player: https://claude.ai/artifact/KWWM4VGSxHpkasQUMCQjNN
+- Revision 2 (97.5 s), after founder feedback:
+  - a correlation-vs-causation line before "one layer deeper": "But demographics only correlate with choices. They don't cause them." It is shown as a "correlates ≠ cause" stamp. This is the core pitch contrast: others model who people are, we model the mechanism of how they decide;
+  - "across every scenario" before "from a café…".
 
 ## 2026-09-29: Film v2 (extended)
 

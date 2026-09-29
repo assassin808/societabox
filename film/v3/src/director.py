@@ -4,10 +4,10 @@ def v0(i): return (f"v0line{i}.wav",V0[i]['text'],V0[i]['dur'])
 def cal(i): return (f"cal{i}.wav",CAL[i]['text'],CAL[i]['dur'])
 def nw(k): return (f"{k}.wav",NEW[k]['text'],NEW[k]['dur'])
 PLAN=[ # (start, (src,text,dur))
- (1.4,v0(0)),(6.3,v0(1)),(13.0,nw('trad')),(20.9,v0(2)),(27.0,v0(3)),(36.1,cal(0)),(43.1,nw('impl')),
- (49.1,cal(1)),(58.4,cal(2)),(65.9,cal(3)),(68.8,nw('bridge')),(73.7,nw('l4b')),(79.2,v0(5)),(85.6,v0(6))]
-SCENES=[0,5.9,12.6,20.6,35.5,42.6,48.6,57.8,65.2,68.4,73.4,78.8,85.0]
-TOTAL=92.5
+ (1.4,v0(0)),(6.3,v0(1)),(13.0,nw('trad')),(20.9,nw('corr')),(25.0,v0(2)),(30.9,nw('genome2')),(41.1,cal(0)),(48.1,nw('impl')),
+ (54.1,cal(1)),(63.4,cal(2)),(70.9,cal(3)),(73.8,nw('bridge')),(78.7,nw('l4b')),(84.2,v0(5)),(90.6,v0(6))]
+SCENES=[0,5.9,12.6,20.6,40.5,47.6,53.6,62.8,70.2,73.4,78.4,83.8,90.0]
+TOTAL=97.5
 lines=[]
 for i,(st,(src,txt,dur)) in enumerate(PLAN):
     n=len(txt);pos=0;ws=[]
@@ -26,7 +26,8 @@ C['s1_pop']=0.35; C['s1_q']=1.2; C['s1_guess']=wt('v0line0.wav','guess')
 C['s2_in']=SCENES[1]; C['launch']=wt('v0line1.wav','launch'); C['price']=wt('v0line1.wav','new'); C['crisis']=wt('v0line1.wav','message'); C['rehearse']=wt('v0line1.wav',"can't"); C['clap']=wt('v0line1.wav','rehearse')
 C['t_in']=SCENES[2]; C['surveys']=wt('trad.wav','surveys'); C['focus']=wt('trad.wav','focus'); C['personas']=wt('trad.wav','personas'); C['age']=wt('trad.wav','age'); C['job']=wt('trad.wav','job'); C['city']=wt('trad.wav','city')
 C['s3_in']=SCENES[3]; C['deeper']=wt('v0line2.wav','deeper'); C['notwho']=wt('v0line2.wav','not'); C['how']=wt('v0line2.wav','how')
-C['pan']=26.35; C['genome']=wt('v0line3.wav','genome'); C['readable']=wt('v0line3.wav','readable'); C['editable']=wt('v0line3.wav','editable'); C['portable']=wt('v0line3.wav','portable'); C['cafe']=wt('v0line3.wav','café'); C['nego']=wt('v0line3.wav','negotiation'); C['evac']=wt('v0line3.wav','evacuation')
+C['corr']=wt('corr.wav','correlate'); C['cause']=wt('corr.wav','cause'); C['every']=wt('genome2.wav','every')
+C['pan']=30.25; C['genome']=wt('genome2.wav','genome'); C['readable']=wt('genome2.wav','readable'); C['editable']=wt('genome2.wav','editable'); C['portable']=wt('genome2.wav','portable'); C['cafe']=wt('genome2.wav','café'); C['nego']=wt('genome2.wav','negotiation'); C['evac']=wt('genome2.wav','evacuation')
 C['i_in']=SCENES[5]; C['leans']=wt('impl.wav','leans'); C['ground']=wt('impl.wav','hold')
 C['g_in']=SCENES[9]; C['together']=wt('bridge.wav','together'); C['world']=wt('bridge.wav','world')
 C['s5_in']=SCENES[10]; C['writes']=wt('l4b.wav','writes'); C['play']=wt('l4b.wav','play')
@@ -44,7 +45,7 @@ for sc in SCENES[1:]:
     if sc not in (SCENES[10],): s(sc-0.25,'swoosh')
 s(C['launch'],'paper'); s(C['price'],'paper'); s(C['crisis'],'paper'); s(C['rehearse'],'pop',p=.8); s(C['clap']+0.25,'clap')
 s(C['surveys'],'paper'); s(C['surveys']+0.6,'pencil',d=0.9); s(C['focus'],'paper'); s(C['personas'],'paper'); [s(C[k],'pop',p=1.1+0.05*j) for j,k in enumerate(['age','job','city'])]
-[s(C['s3_in']+0.2+j*0.12,'pop',p=1.1) for j in range(4)]; [s(C['notwho']+0.15+j*0.45,'scribble',d=0.3) for j in range(4)]; s(C['how'],'tape')
+[s(C['s3_in']+0.2+j*0.12,'pop',p=1.1) for j in range(4)]; [s(C['notwho']+0.15+j*0.45,'scribble',d=0.3) for j in range(4)]; s(C['how'],'tape'); s(C['corr']-.3,'paper'); [s(C['corr']+j*.15,'pencil',d=.3) for j in range(2)]; s(C['cause']-.1,'stamp',p=1.2); s(C['every'],'scribble',d=.5)
 s(C['readable'],'paper'); s(C['editable'],'pencil'); s(C['cafe'],'paper'); s(C['nego'],'paper'); s(C['evac'],'paper')
 [s(K['set']+0.25+j*0.09,'tick',p=1+0.03*j) for j in range(7)]; s(K['level']+0.9,'pencil',d=0.5)
 [s(C['i_in']+0.3+j*0.35,'paper') for j in range(3)]; s(C['leans'],'ding',p=1.0)

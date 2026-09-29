@@ -1,5 +1,5 @@
 {
- "total": 92.5,
+ "total": 97.5,
  "fps": 30,
  "lines": [
   {
@@ -199,768 +199,829 @@
   },
   {
    "i": 3,
-   "src": "v0line2.wav",
-   "text": "So YAX goes one layer deeper. Not who people are, but how they decide.",
+   "src": "corr.wav",
+   "text": "But demographics only correlate with choices. They don't cause them.",
    "start": 20.9,
-   "dur": 4.559,
+   "dur": 3.717,
    "words": [
     {
-     "w": "So",
+     "w": "But",
      "t": 20.9
     },
     {
-     "w": "YAX",
-     "t": 21.095
+     "w": "demographics",
+     "t": 21.119
     },
     {
-     "w": "goes",
-     "t": 21.356
+     "w": "only",
+     "t": 21.829
     },
     {
-     "w": "one",
-     "t": 21.682
+     "w": "correlate",
+     "t": 22.103
     },
     {
-     "w": "layer",
-     "t": 21.942
+     "w": "with",
+     "t": 22.649
     },
     {
-     "w": "deeper.",
-     "t": 22.333
+     "w": "choices.",
+     "t": 22.923
     },
     {
-     "w": "Not",
-     "t": 22.854
+     "w": "They",
+     "t": 23.415
     },
     {
-     "w": "who",
-     "t": 23.114
+     "w": "don't",
+     "t": 23.688
     },
     {
-     "w": "people",
-     "t": 23.375
+     "w": "cause",
+     "t": 24.016
     },
     {
-     "w": "are,",
-     "t": 23.831
-    },
-    {
-     "w": "but",
-     "t": 24.156
-    },
-    {
-     "w": "how",
-     "t": 24.417
-    },
-    {
-     "w": "they",
-     "t": 24.677
-    },
-    {
-     "w": "decide.",
-     "t": 25.003
+     "w": "them.",
+     "t": 24.344
     }
    ]
   },
   {
    "i": 4,
-   "src": "v0line3.wav",
-   "text": "We call it a cognitive genome. Readable, editable, and portable, from a caf\u00e9, to a negotiation, to an evacuation.",
-   "start": 27.0,
-   "dur": 7.139,
+   "src": "v0line2.wav",
+   "text": "So YAX goes one layer deeper. Not who people are, but how they decide.",
+   "start": 25.0,
+   "dur": 4.559,
    "words": [
     {
-     "w": "We",
-     "t": 27.0
+     "w": "So",
+     "t": 25.0
     },
     {
-     "w": "call",
-     "t": 27.19
+     "w": "YAX",
+     "t": 25.195
     },
     {
-     "w": "it",
-     "t": 27.505
+     "w": "goes",
+     "t": 25.456
     },
     {
-     "w": "a",
-     "t": 27.695
+     "w": "one",
+     "t": 25.782
     },
     {
-     "w": "cognitive",
-     "t": 27.821
+     "w": "layer",
+     "t": 26.042
     },
     {
-     "w": "genome.",
-     "t": 28.453
+     "w": "deeper.",
+     "t": 26.433
     },
     {
-     "w": "Readable,",
-     "t": 28.958
+     "w": "Not",
+     "t": 26.954
     },
     {
-     "w": "editable,",
-     "t": 29.59
+     "w": "who",
+     "t": 27.214
     },
     {
-     "w": "and",
-     "t": 30.222
+     "w": "people",
+     "t": 27.475
     },
     {
-     "w": "portable,",
-     "t": 30.475
+     "w": "are,",
+     "t": 27.931
     },
     {
-     "w": "from",
-     "t": 31.107
+     "w": "but",
+     "t": 28.256
     },
     {
-     "w": "a",
-     "t": 31.422
+     "w": "how",
+     "t": 28.517
     },
     {
-     "w": "caf\u00e9,",
-     "t": 31.549
+     "w": "they",
+     "t": 28.777
     },
     {
-     "w": "to",
-     "t": 31.928
-    },
-    {
-     "w": "a",
-     "t": 32.117
-    },
-    {
-     "w": "negotiation,",
-     "t": 32.244
-    },
-    {
-     "w": "to",
-     "t": 33.065
-    },
-    {
-     "w": "an",
-     "t": 33.255
-    },
-    {
-     "w": "evacuation.",
-     "t": 33.444
+     "w": "decide.",
+     "t": 29.103
     }
    ]
   },
   {
    "i": 5,
-   "src": "cal0.wav",
-   "text": "Every gene is a dial we calibrate. Take following the crowd, and set it to two point six, out of four.",
-   "start": 36.1,
-   "dur": 5.903,
+   "src": "genome2.wav",
+   "text": "We call it a cognitive genome. Readable, editable, and portable across every scenario, from a caf\u00e9, to a negotiation, to an evacuation.",
+   "start": 30.9,
+   "dur": 8.53,
    "words": [
     {
-     "w": "Every",
-     "t": 36.1
+     "w": "We",
+     "t": 30.9
     },
     {
-     "w": "gene",
-     "t": 36.447
-    },
-    {
-     "w": "is",
-     "t": 36.737
-    },
-    {
-     "w": "a",
-     "t": 36.91
-    },
-    {
-     "w": "dial",
-     "t": 37.026
-    },
-    {
-     "w": "we",
-     "t": 37.315
-    },
-    {
-     "w": "calibrate.",
-     "t": 37.489
-    },
-    {
-     "w": "Take",
-     "t": 38.125
-    },
-    {
-     "w": "following",
-     "t": 38.415
-    },
-    {
-     "w": "the",
-     "t": 38.993
-    },
-    {
-     "w": "crowd,",
-     "t": 39.225
-    },
-    {
-     "w": "and",
-     "t": 39.63
-    },
-    {
-     "w": "set",
-     "t": 39.862
+     "w": "call",
+     "t": 31.09
     },
     {
      "w": "it",
-     "t": 40.093
+     "t": 31.406
+    },
+    {
+     "w": "a",
+     "t": 31.595
+    },
+    {
+     "w": "cognitive",
+     "t": 31.721
+    },
+    {
+     "w": "genome.",
+     "t": 32.353
+    },
+    {
+     "w": "Readable,",
+     "t": 32.859
+    },
+    {
+     "w": "editable,",
+     "t": 33.491
+    },
+    {
+     "w": "and",
+     "t": 34.123
+    },
+    {
+     "w": "portable",
+     "t": 34.375
+    },
+    {
+     "w": "across",
+     "t": 34.944
+    },
+    {
+     "w": "every",
+     "t": 35.386
+    },
+    {
+     "w": "scenario,",
+     "t": 35.765
+    },
+    {
+     "w": "from",
+     "t": 36.397
+    },
+    {
+     "w": "a",
+     "t": 36.713
+    },
+    {
+     "w": "caf\u00e9,",
+     "t": 36.84
     },
     {
      "w": "to",
-     "t": 40.267
+     "t": 37.219
     },
     {
-     "w": "two",
-     "t": 40.44
+     "w": "a",
+     "t": 37.408
     },
     {
-     "w": "point",
-     "t": 40.672
+     "w": "negotiation,",
+     "t": 37.535
     },
     {
-     "w": "six,",
-     "t": 41.019
+     "w": "to",
+     "t": 38.356
     },
     {
-     "w": "out",
-     "t": 41.308
+     "w": "an",
+     "t": 38.546
     },
     {
-     "w": "of",
-     "t": 41.54
-    },
-    {
-     "w": "four.",
-     "t": 41.713
+     "w": "evacuation.",
+     "t": 38.735
     }
    ]
   },
   {
    "i": 6,
-   "src": "impl.wav",
-   "text": "At two point six, she leans toward the crowd, but can still hold her ground.",
-   "start": 43.1,
-   "dur": 4.108,
+   "src": "cal0.wav",
+   "text": "Every gene is a dial we calibrate. Take following the crowd, and set it to two point six, out of four.",
+   "start": 41.1,
+   "dur": 5.903,
    "words": [
     {
-     "w": "At",
-     "t": 43.1
+     "w": "Every",
+     "t": 41.1
     },
     {
-     "w": "two",
-     "t": 43.262
+     "w": "gene",
+     "t": 41.447
     },
     {
-     "w": "point",
-     "t": 43.478
+     "w": "is",
+     "t": 41.737
     },
     {
-     "w": "six,",
-     "t": 43.803
+     "w": "a",
+     "t": 41.91
     },
     {
-     "w": "she",
-     "t": 44.073
+     "w": "dial",
+     "t": 42.026
     },
     {
-     "w": "leans",
-     "t": 44.289
+     "w": "we",
+     "t": 42.315
     },
     {
-     "w": "toward",
-     "t": 44.613
+     "w": "calibrate.",
+     "t": 42.489
+    },
+    {
+     "w": "Take",
+     "t": 43.125
+    },
+    {
+     "w": "following",
+     "t": 43.415
     },
     {
      "w": "the",
-     "t": 44.992
+     "t": 43.993
     },
     {
      "w": "crowd,",
-     "t": 45.208
+     "t": 44.225
     },
     {
-     "w": "but",
-     "t": 45.586
+     "w": "and",
+     "t": 44.63
     },
     {
-     "w": "can",
-     "t": 45.802
+     "w": "set",
+     "t": 44.862
     },
     {
-     "w": "still",
+     "w": "it",
+     "t": 45.093
+    },
+    {
+     "w": "to",
+     "t": 45.267
+    },
+    {
+     "w": "two",
+     "t": 45.44
+    },
+    {
+     "w": "point",
+     "t": 45.672
+    },
+    {
+     "w": "six,",
      "t": 46.019
     },
     {
-     "w": "hold",
-     "t": 46.343
+     "w": "out",
+     "t": 46.308
     },
     {
-     "w": "her",
-     "t": 46.613
+     "w": "of",
+     "t": 46.54
     },
     {
-     "w": "ground.",
-     "t": 46.829
+     "w": "four.",
+     "t": 46.713
     }
    ]
   },
   {
    "i": 7,
-   "src": "cal1.wav",
-   "text": "Then we measure it in classic human studies, like Asch's line test and the hotel towel study, and score every answer.",
-   "start": 49.1,
-   "dur": 7.186,
+   "src": "impl.wav",
+   "text": "At two point six, she leans toward the crowd, but can still hold her ground.",
+   "start": 48.1,
+   "dur": 4.108,
    "words": [
     {
-     "w": "Then",
-     "t": 49.1
+     "w": "At",
+     "t": 48.1
     },
     {
-     "w": "we",
-     "t": 49.407
+     "w": "two",
+     "t": 48.262
     },
     {
-     "w": "measure",
-     "t": 49.591
+     "w": "point",
+     "t": 48.478
     },
     {
-     "w": "it",
-     "t": 50.083
+     "w": "six,",
+     "t": 48.803
     },
     {
-     "w": "in",
-     "t": 50.267
+     "w": "she",
+     "t": 49.073
     },
     {
-     "w": "classic",
-     "t": 50.451
+     "w": "leans",
+     "t": 49.289
     },
     {
-     "w": "human",
-     "t": 50.942
-    },
-    {
-     "w": "studies,",
-     "t": 51.311
-    },
-    {
-     "w": "like",
-     "t": 51.864
-    },
-    {
-     "w": "Asch's",
-     "t": 52.171
-    },
-    {
-     "w": "line",
-     "t": 52.601
-    },
-    {
-     "w": "test",
-     "t": 52.908
-    },
-    {
-     "w": "and",
-     "t": 53.215
+     "w": "toward",
+     "t": 49.613
     },
     {
      "w": "the",
-     "t": 53.46
+     "t": 49.992
     },
     {
-     "w": "hotel",
-     "t": 53.706
+     "w": "crowd,",
+     "t": 50.208
     },
     {
-     "w": "towel",
-     "t": 54.075
+     "w": "but",
+     "t": 50.586
     },
     {
-     "w": "study,",
-     "t": 54.443
+     "w": "can",
+     "t": 50.802
     },
     {
-     "w": "and",
-     "t": 54.873
+     "w": "still",
+     "t": 51.019
     },
     {
-     "w": "score",
-     "t": 55.119
+     "w": "hold",
+     "t": 51.343
     },
     {
-     "w": "every",
-     "t": 55.487
+     "w": "her",
+     "t": 51.613
     },
     {
-     "w": "answer.",
-     "t": 55.856
+     "w": "ground.",
+     "t": 51.829
     }
    ]
   },
   {
    "i": 8,
-   "src": "cal2.wav",
-   "text": "If it's off, we tune the prompt, the inner state, or the weights, and measure again, until it holds.",
-   "start": 58.4,
-   "dur": 5.328,
+   "src": "cal1.wav",
+   "text": "Then we measure it in classic human studies, like Asch's line test and the hotel towel study, and score every answer.",
+   "start": 54.1,
+   "dur": 7.186,
    "words": [
     {
-     "w": "If",
-     "t": 58.4
-    },
-    {
-     "w": "it's",
-     "t": 58.56
-    },
-    {
-     "w": "off,",
-     "t": 58.826
+     "w": "Then",
+     "t": 54.1
     },
     {
      "w": "we",
-     "t": 59.093
-    },
-    {
-     "w": "tune",
-     "t": 59.253
-    },
-    {
-     "w": "the",
-     "t": 59.519
-    },
-    {
-     "w": "prompt,",
-     "t": 59.732
-    },
-    {
-     "w": "the",
-     "t": 60.158
-    },
-    {
-     "w": "inner",
-     "t": 60.372
-    },
-    {
-     "w": "state,",
-     "t": 60.691
-    },
-    {
-     "w": "or",
-     "t": 61.064
-    },
-    {
-     "w": "the",
-     "t": 61.224
-    },
-    {
-     "w": "weights,",
-     "t": 61.437
-    },
-    {
-     "w": "and",
-     "t": 61.917
+     "t": 54.407
     },
     {
      "w": "measure",
-     "t": 62.13
-    },
-    {
-     "w": "again,",
-     "t": 62.556
-    },
-    {
-     "w": "until",
-     "t": 62.929
+     "t": 54.591
     },
     {
      "w": "it",
-     "t": 63.249
+     "t": 55.083
     },
     {
-     "w": "holds.",
-     "t": 63.409
+     "w": "in",
+     "t": 55.267
+    },
+    {
+     "w": "classic",
+     "t": 55.451
+    },
+    {
+     "w": "human",
+     "t": 55.942
+    },
+    {
+     "w": "studies,",
+     "t": 56.311
+    },
+    {
+     "w": "like",
+     "t": 56.864
+    },
+    {
+     "w": "Asch's",
+     "t": 57.171
+    },
+    {
+     "w": "line",
+     "t": 57.601
+    },
+    {
+     "w": "test",
+     "t": 57.908
+    },
+    {
+     "w": "and",
+     "t": 58.215
+    },
+    {
+     "w": "the",
+     "t": 58.46
+    },
+    {
+     "w": "hotel",
+     "t": 58.706
+    },
+    {
+     "w": "towel",
+     "t": 59.075
+    },
+    {
+     "w": "study,",
+     "t": 59.443
+    },
+    {
+     "w": "and",
+     "t": 59.873
+    },
+    {
+     "w": "score",
+     "t": 60.119
+    },
+    {
+     "w": "every",
+     "t": 60.487
+    },
+    {
+     "w": "answer.",
+     "t": 60.856
     }
    ]
   },
   {
    "i": 9,
-   "src": "cal3.wav",
-   "text": "And it holds across models.",
-   "start": 65.9,
-   "dur": 1.395,
+   "src": "cal2.wav",
+   "text": "If it's off, we tune the prompt, the inner state, or the weights, and measure again, until it holds.",
+   "start": 63.4,
+   "dur": 5.328,
    "words": [
     {
-     "w": "And",
-     "t": 65.9
+     "w": "If",
+     "t": 63.4
+    },
+    {
+     "w": "it's",
+     "t": 63.56
+    },
+    {
+     "w": "off,",
+     "t": 63.826
+    },
+    {
+     "w": "we",
+     "t": 64.093
+    },
+    {
+     "w": "tune",
+     "t": 64.253
+    },
+    {
+     "w": "the",
+     "t": 64.519
+    },
+    {
+     "w": "prompt,",
+     "t": 64.732
+    },
+    {
+     "w": "the",
+     "t": 65.158
+    },
+    {
+     "w": "inner",
+     "t": 65.372
+    },
+    {
+     "w": "state,",
+     "t": 65.691
+    },
+    {
+     "w": "or",
+     "t": 66.064
+    },
+    {
+     "w": "the",
+     "t": 66.224
+    },
+    {
+     "w": "weights,",
+     "t": 66.437
+    },
+    {
+     "w": "and",
+     "t": 66.917
+    },
+    {
+     "w": "measure",
+     "t": 67.13
+    },
+    {
+     "w": "again,",
+     "t": 67.556
+    },
+    {
+     "w": "until",
+     "t": 67.929
     },
     {
      "w": "it",
-     "t": 66.107
+     "t": 68.249
     },
     {
-     "w": "holds",
-     "t": 66.262
-    },
-    {
-     "w": "across",
-     "t": 66.572
-    },
-    {
-     "w": "models.",
-     "t": 66.933
+     "w": "holds.",
+     "t": 68.409
     }
    ]
   },
   {
    "i": 10,
-   "src": "bridge.wav",
-   "text": "Put calibrated people together, and you get a world worth practicing in.",
-   "start": 68.8,
-   "dur": 3.819,
+   "src": "cal3.wav",
+   "text": "And it holds across models.",
+   "start": 70.9,
+   "dur": 1.395,
    "words": [
     {
-     "w": "Put",
-     "t": 68.8
+     "w": "And",
+     "t": 70.9
     },
     {
-     "w": "calibrated",
-     "t": 69.012
+     "w": "it",
+     "t": 71.107
     },
     {
-     "w": "people",
-     "t": 69.596
+     "w": "holds",
+     "t": 71.262
     },
     {
-     "w": "together,",
-     "t": 69.967
+     "w": "across",
+     "t": 71.572
     },
     {
-     "w": "and",
-     "t": 70.497
-    },
-    {
-     "w": "you",
-     "t": 70.709
-    },
-    {
-     "w": "get",
-     "t": 70.922
-    },
-    {
-     "w": "a",
-     "t": 71.134
-    },
-    {
-     "w": "world",
-     "t": 71.24
-    },
-    {
-     "w": "worth",
-     "t": 71.558
-    },
-    {
-     "w": "practicing",
-     "t": 71.876
-    },
-    {
-     "w": "in.",
-     "t": 72.46
+     "w": "models.",
+     "t": 71.933
     }
    ]
   },
   {
    "i": 11,
-   "src": "l4b.wav",
-   "text": "SocietaBox gives AI agents that world, and it writes itself as they play.",
-   "start": 73.7,
-   "dur": 4.745,
+   "src": "bridge.wav",
+   "text": "Put calibrated people together, and you get a world worth practicing in.",
+   "start": 73.8,
+   "dur": 3.819,
    "words": [
     {
-     "w": "SocietaBox",
-     "t": 73.7
+     "w": "Put",
+     "t": 73.8
     },
     {
-     "w": "gives",
-     "t": 74.415
+     "w": "calibrated",
+     "t": 74.012
     },
     {
-     "w": "AI",
-     "t": 74.805
+     "w": "people",
+     "t": 74.596
     },
     {
-     "w": "agents",
-     "t": 75.0
-    },
-    {
-     "w": "that",
-     "t": 75.455
-    },
-    {
-     "w": "world,",
-     "t": 75.78
+     "w": "together,",
+     "t": 74.967
     },
     {
      "w": "and",
-     "t": 76.235
+     "t": 75.497
     },
     {
-     "w": "it",
-     "t": 76.495
+     "w": "you",
+     "t": 75.709
     },
     {
-     "w": "writes",
-     "t": 76.69
+     "w": "get",
+     "t": 75.922
     },
     {
-     "w": "itself",
-     "t": 77.145
+     "w": "a",
+     "t": 76.134
     },
     {
-     "w": "as",
-     "t": 77.6
+     "w": "world",
+     "t": 76.24
     },
     {
-     "w": "they",
-     "t": 77.795
+     "w": "worth",
+     "t": 76.558
     },
     {
-     "w": "play.",
-     "t": 78.12
+     "w": "practicing",
+     "t": 76.876
+    },
+    {
+     "w": "in.",
+     "t": 77.46
     }
    ]
   },
   {
    "i": 12,
-   "src": "v0line5.wav",
-   "text": "It finds where an agent is socially weak, not where it just got unlucky, and trains it right there.",
-   "start": 79.2,
-   "dur": 5.384,
+   "src": "l4b.wav",
+   "text": "SocietaBox gives AI agents that world, and it writes itself as they play.",
+   "start": 78.7,
+   "dur": 4.745,
    "words": [
     {
-     "w": "It",
-     "t": 79.2
+     "w": "SocietaBox",
+     "t": 78.7
     },
     {
-     "w": "finds",
-     "t": 79.363
+     "w": "gives",
+     "t": 79.415
     },
     {
-     "w": "where",
-     "t": 79.689
+     "w": "AI",
+     "t": 79.805
     },
     {
-     "w": "an",
-     "t": 80.016
+     "w": "agents",
+     "t": 80.0
     },
     {
-     "w": "agent",
-     "t": 80.179
+     "w": "that",
+     "t": 80.455
     },
     {
-     "w": "is",
-     "t": 80.505
-    },
-    {
-     "w": "socially",
-     "t": 80.668
-    },
-    {
-     "w": "weak,",
-     "t": 81.158
-    },
-    {
-     "w": "not",
-     "t": 81.484
-    },
-    {
-     "w": "where",
-     "t": 81.702
-    },
-    {
-     "w": "it",
-     "t": 82.028
-    },
-    {
-     "w": "just",
-     "t": 82.191
-    },
-    {
-     "w": "got",
-     "t": 82.463
-    },
-    {
-     "w": "unlucky,",
-     "t": 82.681
+     "w": "world,",
+     "t": 80.78
     },
     {
      "w": "and",
-     "t": 83.17
-    },
-    {
-     "w": "trains",
-     "t": 83.388
+     "t": 81.235
     },
     {
      "w": "it",
-     "t": 83.768
+     "t": 81.495
     },
     {
-     "w": "right",
-     "t": 83.931
+     "w": "writes",
+     "t": 81.69
     },
     {
-     "w": "there.",
-     "t": 84.258
+     "w": "itself",
+     "t": 82.145
+    },
+    {
+     "w": "as",
+     "t": 82.6
+    },
+    {
+     "w": "they",
+     "t": 82.795
+    },
+    {
+     "w": "play.",
+     "t": 83.12
     }
    ]
   },
   {
    "i": 13,
+   "src": "v0line5.wav",
+   "text": "It finds where an agent is socially weak, not where it just got unlucky, and trains it right there.",
+   "start": 84.2,
+   "dur": 5.384,
+   "words": [
+    {
+     "w": "It",
+     "t": 84.2
+    },
+    {
+     "w": "finds",
+     "t": 84.363
+    },
+    {
+     "w": "where",
+     "t": 84.689
+    },
+    {
+     "w": "an",
+     "t": 85.016
+    },
+    {
+     "w": "agent",
+     "t": 85.179
+    },
+    {
+     "w": "is",
+     "t": 85.505
+    },
+    {
+     "w": "socially",
+     "t": 85.668
+    },
+    {
+     "w": "weak,",
+     "t": 86.158
+    },
+    {
+     "w": "not",
+     "t": 86.484
+    },
+    {
+     "w": "where",
+     "t": 86.702
+    },
+    {
+     "w": "it",
+     "t": 87.028
+    },
+    {
+     "w": "just",
+     "t": 87.191
+    },
+    {
+     "w": "got",
+     "t": 87.463
+    },
+    {
+     "w": "unlucky,",
+     "t": 87.681
+    },
+    {
+     "w": "and",
+     "t": 88.17
+    },
+    {
+     "w": "trains",
+     "t": 88.388
+    },
+    {
+     "w": "it",
+     "t": 88.768
+    },
+    {
+     "w": "right",
+     "t": 88.931
+    },
+    {
+     "w": "there.",
+     "t": 89.258
+    }
+   ]
+  },
+  {
+   "i": 14,
    "src": "v0line6.wav",
    "text": "YAX. How people decide, and how agents learn to.",
-   "start": 85.6,
+   "start": 90.6,
    "dur": 3.212,
    "words": [
     {
      "w": "YAX.",
-     "t": 85.6
+     "t": 90.6
     },
     {
      "w": "How",
-     "t": 85.935
+     "t": 90.935
     },
     {
      "w": "people",
-     "t": 86.202
+     "t": 91.202
     },
     {
      "w": "decide,",
-     "t": 86.671
+     "t": 91.671
     },
     {
      "w": "and",
-     "t": 87.206
+     "t": 92.206
     },
     {
      "w": "how",
-     "t": 87.474
+     "t": 92.474
     },
     {
      "w": "agents",
-     "t": 87.741
+     "t": 92.741
     },
     {
      "w": "learn",
-     "t": 88.21
+     "t": 93.21
     },
     {
      "w": "to.",
-     "t": 88.611
+     "t": 93.611
     }
    ]
   }
@@ -983,71 +1044,74 @@
   "job": 19.163,
   "city": 19.494,
   "s3_in": 20.6,
-  "deeper": 22.333,
-  "notwho": 22.854,
-  "how": 24.417,
-  "pan": 26.35,
-  "genome": 28.453,
-  "readable": 28.958,
-  "editable": 29.59,
-  "portable": 30.475,
-  "cafe": 31.549,
-  "nego": 32.244,
-  "evac": 33.444,
-  "i_in": 42.6,
-  "leans": 44.289,
-  "ground": 46.343,
-  "g_in": 68.4,
-  "together": 69.967,
-  "world": 71.24,
-  "s5_in": 73.4,
-  "writes": 76.69,
-  "play": 78.12,
-  "s6_in": 78.55,
-  "weak": 80.668,
-  "unlucky": 82.681,
-  "trains": 83.388,
-  "there": 84.258,
-  "s7_in": 84.75,
-  "stamp": 85.0,
-  "decide": 85.935,
-  "learn": 87.741,
-  "products": 89.2
+  "deeper": 26.433,
+  "notwho": 26.954,
+  "how": 28.517,
+  "corr": 22.103,
+  "cause": 24.016,
+  "every": 35.386,
+  "pan": 30.25,
+  "genome": 32.353,
+  "readable": 32.859,
+  "editable": 33.491,
+  "portable": 34.375,
+  "cafe": 36.84,
+  "nego": 37.535,
+  "evac": 38.735,
+  "i_in": 47.6,
+  "leans": 49.289,
+  "ground": 51.343,
+  "g_in": 73.4,
+  "together": 74.967,
+  "world": 76.24,
+  "s5_in": 78.4,
+  "writes": 81.69,
+  "play": 83.12,
+  "s6_in": 83.55,
+  "weak": 85.668,
+  "unlucky": 87.681,
+  "trains": 88.388,
+  "there": 89.258,
+  "s7_in": 89.75,
+  "stamp": 90.0,
+  "decide": 90.935,
+  "learn": 92.741,
+  "products": 94.2
  },
  "kcues": {
-  "s2_in": 35.5,
-  "crowd": 39.225,
-  "set": 39.862,
-  "level": 40.44,
-  "dial": 37.026,
-  "s3_in": 48.6,
-  "measure": 49.591,
-  "asch": 52.171,
-  "towel": 53.706,
-  "score": 54.519,
-  "s4_in": 57.8,
-  "prompt": 59.732,
-  "inner": 60.372,
-  "weights": 61.437,
-  "holds": 63.409,
-  "s5_in": 65.2,
-  "models": 66.933,
-  "end": 68.4
+  "s2_in": 40.5,
+  "crowd": 44.225,
+  "set": 44.862,
+  "level": 45.44,
+  "dial": 42.026,
+  "s3_in": 53.6,
+  "measure": 54.591,
+  "asch": 57.171,
+  "towel": 58.706,
+  "score": 59.519,
+  "s4_in": 62.8,
+  "prompt": 64.732,
+  "inner": 65.372,
+  "weights": 66.437,
+  "holds": 68.409,
+  "s5_in": 70.2,
+  "models": 71.933,
+  "end": 73.4
  },
  "scenes": [
   0,
   5.9,
   12.6,
   20.6,
-  35.5,
-  42.6,
-  48.6,
-  57.8,
-  65.2,
-  68.4,
+  40.5,
+  47.6,
+  53.6,
+  62.8,
+  70.2,
   73.4,
-  78.8,
-  85.0
+  78.4,
+  83.8,
+  90.0
  ],
  "sfx": [
   {
@@ -1176,323 +1240,347 @@
    "p": 1.1
   },
   {
-   "t": 23.004,
+   "t": 21.803,
+   "k": "paper"
+  },
+  {
+   "t": 22.103,
+   "k": "pencil",
+   "d": 0.3
+  },
+  {
+   "t": 22.253,
+   "k": "pencil",
+   "d": 0.3
+  },
+  {
+   "t": 23.916,
+   "k": "stamp",
+   "p": 1.2
+  },
+  {
+   "t": 27.104,
    "k": "scribble",
    "d": 0.3
   },
   {
-   "t": 23.454,
+   "t": 27.554,
    "k": "scribble",
    "d": 0.3
   },
   {
-   "t": 23.904,
+   "t": 28.004,
    "k": "scribble",
    "d": 0.3
   },
   {
-   "t": 24.354,
+   "t": 28.454,
    "k": "scribble",
    "d": 0.3
   },
   {
-   "t": 24.417,
+   "t": 28.517,
    "k": "tape"
   },
   {
-   "t": 28.958,
+   "t": 32.859,
    "k": "paper"
   },
   {
-   "t": 29.59,
+   "t": 33.491,
    "k": "pencil"
   },
   {
-   "t": 31.549,
+   "t": 35.386,
+   "k": "scribble",
+   "d": 0.5
+  },
+  {
+   "t": 36.84,
    "k": "paper"
   },
   {
-   "t": 32.244,
+   "t": 37.535,
    "k": "paper"
   },
   {
-   "t": 33.444,
+   "t": 38.735,
    "k": "paper"
   },
   {
-   "t": 35.25,
+   "t": 40.25,
    "k": "swoosh"
   },
   {
-   "t": 40.112,
+   "t": 45.112,
    "k": "tick",
    "p": 1.0
   },
   {
-   "t": 40.202,
+   "t": 45.202,
    "k": "tick",
    "p": 1.03
   },
   {
-   "t": 40.292,
+   "t": 45.292,
    "k": "tick",
    "p": 1.06
   },
   {
-   "t": 40.382,
+   "t": 45.382,
    "k": "tick",
    "p": 1.09
   },
   {
-   "t": 40.472,
+   "t": 45.472,
    "k": "tick",
    "p": 1.12
   },
   {
-   "t": 40.562,
+   "t": 45.562,
    "k": "tick",
    "p": 1.15
   },
   {
-   "t": 40.652,
+   "t": 45.652,
    "k": "tick",
    "p": 1.18
   },
   {
-   "t": 41.34,
+   "t": 46.34,
    "k": "pencil",
    "d": 0.5
   },
   {
-   "t": 42.35,
+   "t": 47.35,
    "k": "swoosh"
   },
   {
-   "t": 42.9,
+   "t": 47.9,
    "k": "paper"
   },
   {
-   "t": 43.25,
+   "t": 48.25,
    "k": "paper"
   },
   {
-   "t": 43.6,
+   "t": 48.6,
    "k": "paper"
   },
   {
-   "t": 44.289,
+   "t": 49.289,
    "k": "ding",
    "p": 1.0
   },
   {
-   "t": 48.35,
+   "t": 53.35,
    "k": "swoosh"
   },
   {
-   "t": 52.171,
+   "t": 57.171,
    "k": "paper"
   },
   {
-   "t": 53.706,
+   "t": 58.706,
    "k": "paper"
   },
   {
-   "t": 54.519,
+   "t": 59.519,
    "k": "tick",
    "p": 0.9
   },
   {
-   "t": 54.639,
+   "t": 59.639,
    "k": "tick",
    "p": 0.9500000000000001
   },
   {
-   "t": 54.759,
+   "t": 59.759,
    "k": "tick",
    "p": 1.0
   },
   {
-   "t": 54.879,
+   "t": 59.879,
    "k": "tick",
    "p": 1.05
   },
   {
-   "t": 54.999,
+   "t": 59.999,
    "k": "tick",
    "p": 1.1
   },
   {
-   "t": 55.419,
+   "t": 60.419,
    "k": "pop",
    "p": 0.8
   },
   {
-   "t": 57.55,
+   "t": 62.55,
    "k": "swoosh"
   },
   {
-   "t": 59.732,
+   "t": 64.732,
    "k": "lever"
   },
   {
-   "t": 60.372,
+   "t": 65.372,
    "k": "lever"
   },
   {
-   "t": 61.437,
+   "t": 66.437,
    "k": "lever"
   },
   {
-   "t": 63.759,
+   "t": 68.759,
    "k": "ding",
    "p": 1.0
   },
   {
-   "t": 64.95,
+   "t": 69.95,
    "k": "swoosh"
   },
   {
-   "t": 66.883,
+   "t": 71.883,
    "k": "ding",
    "p": 1.1
   },
   {
-   "t": 67.033,
+   "t": 72.033,
    "k": "ding",
    "p": 1.2000000000000002
   },
   {
-   "t": 67.183,
+   "t": 72.183,
    "k": "ding",
    "p": 1.3
   },
   {
-   "t": 68.15,
+   "t": 73.15,
    "k": "swoosh"
   },
   {
-   "t": 68.8,
+   "t": 73.8,
    "k": "pop",
    "p": 1.0
   },
   {
-   "t": 69.1,
+   "t": 74.1,
    "k": "pop",
    "p": 1.05
   },
   {
-   "t": 69.4,
+   "t": 74.4,
    "k": "pop",
    "p": 1.1
   },
   {
-   "t": 69.7,
+   "t": 74.7,
    "k": "pop",
    "p": 1.15
   },
   {
-   "t": 70.0,
+   "t": 75.0,
    "k": "pop",
    "p": 1.2
   },
   {
-   "t": 70.3,
+   "t": 75.3,
    "k": "pop",
    "p": 1.25
   },
   {
-   "t": 76.69,
+   "t": 81.69,
    "k": "pencil",
    "d": 2.6
   },
   {
-   "t": 77.09,
+   "t": 82.09,
    "k": "pop",
    "p": 1.2
   },
   {
-   "t": 77.89,
+   "t": 82.89,
    "k": "pop",
    "p": 1.2
   },
   {
-   "t": 78.55,
+   "t": 83.55,
    "k": "swoosh"
   },
   {
-   "t": 78.69,
+   "t": 83.69,
    "k": "pop",
    "p": 1.2
   },
   {
-   "t": 80.868,
+   "t": 85.868,
    "k": "scribble",
    "d": 0.3
   },
   {
-   "t": 81.218,
+   "t": 86.218,
    "k": "scribble",
    "d": 0.3
   },
   {
-   "t": 81.568,
+   "t": 86.568,
    "k": "scribble",
    "d": 0.3
   },
   {
-   "t": 82.781,
+   "t": 87.781,
    "k": "crumple"
   },
   {
-   "t": 83.081,
+   "t": 88.081,
    "k": "crumple"
   },
   {
-   "t": 83.688,
+   "t": 88.688,
    "k": "ding",
    "p": 1.0
   },
   {
-   "t": 84.188,
+   "t": 89.188,
    "k": "ding",
    "p": 1.12
   },
   {
-   "t": 84.688,
+   "t": 89.688,
    "k": "ding",
    "p": 1.24
   },
   {
-   "t": 84.75,
+   "t": 89.75,
    "k": "swoosh"
   },
   {
-   "t": 85.0,
+   "t": 90.0,
    "k": "stamp",
    "p": 1.0
   },
   {
-   "t": 85.058,
+   "t": 90.058,
    "k": "pop",
    "p": 1.3
   },
   {
-   "t": 85.16,
+   "t": 90.16,
    "k": "stamp",
    "p": 0.94
   },
   {
-   "t": 85.258,
+   "t": 90.258,
    "k": "pop",
    "p": 1.4
   },
   {
-   "t": 85.32,
+   "t": 90.32,
    "k": "stamp",
    "p": 0.88
   },
   {
-   "t": 89.2,
+   "t": 94.2,
    "k": "paper"
   }
  ],

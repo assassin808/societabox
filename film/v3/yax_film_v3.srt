@@ -11,46 +11,50 @@ A launch. A new price. A message in a crisis. You can't rehearse them on the rea
 Today, teams guess from surveys and focus groups, and personas built from demographics. Age, job, city.
 
 4
-00:00:20,900 --> 00:00:25,709
-So YAX goes one layer deeper. Not who people are, but how they decide.
+00:00:20,900 --> 00:00:24,867
+But demographics only correlate with choices. They don't cause them.
 
 5
-00:00:27,000 --> 00:00:34,389
-We call it a cognitive genome. Readable, editable, and portable, from a café, to a negotiation, to an evacuation.
+00:00:25,000 --> 00:00:29,809
+So YAX goes one layer deeper. Not who people are, but how they decide.
 
 6
-00:00:36,100 --> 00:00:42,253
-Every gene is a dial we calibrate. Take following the crowd, and set it to two point six, out of four.
+00:00:30,900 --> 00:00:39,680
+We call it a cognitive genome. Readable, editable, and portable across every scenario, from a café, to a negotiation, to an evacuation.
 
 7
-00:00:43,100 --> 00:00:47,458
-At two point six, she leans toward the crowd, but can still hold her ground.
+00:00:41,100 --> 00:00:47,253
+Every gene is a dial we calibrate. Take following the crowd, and set it to two point six, out of four.
 
 8
-00:00:49,100 --> 00:00:56,536
-Then we measure it in classic human studies, like Asch's line test and the hotel towel study, and score every answer.
+00:00:48,100 --> 00:00:52,458
+At two point six, she leans toward the crowd, but can still hold her ground.
 
 9
-00:00:58,400 --> 00:01:03,978
-If it's off, we tune the prompt, the inner state, or the weights, and measure again, until it holds.
+00:00:54,100 --> 00:01:01,536
+Then we measure it in classic human studies, like Asch's line test and the hotel towel study, and score every answer.
 
 10
-00:01:05,900 --> 00:01:07,545
-And it holds across models.
+00:01:03,400 --> 00:01:08,978
+If it's off, we tune the prompt, the inner state, or the weights, and measure again, until it holds.
 
 11
-00:01:08,800 --> 00:01:12,869
-Put calibrated people together, and you get a world worth practicing in.
+00:01:10,900 --> 00:01:12,545
+And it holds across models.
 
 12
-00:01:13,700 --> 00:01:18,695
-SocietaBox gives AI agents that world, and it writes itself as they play.
+00:01:13,800 --> 00:01:17,869
+Put calibrated people together, and you get a world worth practicing in.
 
 13
-00:01:19,200 --> 00:01:24,834
-It finds where an agent is socially weak, not where it just got unlucky, and trains it right there.
+00:01:18,700 --> 00:01:23,695
+SocietaBox gives AI agents that world, and it writes itself as they play.
 
 14
-00:01:25,600 --> 00:01:29,062
+00:01:24,200 --> 00:01:29,834
+It finds where an agent is socially weak, not where it just got unlucky, and trains it right there.
+
+15
+00:01:30,600 --> 00:01:34,062
 YAX. How people decide, and how agents learn to.
 

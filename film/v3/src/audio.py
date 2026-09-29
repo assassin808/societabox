@@ -70,9 +70,9 @@ def rim(v=1.0):
 BAR = TL['bar']; BEAT = BAR/4
 CH = {'Fmaj7':([53,57,60,64],41),'Am7':([57,60,64,67],45),'Dm9':([53,57,60,64],38),'Bbmaj7':([58,62,65,69],46),
       'C6':([60,64,67,69],36),'Csus2':([60,62,67,72],36),'Fmaj9':([57,60,64,67],41)}
-PROG = ['Fmaj7','Am7','Dm9','Bbmaj7','Fmaj7','Am7','Dm9','C6','Bbmaj7','C6']+['Dm9','Bbmaj7','Fmaj7','C6']*4+['Dm9','Bbmaj7','Am7']+['Dm9','Bbmaj7','Am7','Bbmaj7','Csus2']+['Fmaj9','Bbmaj7','Fmaj9']
-SECS = [0,0]+[1]*6+[2]*3+[3]*3+[2]*3+[3]*12+[4]*5+[5]*3
-assert len(PROG)==len(SECS)==37
+PROG = ['Fmaj7','Am7','Dm9','Bbmaj7','Fmaj7','Am7','Dm9','C6','Bbmaj7','C6']+['Dm9','Bbmaj7','Fmaj7','C6']*5+['Dm9']+['Dm9','Bbmaj7','Am7','Bbmaj7','Csus2']+['Fmaj9','Bbmaj7','Fmaj9']
+SECS = [0,0]+[1]*6+[2]*5+[3]*3+[2]*3+[3]*12+[4]*5+[5]*3
+assert len(PROG)==len(SECS)==39
 LAST = len(PROG)-1
 music = np.zeros((N, 2))
 for b, name in enumerate(PROG):
@@ -104,7 +104,7 @@ for b, name in enumerate(PROG):
         vel = (1.0 if i % 4 == 0 else 0.72) * (0.9 + 0.2*rng.random())
         add(music, kalimba(mtof(m), bright=0.8+0.1*sec), t0+i*step+rng.normal(0, 0.004), gain=0.07*vel, pan=-0.35+0.7*((v % 4)/3))
     # shaker 8ths
-    if 4 <= b < 34:
+    if 4 <= b < 36:
         for i in range(8):
             add(music, shaker(v=(0.8 if i % 2 else 0.45)), t0+i*BEAT/2+0.012*(i % 2), gain=0.035 if sec < 4 else 0.05, pan=0.35)
     # soft groove for the sandbox section
@@ -113,7 +113,7 @@ for b, name in enumerate(PROG):
             add(music, kick(), t0+i*BEAT, gain=0.16 if i in (0, 2) else 0.09)
             if i in (1, 3): add(music, rim(), t0+i*BEAT, gain=0.05, pan=-0.2)
     # bell sparkle over the genome
-    if b in (11, 12, 13):
+    if b in (13, 14, 15):
         for i, v in enumerate([3, 5, 4, 2]):
             add(music, bell(mtof(tones[v % len(tones)]+24)), t0+i*BEAT+BEAT*0.5, gain=0.018, pan=0.4-0.2*i)
 # final bloom on the logo stamp

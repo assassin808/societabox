@@ -234,6 +234,22 @@ function scene34(ctx,t){
     ctx.save();ctx.globalAlpha=1-drop*.45;ctx.translate(x,yy);ctx.scale(eBack(k),eBack(k));
     const w=measure(ctx,s,50)+70;const p=new Path2D();p.moveTo(-w/2,-38);p.lineTo(w/2-26,-38);p.lineTo(w/2,0);p.lineTo(w/2-26,38);p.lineTo(-w/2,38);p.closePath();ctx.rotate(rr);cutout(ctx,p,PAL.kraft,70+j,.35);
     handText(ctx,s,-12,14,{size:50,weight:700});if(struck>0)inkStroke(ctx,[[-w/2+10,4],[-w/6,-6],[w/6,8],[w/2-30,-4]],{w:7,col:PAL.red,frac:struck,seed:95+j});ctx.restore();});
+  // correlation, not cause
+  {const cv=prog(t,C.corr-.5,.5),cvo=prog(t,C.deeper-.7,.5);
+   if(cv>0&&cvo<1){ctx.save();ctx.globalAlpha=1-cvo;const cx=1440,cy=560;
+    TAGS.forEach(([s,x,y],j)=>{const f=eOut(prog(t,C.corr+j*.12,.5));if(f<=0)return;const x0=x+(x<px?90:-20),y0=y,x1=cx-200,y1=cy-60+j*40;
+      ctx.save();ctx.setLineDash([16,12]);ctx.lineDashOffset=-t*30;ctx.strokeStyle=PAL.blue;ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(lerp(x0,x1,f),lerp(y0,y1,f));ctx.stroke();ctx.restore();});
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(.03);ctx.scale(eBack(cv),eBack(cv));
+    cutout(ctx,tornRect(-200,-170,400,340,601,2.5,18),PAL.white,601,.5);tape(ctx,0,-170,110,32,-.04,602);
+    const cup=new Path2D();cup.moveTo(-55,-110);cup.lineTo(55,-110);cup.lineTo(40,40);cup.lineTo(-40,40);cup.closePath();cutout(ctx,cup,'#f4efe4',603,.3);
+    ctx.fillStyle=PAL.mint;ctx.fillRect(-50,-60,100,34);cutout(ctx,tornRect(-65,-128,130,22,604,1,10),PAL.kraft,604,.2);
+    handText(ctx,'oat',0,-34,{size:30,col:PAL.white,weight:700,wobble:false});
+    handText(ctx,'buys the oat latte',0,112,{size:46,weight:700});ctx.restore();
+    handText(ctx,'correlates',1090,395,{size:58,col:PAL.blue,weight:700,rot:-.04,frac:prog(t,C.corr+.2,.6)});
+    const ck=prog(t,C.cause-.1,.3);if(ck>0){ctx.save();ctx.translate(1010,650);ctx.rotate(-.12);const k=lerp(1.8,1,eOut(ck));ctx.scale(k,k);ctx.globalAlpha*=clamp(ck*2);
+      ctx.strokeStyle=PAL.red;ctx.lineWidth=8;ctx.beginPath();ctx.roundRect(-150,-62,300,120,18);ctx.stroke();
+      ctx.fillStyle=PAL.red;ctx.font=`900 76px ${FONT.serif}`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('≠ cause',0,4);ctx.restore();}
+    ctx.restore();}}
   // one layer deeper
   const dp=prog(t,C.deeper-.3,.8);if(dp>0&&t<C.genome){handText(ctx,'one layer deeper',px,150,{size:70,col:PAL.blue,frac:dp,weight:700});inkStroke(ctx,arcPts(px+10,175,px,360,-30,14),{w:5,col:PAL.blue,frac:dp,seed:81});}
   const lift=prog(t,C.deeper,.4)-prog(t,C.notwho+1.2,.5);
@@ -258,6 +274,8 @@ function scene34(ctx,t){
       ctx.fillStyle=PAL.ink;ctx.beginPath();ctx.moveTo(-34,0);ctx.lineTo(-22,-5);ctx.lineTo(-22,5);ctx.fill();const er=new Path2D();er.rect(190,-14,30,28);cutout(ctx,er,'#e89aa0',153,.3);ctx.restore();
       handText(ctx,'+',ex+70,ey-40,{size:80,col:PAL.red,frac:prog(t,C.editable+.2,.2),weight:700});}
     // portable: postcards with red thread
+    {const ev=prog(t,C.every-.1,.7);if(ev>0){handText(ctx,'every',950,560,{size:72,weight:700,col:PAL.red,frac:ev,rot:-.05});handText(ctx,'scenario',950,640,{size:72,weight:700,col:PAL.red,frac:prog(t,C.every+.2,.7),rot:-.05});
+      const ar=prog(t,C.every+.6,.4);if(ar>0){inkStroke(ctx,arcPts(930,680,1075,760,-24,12),{w:5,col:PAL.red,frac:ar,seed:611});if(ar>=1)arrowHead(ctx,1075,760,.5,20,PAL.red,612);}}}
     const PC=[['cafe','café',C.cafe,1330,810,-.05,0],['nego','negotiation',C.nego,1880,830,.03,2],['evac','evacuation',C.evac,2430,810,-.03,3]];
     PC.forEach(([k,l,tc,x,y,r,gi],i)=>{const a=prog(t,tc-.2,.55);if(a<=0)return;
       const sg=segs[gi];if(sg){const th=prog(t,tc+.2,.5);inkStroke(ctx,arcPts(sg[0]+sg[1]/2,py-214,x,y-150,-40,20),{w:3,col:PAL.red,frac:th,seed:170+i,amp:1.5});
