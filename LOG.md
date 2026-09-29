@@ -4,6 +4,12 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-29: Film v2 (extended)
+
+- The founder prefers v0. v2 keeps all of v0 and inserts a 25 s calibration section in v1's style after the genome scene: dial set to 2.6 → classic studies and the Cognitive Bias Index → tune prompt, inner state or weights until it holds → holds across models.
+- Total 67.5 s. The logo stamp lands on a downbeat at 60 s. Voice sits 11 dB over the music.
+- Player: https://claude.ai/artifact/3kwV6NXWcfVHexDmQmoQSL
+
 ## 2026-09-29: Film v1 (calibration) and v0 archived
 
 - The first film is kept as v0 in `film/v0/`.
