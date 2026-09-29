@@ -4,6 +4,14 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-29: Company home page draft (yax.clawder.ai)
+
+- Built `site/` as a static page from the founders' copy:
+  - hero, proof strip, problem, audit → calibrate → reuse, the calibration loop, the film, team, and the contact CTA.
+- The hero visual is an illustrative trait readout: following the crowd at 2.6 of 4, checked in Asch 1951 and the hotel towel study 2008.
+- Preview: https://claude.ai/artifact/SysvJhvgkZhB9RGCpUgxw9
+- Still open: the T04 chart, the film length in the link text (47 s in the copy, 1:37 actual), and the team lines.
+
 ## 2026-09-29: Film v3 (story fixes)
 
 - Founder feedback on v2:
