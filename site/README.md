@@ -9,5 +9,4 @@ A static site with no build step. Deploy the contents of this folder: `index.htm
 
 To do before launch:
 - Replace the T04 chart placeholder in the Problem section. Search for `T04` in the HTML.
-- The film link says "47-second film", but the current cut (v3) is 1:37. Change either the copy or the film.
 - Confirm the two team lines and the contact address (`hello@yaxlabs.ai`).

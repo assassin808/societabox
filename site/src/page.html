@@ -96,7 +96,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:12px}
 @media (max-width:900px){.problem{grid-template-columns:1fr;gap:32px}}
 
 /* offer */
-.offer{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.offer{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
 .offer article{padding:28px 26px 30px;display:grid;align-content:start;gap:12px;min-width:0}
 .offer article+article{border-left:1px solid var(--line)}
 .offer .n{font:500 13px/1 var(--mono);color:var(--muted)}
@@ -104,6 +104,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:12px}
 .offer .tag{justify-self:start;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 9px;border-radius:4px;background:var(--hl);color:var(--ink)}
 @media (max-width:900px){.offer{grid-template-columns:1fr}.offer article+article{border-left:0;border-top:1px solid var(--line)}}
 
+.lib{margin-top:24px;max-width:44em;color:var(--muted)}
 /* how it works */
 .loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
 .loop li{position:relative;padding-top:52px;min-width:0}
@@ -156,9 +157,8 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
   <nav class="nav wrap" aria-label="Main">
     <a class="logo" href="#top" aria-label="YAX home"><span>Y</span><span>A</span><span>X</span></a>
     <ul>
-      <li><a href="#problem">The problem</a></li>
-      <li><a href="#what">What we do</a></li>
       <li><a href="#how">How it works</a></li>
+      <li><a href="#what">Who it's for</a></li>
       <li><a href="#team">Team</a></li>
     </ul>
     <a class="btn small" href="#contact">Request a sample audit</a>
@@ -173,7 +173,7 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
       <p class="lede">YAX calibrates AI respondents on explicit decision traits, then measures them against classic human experiments, so you know which results to trust.</p>
       <div class="cta">
         <a class="btn" href="#contact">Request a sample audit</a>
-        <button class="link" type="button" data-film><span class="play" aria-hidden="true"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M0 0L12 7L0 14Z" fill="currentColor"/></svg></span>Watch the 47-second film</button>
+        <button class="link" type="button" data-film><span class="play" aria-hidden="true"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M0 0L12 7L0 14Z" fill="currentColor"/></svg></span>Watch the film</button>
       </div>
     </div>
 
@@ -192,10 +192,8 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
         <text x="104" y="150" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="800" font-size="34" fill="var(--ink)">2.6</text>
       </svg>
       <ul class="rows">
-        <li><span>Target set</span><span class="v">2.6 / 4</span></li>
         <li><span>Asch line study (1951)</span><span class="v ok">within range</span></li>
         <li><span>Hotel towel study (2008)</span><span class="v ok">within range</span></li>
-        <li><span>Holds on</span><span class="v">3 of 3 models</span></li>
       </ul>
       <p class="note">Illustrative example. Scored on the Cognitive Bias Index.</p>
     </div>
@@ -227,60 +225,39 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
   </div>
 </section>
 
-<section id="what">
-  <div class="head">
-    <p class="eyebrow">What we do</p>
-    <h2>Start with an audit. Keep what you calibrate.</h2>
-  </div>
-  <div class="offer">
-    <article>
-      <span class="n">01</span>
-      <h3>Audit</h3>
-      <p>We measure how your current synthetic setup behaves against human experiments.</p>
-      <span class="tag">Two weeks · fixed fee</span>
-    </article>
-    <article>
-      <span class="n">02</span>
-      <h3>Calibrate</h3>
-      <p>We set the traits that matter for your decision and backtest on one of your past studies.</p>
-      <span class="tag">Backtested on your data</span>
-    </article>
-    <article>
-      <span class="n">03</span>
-      <h3>Reuse</h3>
-      <p>Every calibrated profile is an asset you can read, edit and carry across studies.</p>
-      <span class="tag">Yours to keep</span>
-    </article>
-  </div>
-</section>
-
 <section id="how">
   <div class="head">
     <p class="eyebrow">How it works</p>
-    <h2>A calibration loop, anchored in human studies.</h2>
+    <h2>Pick a trait. Set a target. Measure it. Tune until it holds, on every model.</h2>
   </div>
   <ol class="loop">
-    <li><h3>Pick a trait</h3><p>An explicit decision trait, such as following the crowd, deference to authority or sensitivity to framing.</p><span class="eg">following the crowd</span></li>
-    <li><h3>Set a target</h3><p>Choose the level on a 0–4 scale that matches the people you need to simulate.</p><span class="eg">target 2.6 / 4</span></li>
-    <li><h3>Measure it</h3><p>Run the respondent through classic human studies and score every answer.</p><span class="eg">Asch 1951 · hotel towel 2008</span></li>
-    <li><h3>Tune until it holds</h3><p>Adjust the prompt, the model's inner state or its weights, then measure again.</p><span class="eg">prompt · inner state · weights</span></li>
+    <li><h3>Pick a trait</h3><p>Following the crowd, deference to authority, sensitivity to framing.</p></li>
+    <li><h3>Set a target</h3><p>A level on a 0–4 scale that matches the people you need.</p></li>
+    <li><h3>Measure it</h3><p>In classic human studies, such as Asch's line test.</p></li>
+    <li><h3>Tune until it holds</h3><p>Through the prompt, the model's inner state or its weights.</p></li>
   </ol>
-  <p class="every"><b>On every model.</b> <span class="chip">open weights</span><span class="chip">commercial APIs</span><span class="chip">your own fine-tunes</span></p>
 </section>
 
-<section id="film-sec" aria-labelledby="film-h">
-  <div class="film">
-    <button class="poster" type="button" data-film aria-label="Play the YAX film">
-      <img src="assets/film-poster.jpg" alt="Still from the YAX film: the YAX logo on paper">
-      <span class="pbtn" aria-hidden="true"><svg width="20" height="24" viewBox="0 0 12 14"><path d="M0 0L12 7L0 14Z" fill="#fff"/></svg></span>
-    </button>
-    <div class="head" style="margin:0">
-      <p class="eyebrow">The film</p>
-      <h2 id="film-h">How people decide, and how agents learn to.</h2>
-      <p>From demographic personas to decision traits: what we calibrate, how we check it, and where it goes next.</p>
-    </div>
+<section id="what">
+  <div class="head">
+    <p class="eyebrow">Who it's for</p>
+    <h2>One calibration service. Two ways in.</h2>
   </div>
+  <div class="offer">
+    <article>
+      <h3>Businesses</h3>
+      <p>Test a message, price or concept on calibrated respondents before it goes out. We start with a sample audit of your current synthetic setup and a backtest on one of your past studies.</p>
+    </article>
+    <article>
+      <h3>Research teams</h3>
+      <p>Pilot a study in hours instead of months, on agents that have passed the human studies you care about.</p>
+    </article>
+  </div>
+  <p class="lib">Every profile we calibrate joins the YAX trait library, checked against 100+ human studies. Each new project starts from traits that are already measured.</p>
 </section>
+
+
+
 
 <section id="team">
   <div class="head">
