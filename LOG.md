@@ -4,14 +4,14 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
-## 2026-09-30: Home page back to the first draft
+## 2026-09-30: Home page cut to four parts
 
-- The founders preferred the first draft, so it is restored with these changes:
-  - the T04 benchmark chart replaces the placeholder;
-  - the proof strip is removed;
-  - contact is xul049@ucsd.edu;
-  - the film link reads "Watch the film";
-  - the Reuse card now says profiles join the YAX trait library, which YAX owns.
+- The founders want the site very concise. It now has:
+  1. one line: "Simulated customers you can check against real human behaviour.";
+  2. the CoBRA CHI 2026 Best Paper, linked to arXiv;
+  3. the film, playing inline;
+  4. a footer with the co-founders and xul049@ucsd.edu.
+- Everything else was dropped.
 
 ## 2026-09-29: Company home page draft (yax.clawder.ai)
 

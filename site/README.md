@@ -1,12 +1,12 @@
 # YAX home page (yax.clawder.ai)
 
-A static site with no build step. Deploy this folder: `index.html` plus `assets/`.
+A static one-page site with no build step. Deploy this folder: `index.html` plus `assets/`.
 
-- `index.html` is the deployable page.
-- `src/page.html` is the same page without the `<html>` and `<head>` wrapper. It is used for the claude.ai preview: https://claude.ai/artifact/SysvJhvgkZhB9RGCpUgxw9
-- Content follows the pitch deck (YAX Deck v11 trial). The benchmark chart uses the deck's HumanStudy-Bench numbers.
-- Assets:
-  - `yax-film.mp4`: 720p cut of `film/v3`;
-  - `film-poster.jpg`;
-  - `xuan.jpg` and `haoyang.jpg`, taken from the deck.
-- Contact: xul049@ucsd.edu.
+The page has four parts:
+1. a one-line statement;
+2. the CoBRA CHI 2026 Best Paper;
+3. the film;
+4. co-founder contact (xul049@ucsd.edu).
+
+- `src/page.html` is the same page without the `<html>` and `<head>` wrapper. It is used for the preview: https://claude.ai/artifact/SysvJhvgkZhB9RGCpUgxw9
+- `assets/yax-film.mp4` is a 720p cut of `film/v3`. `assets/film-poster.jpg` is its logo frame.

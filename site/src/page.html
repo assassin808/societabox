@@ -1,362 +1,112 @@
 <title>YAX</title>
-<meta name="description" content="YAX calibrates AI respondents on explicit decision traits and measures them against classic human experiments, so you know which results to trust.">
+<meta name="description" content="YAX builds simulated customers you can check against real human behaviour.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a lab instrument sheet. Left-aligned copy on a measured grid; one hero readout (the calibration gauge) carries the visual weight. */
+/* Layout: one column, four beats. Statement, paper, film, contact. */
 :root{
   --bg:#f5f6f3; --surface:#ffffff; --ink:#18232d; --muted:#56616b; --line:#d9ddd8;
-  --blue:#2c6aa0; --red:#c8412f; --yellow:#f2c14e; --hl:rgba(242,193,78,.45); --ok:#2d7d57;
-  --tile-ink:#ffffff;
+  --blue:#2c6aa0; --red:#c8412f; --yellow:#f2c14e; --hl:rgba(242,193,78,.45);
   --display:"Fraunces",Georgia,"Times New Roman",serif;
   --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --maxw:1120px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#12181e; --surface:#1a222a; --ink:#e8ecee; --muted:#9aa6b0; --line:#2c3741;
-  --blue:#7fb2e0; --red:#e8705f; --yellow:#f2c14e; --hl:rgba(242,193,78,.28); --ok:#6cc59a; color-scheme:dark}}
+  --blue:#7fb2e0; --red:#e8705f; --hl:rgba(242,193,78,.28); color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12181e; --surface:#1a222a; --ink:#e8ecee; --muted:#9aa6b0; --line:#2c3741;
-  --blue:#7fb2e0; --red:#e8705f; --yellow:#f2c14e; --hl:rgba(242,193,78,.28); --ok:#6cc59a; color-scheme:dark}
+  --blue:#7fb2e0; --red:#e8705f; --hl:rgba(242,193,78,.28); color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);padding-inline:20px;-webkit-font-smoothing:antialiased}
-.wrap{max-width:var(--maxw);margin-inline:auto}
+.wrap{max-width:960px;margin-inline:auto}
 a{color:var(--blue);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:4px}
-h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;margin:0;letter-spacing:-.01em;line-height:1.1}
-h2{font-size:clamp(28px,3.4vw,40px)}
-h3{font-size:21px;font-weight:600;letter-spacing:0}
-p{margin:0}
 .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .mark{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%)}
 
-/* header */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-inline:-20px;padding-inline:20px}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
 .logo{display:flex;gap:4px;text-decoration:none}
-.logo span{display:grid;place-items:center;width:30px;height:34px;font:800 21px/1 var(--display);color:var(--tile-ink);border-radius:3px}
+.logo span{display:grid;place-items:center;width:30px;height:34px;font:800 21px/1 var(--display);color:#fff;border-radius:3px}
 .logo span:nth-child(1){background:#d64a3a;transform:rotate(-4deg)}
 .logo span:nth-child(2){background:var(--yellow);color:#18232d;transform:rotate(3deg)}
 .logo span:nth-child(3){background:#3d7fb3;transform:rotate(-2deg);font-style:italic}
-.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
-.nav ul a{color:var(--ink);text-decoration:none;font-weight:500;font-size:15px}
-.nav ul a:hover{color:var(--blue)}
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 16px/1 var(--body);padding:14px 20px;border-radius:6px;background:var(--ink);color:var(--bg);text-decoration:none;border:0;cursor:pointer}
-.btn:hover{background:var(--blue);color:#fff}
-.btn.small{padding:10px 14px;font-size:14px}
-.link{font-weight:600;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:10px;background:none;border:0;padding:0;font-size:16px;cursor:pointer;font-family:var(--body)}
-.link .play{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center}
-.link:hover{color:var(--blue)}.link:hover .play{border-color:var(--blue)}
-@media (max-width:820px){.nav ul{display:none}}
+header a.contact{font:500 15px var(--body);color:var(--ink);text-decoration:none}
+header a.contact:hover{color:var(--blue)}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:72px 56px}
-.hero h1{font-size:clamp(38px,5.2vw,62px)}
-.hero .lede{font-size:19px;color:var(--muted);max-width:34em;margin-top:22px}
-.hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:22px 28px;margin-top:32px}
-.hero>div{min-width:0}
-@media (max-width:900px){.hero{grid-template-columns:1fr;gap:40px;padding-block:48px 40px}}
+h1{font:800 clamp(38px,6vw,68px)/1.08 var(--display);letter-spacing:-.015em;text-wrap:balance;margin:0;padding-block:72px 56px;max-width:15em}
 
-/* readout card */
-.readout{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px 22px 18px;box-shadow:0 1px 0 var(--line),0 18px 40px -24px rgba(20,30,40,.35)}
-.readout .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.readout .trait{font:600 18px/1.3 var(--body)}
-.readout svg{display:block;width:100%;height:auto;margin-top:6px}
-.rows{list-style:none;padding:0;margin:8px 0 0;border-top:1px solid var(--line)}
-.rows li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
-.rows .v{font:500 13px/1.4 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.rows .v.ok{color:var(--ok)}
-.note{font:400 12px/1.4 var(--mono);color:var(--muted);margin-top:10px}
+.paper{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;padding:20px 24px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.paper>div{min-width:0;flex:1 1 320px}
+.award{font:600 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:9px 11px;border-radius:4px;background:var(--hl);color:var(--ink);flex:none}
+.paper p{margin:0}
+.paper .title{font:600 19px/1.35 var(--display);color:var(--ink);text-decoration:none}
+.paper .title:hover{color:var(--blue)}
+.paper .meta{color:var(--muted);font-size:15px;margin-top:4px}
 
-/* proof strip */
-.proof{border-block:1px solid var(--line);margin-inline:-20px;padding-inline:20px;background:var(--surface)}
-.proof ul{list-style:none;margin:0 auto;padding:18px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;max-width:var(--maxw)}
-.proof li{font:500 14px/1.4 var(--mono);color:var(--ink);display:flex;align-items:center;gap:10px}
-.proof li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow);flex:none}
+.film{margin-block:40px 96px}
+.film video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:10px;background:#000;border:1px solid var(--line)}
 
-section{padding-block:88px}
-section+section{border-top:1px solid var(--line)}
-.head{display:grid;gap:14px;max-width:44em;margin-bottom:40px}
-.head p{color:var(--muted);font-size:18px}
-
-/* problem */
-.problem{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
-.problem>*{min-width:0}
-.problem .big{font:600 clamp(22px,2.4vw,28px)/1.35 var(--display);letter-spacing:-.005em}
-.traits{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-.traits span{font:500 13px/1 var(--mono);padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
-figure{margin:0}
-.fig{border:1.5px dashed var(--line);border-radius:10px;aspect-ratio:16/10;max-width:100%;display:grid;place-items:center;text-align:center;padding:24px;background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--line) 35%,transparent) 14px 15px)}
-.fig span{font:500 13px/1.5 var(--mono);color:var(--muted);background:var(--bg);padding:8px 12px;border-radius:6px}
-figcaption{font-size:14px;color:var(--muted);margin-top:12px}
-@media (max-width:900px){.problem{grid-template-columns:1fr;gap:32px}}
-
-/* offer */
-.offer{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
-.offer article{padding:28px 26px 30px;display:grid;align-content:start;gap:12px;min-width:0}
-.offer article+article{border-left:1px solid var(--line)}
-.offer .n{font:500 13px/1 var(--mono);color:var(--muted)}
-.offer p{color:var(--muted);font-size:16px}
-.offer .tag{justify-self:start;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 9px;border-radius:4px;background:var(--hl);color:var(--ink)}
-@media (max-width:900px){.offer{grid-template-columns:1fr}.offer article+article{border-left:0;border-top:1px solid var(--line)}}
-
-.chart{display:grid;gap:2px;padding:24px 24px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
-.row{display:grid;grid-template-columns:120px 1fr 132px;align-items:center;gap:16px;padding-block:10px}
-.row>*{min-width:0}
-.row .name{font-weight:600;font-size:16px}
-.track{position:relative;height:24px}
-.track::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px dashed var(--line)}
-.mid{position:absolute;left:50%;top:-8px;bottom:-8px;width:2px;margin-left:-1px;background:var(--ink)}
-.bar{position:absolute;top:5px;height:14px;background:var(--red);border-radius:2px}
-.val{font:500 13px/1.2 var(--mono);color:var(--red);font-variant-numeric:tabular-nums}
-.axis{display:grid;grid-template-columns:120px 1fr 132px;gap:16px}
-.ticks{position:relative;height:34px;font:400 11px/1.3 var(--mono);color:var(--muted)}
-.ticks span{position:absolute;top:4px;transform:translateX(-50%);white-space:nowrap}
-.ticks span.l{transform:none}
-.ticks b{font-weight:500;color:var(--ink)}
-@media (max-width:560px){.row,.axis{grid-template-columns:1fr auto;gap:6px 12px}.row .track{grid-column:1 / -1}.axis>span{display:none}.axis .ticks{grid-column:1 / -1}.ticks span.l{display:none}}
-/* how it works */
-.loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
-.loop li{position:relative;padding-top:52px;min-width:0}
-.loop li::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font:500 14px/1 var(--mono)}
-.loop li:not(:last-child)::after{content:"";position:absolute;top:18px;left:48px;right:-4px;border-top:1.5px dashed var(--line)}
-.loop h3{margin-bottom:8px}
-.loop p{color:var(--muted);font-size:15px}
-.loop .eg{display:block;margin-top:10px;font:400 13px/1.5 var(--mono);color:var(--ink)}
-.every{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;font-size:16px}
-.every b{font-weight:600}
-.every .chip{font:500 13px/1 var(--mono);padding:8px 10px;border-radius:4px;border:1px solid var(--line);background:var(--surface)}
-@media (max-width:900px){.loop{grid-template-columns:1fr 1fr;row-gap:36px}.loop li::after{display:none}}
-@media (max-width:520px){.loop{grid-template-columns:1fr}}
-
-/* film */
-.film{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}
-.film>*{min-width:0}
-.poster{position:relative;display:block;width:100%;aspect-ratio:16/9;max-width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line);padding:0;cursor:pointer;background:var(--surface)}
-.poster img,.poster video{width:100%;height:100%;object-fit:cover;display:block}
-.poster .pbtn{position:absolute;right:18px;bottom:18px;width:64px;height:64px;border-radius:50%;background:#d64a3a;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.3)}
-@media (max-width:900px){.film{grid-template-columns:1fr}}
-
-/* team */
-.team{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.person{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start;padding:24px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-.person>div{min-width:0}
-.avatar{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font:800 22px/1 var(--display);color:#fff}
-.person .aff{font:500 13px/1.4 var(--mono);color:var(--muted);margin-top:4px}
-.person p{margin-top:10px;font-size:16px;color:var(--muted)}
-@media (max-width:760px){.team{grid-template-columns:1fr}}
-
-/* footer CTA */
-.cta-band{padding-block:88px;text-align:left}
-.cta-band h2{font-size:clamp(30px,4vw,48px);max-width:18em}
-.mail{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:28px}
-.addr{font:500 clamp(18px,2.4vw,24px)/1 var(--mono);user-select:all;padding:14px 16px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none}
-.copy{font:600 14px/1 var(--body);padding:14px 16px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+footer{border-top:1px solid var(--line);padding-block:40px 56px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+footer>*{min-width:0}
+.founders{display:grid;gap:6px}
+.founders p{margin:0}
+.founders b{font-weight:600}
+.founders span{color:var(--muted)}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.addr{font:500 18px/1 var(--mono);color:var(--ink);text-decoration:none;user-select:all;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.addr:hover{border-color:var(--ink)}
+.copy{font:600 14px/1 var(--body);padding:12px 14px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
 .copy:hover{border-color:var(--ink)}
-footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
-
-/* film dialog */
-dialog{border:0;padding:0;background:transparent;max-width:min(1100px,calc(100vw - 32px));width:100%}
-dialog::backdrop{background:rgba(10,14,18,.8)}
-dialog video{width:100%;display:block;border-radius:8px;background:#000}
-dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:0;color:#fff;font:600 15px var(--body);cursor:pointer;padding:8px}
+.fine{grid-column:1 / -1;font-size:13px;color:var(--muted);margin:0}
+@media (max-width:640px){footer{grid-template-columns:1fr}h1{padding-block:48px 40px}}
 </style>
 
 <div class="wrap">
-<header>
-  <nav class="nav wrap" aria-label="Main">
-    <a class="logo" href="#top" aria-label="YAX home"><span>Y</span><span>A</span><span>X</span></a>
-    <ul>
-      <li><a href="#problem">The problem</a></li>
-      <li><a href="#what">What we do</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#team">Team</a></li>
-    </ul>
-    <a class="btn small" href="#contact">Request a sample audit</a>
-  </nav>
-</header>
+  <header>
+    <a class="logo" href="#" aria-label="YAX"><span>Y</span><span>A</span><span>X</span></a>
+    <a class="contact" href="#contact">Contact</a>
+  </header>
 
-<main id="top">
-  <div class="hero">
-    <div>
-      <p class="eyebrow">Calibrated AI respondents</p>
-      <h1 style="margin-top:16px">Simulated customers you can <span class="mark">check against real human behaviour.</span></h1>
-      <p class="lede">YAX calibrates AI respondents on explicit decision traits, then measures them against classic human experiments, so you know which results to trust.</p>
-      <div class="cta">
-        <a class="btn" href="#contact">Request a sample audit</a>
-        <button class="link" type="button" data-film><span class="play" aria-hidden="true"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M0 0L12 7L0 14Z" fill="currentColor"/></svg></span>Watch the film</button>
-      </div>
-    </div>
+  <main>
+    <h1>Simulated customers you can <span class="mark">check against real human behaviour.</span></h1>
 
-    <div class="readout" aria-label="Example calibration readout">
-      <div class="top"><span class="eyebrow">Trait readout</span><span class="eyebrow">Scale 0–4</span></div>
-      <p class="trait" style="margin-top:10px">Following the crowd <span style="color:var(--muted);font-weight:400">(social proof)</span></p>
-      <svg viewBox="0 -8 320 190" role="img" aria-label="Gauge from 0 to 4. Target 2.6, measured 2.6.">
-        <path d="M30 160 A130 130 0 0 1 290 160" fill="none" stroke="var(--line)" stroke-width="14" stroke-linecap="round"/>
-        <path d="M30 160 A130 130 0 0 1 219 44.2" fill="none" stroke="var(--blue)" stroke-width="14" stroke-linecap="round" opacity=".85"/>
-        <g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--muted)" text-anchor="middle">
-          <text x="30" y="178">0</text><text x="48" y="52">1</text><text x="160" y="6">2</text><text x="272" y="52">3</text><text x="290" y="178">4</text>
-        </g>
-        <g transform="translate(227 26) rotate(27)"><polygon points="0,9 -7,-6 7,-6" fill="var(--red)"/></g>
-        <line x1="160" y1="160" x2="201" y2="80" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="160" cy="160" r="8" fill="var(--ink)"/>
-        <text x="104" y="150" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="800" font-size="34" fill="var(--ink)">2.6</text>
-      </svg>
-      <ul class="rows">
-        <li><span>Target set</span><span class="v">2.6 / 4</span></li>
-        <li><span>Asch line study (1951)</span><span class="v ok">within range</span></li>
-        <li><span>Hotel towel study (2008)</span><span class="v ok">within range</span></li>
-        <li><span>Holds on</span><span class="v">3 of 3 models</span></li>
-      </ul>
-      <p class="note">Illustrative example. Scored on the Cognitive Bias Index.</p>
-    </div>
-  </div>
-</main>
-</div>
-
-
-<div class="wrap">
-<section id="problem">
-  <div class="problem">
-    <div>
-      <p class="eyebrow">The problem</p>
-      <p class="big" style="margin-top:16px">Synthetic respondents look plausible. They drift from real people exactly where messaging matters.</p>
-      <div class="traits" aria-label="Where drift shows up"><span>social proof</span><span>authority</span><span>framing</span></div>
-    </div>
-    <figure>
-      <div class="chart" role="img" aria-label="Effect size of off-the-shelf AI personas relative to what people did. Framing 4.8 times too strong. Stereotyping 4.2 times too strong. Fairness and trust effects disappear.">
-        <div class="row"><span class="name">Framing</span><div class="track"><span class="mid"></span><span class="bar" style="left:50%;width:45.3%"></span></div><span class="val">4.8× too strong</span></div>
-        <div class="row"><span class="name">Stereotyping</span><div class="track"><span class="mid"></span><span class="bar" style="left:50%;width:41.4%"></span></div><span class="val">4.2× too strong</span></div>
-        <div class="row"><span class="name">Fairness</span><div class="track"><span class="mid"></span><span class="bar" style="left:0;width:50%"></span></div><span class="val">disappears</span></div>
-        <div class="row"><span class="name">Trust</span><div class="track"><span class="mid"></span><span class="bar" style="left:0;width:50%"></span></div><span class="val">disappears</span></div>
-        <div class="axis" aria-hidden="true"><span></span><div class="ticks"><span class="l" style="left:0">no effect</span><span style="left:50%"><b>what people did</b></span><span style="left:70%">2×</span><span style="left:90%">4×</span></div><span></span></div>
-      </div>
-      <figcaption>HumanStudy-Bench (YAX): off-the-shelf personas (demographics plus a backstory, a leading frontier model) on a filtered set of classic studies. Median effect per study, relative to what people did; right half on a log scale.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="what">
-  <div class="head">
-    <p class="eyebrow">What we do</p>
-    <h2>Start with an audit. Keep what you calibrate.</h2>
-  </div>
-  <div class="offer">
-    <article>
-      <span class="n">01</span>
-      <h3>Audit</h3>
-      <p>We measure how your current synthetic setup behaves against human experiments.</p>
-      <span class="tag">Two weeks · fixed fee</span>
-    </article>
-    <article>
-      <span class="n">02</span>
-      <h3>Calibrate</h3>
-      <p>We set the traits that matter for your decision and backtest on one of your past studies.</p>
-      <span class="tag">Backtested on your data</span>
-    </article>
-    <article>
-      <span class="n">03</span>
-      <h3>Reuse</h3>
-      <p>Every calibrated profile joins the YAX trait library, so each new study starts from traits already measured against human experiments.</p>
-      <span class="tag">Compounds with every study</span>
-    </article>
-  </div>
-</section>
-
-<section id="how">
-  <div class="head">
-    <p class="eyebrow">How it works</p>
-    <h2>A calibration loop, anchored in human studies.</h2>
-  </div>
-  <ol class="loop">
-    <li><h3>Pick a trait</h3><p>An explicit decision trait, such as following the crowd, deference to authority or sensitivity to framing.</p><span class="eg">following the crowd</span></li>
-    <li><h3>Set a target</h3><p>Choose the level on a 0–4 scale that matches the people you need to simulate.</p><span class="eg">target 2.6 / 4</span></li>
-    <li><h3>Measure it</h3><p>Run the respondent through classic human studies and score every answer.</p><span class="eg">Asch 1951 · hotel towel 2008</span></li>
-    <li><h3>Tune until it holds</h3><p>Adjust the prompt, the model's inner state or its weights, then measure again.</p><span class="eg">prompt · inner state · weights</span></li>
-  </ol>
-  <p class="every"><b>On every model.</b> <span class="chip">open weights</span><span class="chip">commercial APIs</span><span class="chip">your own fine-tunes</span></p>
-</section>
-
-<section id="film-sec" aria-labelledby="film-h">
-  <div class="film">
-    <button class="poster" type="button" data-film aria-label="Play the YAX film">
-      <img src="assets/film-poster.jpg" alt="Still from the YAX film: the YAX logo on paper">
-      <span class="pbtn" aria-hidden="true"><svg width="20" height="24" viewBox="0 0 12 14"><path d="M0 0L12 7L0 14Z" fill="#fff"/></svg></span>
-    </button>
-    <div class="head" style="margin:0">
-      <p class="eyebrow">The film</p>
-      <h2 id="film-h">How people decide, and how agents learn to.</h2>
-      <p>From demographic personas to decision traits: what we calibrate, how we check it, and where it goes next.</p>
-    </div>
-  </div>
-</section>
-
-<section id="team">
-  <div class="head">
-    <p class="eyebrow">Team</p>
-    <h2>Built by the researchers behind the method.</h2>
-  </div>
-  <div class="team">
-    <div class="person">
-      <div class="avatar" style="background:#3d7fb3" aria-hidden="true">XL</div>
+    <div class="paper">
+      <span class="award">CHI 2026 Best Paper</span>
       <div>
-        <h3>Xuan Liu</h3>
-        <p class="aff">Co-founder · UC San Diego</p>
-        <p>PhD researcher and first author of CoBRA, the CHI 2026 Best Paper on programmable cognitive bias in AI agents.</p>
+        <p><a class="title" href="https://arxiv.org/abs/2509.13588">CoBRA: Programming Cognitive Bias in Social Agents Using Classic Social Science Experiments</a></p>
+        <p class="meta">The research behind YAX, by Xuan Liu, Haoyang Shang and co-authors.</p>
       </div>
     </div>
-    <div class="person">
-      <div class="avatar" style="background:#d64a3a" aria-hidden="true">HS</div>
-      <div>
-        <h3>Haoyang Shang</h3>
-        <p class="aff">Co-founder · University of British Columbia</p>
-        <p>MASc researcher building LLM simulations of social decisions, from persona compatibility to long-horizon outcomes.</p>
-      </div>
+
+    <div class="film">
+      <video controls playsinline preload="metadata" poster="assets/film-poster.jpg" aria-label="The YAX film">
+        <source src="assets/yax-film.mp4" type="video/mp4">
+      </video>
     </div>
-  </div>
-</section>
+  </main>
 
-<section id="contact" class="cta-band">
-  <p class="eyebrow">Sample audit</p>
-  <h2 style="margin-top:16px">Have a message or concept decision this quarter?</h2>
-  <div class="mail">
-    <a class="addr" id="addr" href="mailto:xul049@ucsd.edu?subject=YAX%20sample%20audit">xul049@ucsd.edu</a>
-    <button class="copy" type="button" id="copy">Copy address</button>
-  </div>
-</section>
-
-<footer>
-  <span>© 2026 YAX</span>
-  <span>Calibrated agents prepare a human study. They do not replace one.</span>
-</footer>
+  <footer id="contact">
+    <div class="founders">
+      <p class="eyebrow" style="margin-bottom:10px">Co-founders</p>
+      <p><b>Xuan Liu</b> <span>· UC San Diego</span></p>
+      <p><b>Haoyang Shang</b> <span>· University of British Columbia</span></p>
+    </div>
+    <div class="mail">
+      <a class="addr" id="addr" href="mailto:xul049@ucsd.edu">xul049@ucsd.edu</a>
+      <button class="copy" type="button" id="copy">Copy</button>
+    </div>
+    <p class="fine">© 2026 YAX</p>
+  </footer>
 </div>
-
-<dialog id="filmdlg" aria-label="YAX film">
-  <button class="close" type="button" id="closefilm">Close ✕</button>
-  <video id="filmvid" controls playsinline preload="none" poster="assets/film-poster.jpg">
-    <source src="assets/yax-film.mp4" type="video/mp4">
-  </video>
-</dialog>
 
 <script>
 (()=>{
-  const dlg=document.getElementById('filmdlg'),vid=document.getElementById('filmvid');
-  document.querySelectorAll('[data-film]').forEach(b=>b.addEventListener('click',()=>{
-    if(dlg.showModal){dlg.showModal();}else{dlg.setAttribute('open','');}
-    const p=vid.play();if(p&&p.catch)p.catch(()=>{});
-  }));
-  const close=()=>{vid.pause();dlg.close?dlg.close():dlg.removeAttribute('open');};
-  document.getElementById('closefilm').addEventListener('click',close);
-  dlg.addEventListener('click',e=>{if(e.target===dlg)close();});
-  dlg.addEventListener('close',()=>vid.pause());
   const btn=document.getElementById('copy'),addr=document.getElementById('addr');
   btn.addEventListener('click',()=>{
-    const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy address',1800);};
-    const sel=()=>{const r=document.createRange();r.selectNodeContents(addr);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected. Press Ctrl+C';};
+    const done=()=>{btn.textContent='Copied';setTimeout(()=>{btn.textContent='Copy';},1800);};
+    const sel=()=>{const r=document.createRange();r.selectNodeContents(addr);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Press Ctrl+C';};
     try{navigator.clipboard.writeText('xul049@ucsd.edu').then(done,sel);}catch(e){sel();}
   });
 })();
