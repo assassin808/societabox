@@ -15,7 +15,8 @@ The page has four parts:
 
 ## Deploy on Vercel
 
-1. In Vercel, choose Add New → Project and import `assassin808/societabox`.
-2. Set Root Directory to `site`, Framework Preset to Other, and leave the build command empty.
-3. Under Settings → Git, set the production branch to the branch that holds this folder (currently `claude/gracious-cori-ditn0v`), or merge it into `main`.
-4. Under Settings → Domains, add `yax.clawder.ai`. At your DNS provider, add a CNAME record for `yax` pointing to `cname.vercel-dns.com`.
+- Live at https://yax.clawder.ai (also https://yax-home.vercel.app).
+- Vercel project `yax-home`: `prj_5klpRlAQtkPl5ZDDAWIGo8qUbTHl`, Root Directory `site`, no framework and no build step.
+- The first production deploy is `dpl_1xov6ThNdCUbtj8rptWjGdt145Gy`, from branch `claude/gracious-cori-ditn0v`.
+- The domain `yax.clawder.ai` is attached to the project and verified. `clawder.ai` is already on this Vercel account.
+- To publish a change, push to the branch, then create a production deployment of that branch (Vercel dashboard → Deployments → Redeploy, or ask Claude). Pushes to a non-production branch only create preview deployments.

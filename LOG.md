@@ -4,6 +4,13 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
+## 2026-09-30: Home page live on yax.clawder.ai
+
+- Deployed `site/` to Vercel through the Vercel connector:
+  - project `yax-home`, Root Directory `site`;
+  - production deployment from `claude/gracious-cori-ditn0v`;
+  - `yax.clawder.ai` added and verified; the fallback URL is yax-home.vercel.app.
+
 ## 2026-09-30: Home page, toy-shelf version
 
 - New headline: "We calibrate AI agents to behave like humans."
