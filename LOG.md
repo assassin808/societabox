@@ -4,18 +4,16 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
-## 2026-09-30: Home page rebuilt from Deck v11
+## 2026-09-30: Home page, original style with Deck v11 content
 
-- Rebuilt `site/` around the new pitch deck. The page runs in this order:
-  - hero: "Ask 'what if?' about people, before you act", with an illustrative answer card for a 10% price rise;
-  - the problem: consultants, surveys, simulators;
-  - the benchmark chart: personas miss 83%, framing 4.8×, stereotyping 4.2×, fairness and trust disappear;
-  - one layer deeper;
-  - the method, with the CoBRA >0.96 transfer result;
-  - offers: audit and what-if study, with the trait library owned by YAX;
-  - team with photos, then contact.
-- Removed the proof strip (CHI Best Paper, IRIDeS, 10+ universities) at the founders' request.
-- Contact changed to xul049@ucsd.edu.
+- Founders want the original site style kept. The report-style rebuild was reverted.
+- Added from the deck:
+  - the benchmark chart in The problem: personas miss 83%, framing 4.8×, stereotyping 4.2×, fairness and trust disappear;
+  - "Others model who people are. We model how they decide." as the How it works headline;
+  - the CoBRA >0.96 transfer result;
+  - offers: Audit and What-if study, with the trait library owned by YAX;
+  - team photos and deck lines.
+- Removed the proof strip. Contact is xul049@ucsd.edu. The film link reads "Watch the film".
 
 ## 2026-09-29: Company home page draft (yax.clawder.ai)
 
