@@ -96,7 +96,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:12px}
 @media (max-width:900px){.problem{grid-template-columns:1fr;gap:32px}}
 
 /* offer */
-.offer{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.offer{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
 .offer article{padding:28px 26px 30px;display:grid;align-content:start;gap:12px;min-width:0}
 .offer article+article{border-left:1px solid var(--line)}
 .offer .n{font:500 13px/1 var(--mono);color:var(--muted)}
@@ -104,8 +104,6 @@ figcaption{font-size:14px;color:var(--muted);margin-top:12px}
 .offer .tag{justify-self:start;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 9px;border-radius:4px;background:var(--hl);color:var(--ink)}
 @media (max-width:900px){.offer{grid-template-columns:1fr}.offer article+article{border-left:0;border-top:1px solid var(--line)}}
 
-.lib{margin-top:24px;max-width:44em;color:var(--muted)}
-.side{margin-top:20px;color:var(--muted);max-width:30em}
 .chart{display:grid;gap:2px;padding:24px 24px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
 .row{display:grid;grid-template-columns:120px 1fr 132px;align-items:center;gap:16px;padding-block:10px}
 .row>*{min-width:0}
@@ -121,13 +119,6 @@ figcaption{font-size:14px;color:var(--muted);margin-top:12px}
 .ticks span.l{transform:none}
 .ticks b{font-weight:500;color:var(--ink)}
 @media (max-width:560px){.row,.axis{grid-template-columns:1fr auto;gap:6px 12px}.row .track{grid-column:1 / -1}.axis>span{display:none}.axis .ticks{grid-column:1 / -1}.ticks span.l{display:none}}
-.transfer{margin-top:48px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;padding:28px 30px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-.transfer>*{min-width:0}
-.transfer .num{font:800 clamp(52px,6vw,76px)/1 var(--display);color:var(--blue);font-variant-numeric:tabular-nums}
-.transfer .t{font:600 20px/1.3 var(--display);margin-bottom:8px}
-.transfer div p:not(.t){color:var(--muted);font-size:16px}
-@media (max-width:640px){.transfer{grid-template-columns:1fr;gap:12px}}
-img.avatar{object-fit:cover;display:block}
 /* how it works */
 .loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
 .loop li{position:relative;padding-top:52px;min-width:0}
@@ -180,9 +171,9 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
   <nav class="nav wrap" aria-label="Main">
     <a class="logo" href="#top" aria-label="YAX home"><span>Y</span><span>A</span><span>X</span></a>
     <ul>
-      <li><a href="#problem">Evidence</a></li>
+      <li><a href="#problem">The problem</a></li>
+      <li><a href="#what">What we do</a></li>
       <li><a href="#how">How it works</a></li>
-      <li><a href="#what">Work with us</a></li>
       <li><a href="#team">Team</a></li>
     </ul>
     <a class="btn small" href="#contact">Request a sample audit</a>
@@ -192,7 +183,7 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
 <main id="top">
   <div class="hero">
     <div>
-      <p class="eyebrow">Ask “what if?” about people, before you act</p>
+      <p class="eyebrow">Calibrated AI respondents</p>
       <h1 style="margin-top:16px">Simulated customers you can <span class="mark">check against real human behaviour.</span></h1>
       <p class="lede">YAX calibrates AI respondents on explicit decision traits, then measures them against classic human experiments, so you know which results to trust.</p>
       <div class="cta">
@@ -216,8 +207,10 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
         <text x="104" y="150" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="800" font-size="34" fill="var(--ink)">2.6</text>
       </svg>
       <ul class="rows">
+        <li><span>Target set</span><span class="v">2.6 / 4</span></li>
         <li><span>Asch line study (1951)</span><span class="v ok">within range</span></li>
         <li><span>Hotel towel study (2008)</span><span class="v ok">within range</span></li>
+        <li><span>Holds on</span><span class="v">3 of 3 models</span></li>
       </ul>
       <p class="note">Illustrative example. Scored on the Cognitive Bias Index.</p>
     </div>
@@ -225,13 +218,14 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
 </main>
 </div>
 
+
 <div class="wrap">
 <section id="problem">
   <div class="problem">
     <div>
       <p class="eyebrow">The problem</p>
-      <p class="big" style="margin-top:16px">Synthetic respondents look plausible. On our benchmark, today’s AI personas miss real human behaviour <span class="mark">83% of the time.</span></p>
-      <p class="side">Big decisions are bets on people, and you get one take. Consultants are slow, surveys capture what people say rather than do, and simulators are fast but not human.</p>
+      <p class="big" style="margin-top:16px">Synthetic respondents look plausible. They drift from real people exactly where messaging matters.</p>
+      <div class="traits" aria-label="Where drift shows up"><span>social proof</span><span>authority</span><span>framing</span></div>
     </div>
     <figure>
       <div class="chart" role="img" aria-label="Effect size of off-the-shelf AI personas relative to what people did. Framing 4.8 times too strong. Stereotyping 4.2 times too strong. Fairness and trust effects disappear.">
@@ -246,49 +240,60 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
   </div>
 </section>
 
-<section id="how">
-  <div class="head">
-    <p class="eyebrow">How it works</p>
-    <h2>Others model who people are. We model how they decide.</h2>
-    <p>Demographics, surveys and past behaviour are correlations. Decision traits are the driver you can change, and every trait is measured against classic human studies.</p>
-  </div>
-  <ol class="loop">
-    <li><h3>Pick a trait</h3><p>Following the crowd, framing, loss aversion, trust.</p></li>
-    <li><h3>Set a target</h3><p>A level on a 0–4 scale, fitted to your customers’ past decisions.</p></li>
-    <li><h3>Measure it</h3><p>In classic human studies, such as Asch's line test.</p></li>
-    <li><h3>Tune until it holds</h3><p>Through the prompt or the model's inner state, on every model.</p></li>
-  </ol>
-  <div class="transfer">
-    <p class="num">&gt;0.96</p>
-    <div>
-      <p class="t">Tuned on one experiment, it carried to a new one.</p>
-      <p>We set framing on an insurance choice. On a dilemma it never saw, the effect rose in step, in all 10 personas. Rank correlation between setting and effect, from <a href="https://arxiv.org/abs/2509.13588">CoBRA</a>.</p>
-    </div>
-  </div>
-</section>
-
 <section id="what">
   <div class="head">
-    <p class="eyebrow">Work with us</p>
-    <h2>Start with an audit. Then ask your what-if.</h2>
+    <p class="eyebrow">What we do</p>
+    <h2>Start with an audit. Keep what you calibrate.</h2>
   </div>
   <div class="offer">
     <article>
-      <span class="n">Audit</span>
-      <h3>Check your current synthetic setup</h3>
-      <p>We run your personas or synthetic panel through human-behaviour studies and show where they drift from real people.</p>
+      <span class="n">01</span>
+      <h3>Audit</h3>
+      <p>We measure how your current synthetic setup behaves against human experiments.</p>
+      <span class="tag">Two weeks · fixed fee</span>
     </article>
     <article>
-      <span class="n">What-if study</span>
-      <h3>“What if we raise our price 10%?”</h3>
-      <p>We fit your customers’ traits from past decisions, run each option and stress-test the people. You see risk and upside by segment, and the trait driving each result.</p>
+      <span class="n">02</span>
+      <h3>Calibrate</h3>
+      <p>We set the traits that matter for your decision and backtest on one of your past studies.</p>
+      <span class="tag">Backtested on your data</span>
+    </article>
+    <article>
+      <span class="n">03</span>
+      <h3>Reuse</h3>
+      <p>Every calibrated profile joins the YAX trait library, so each new study starts from traits already measured against human experiments.</p>
+      <span class="tag">Compounds with every study</span>
     </article>
   </div>
-  <p class="lib">Every project adds calibrated traits to the YAX trait library. Your data only tunes your own scenario.</p>
 </section>
 
+<section id="how">
+  <div class="head">
+    <p class="eyebrow">How it works</p>
+    <h2>A calibration loop, anchored in human studies.</h2>
+  </div>
+  <ol class="loop">
+    <li><h3>Pick a trait</h3><p>An explicit decision trait, such as following the crowd, deference to authority or sensitivity to framing.</p><span class="eg">following the crowd</span></li>
+    <li><h3>Set a target</h3><p>Choose the level on a 0–4 scale that matches the people you need to simulate.</p><span class="eg">target 2.6 / 4</span></li>
+    <li><h3>Measure it</h3><p>Run the respondent through classic human studies and score every answer.</p><span class="eg">Asch 1951 · hotel towel 2008</span></li>
+    <li><h3>Tune until it holds</h3><p>Adjust the prompt, the model's inner state or its weights, then measure again.</p><span class="eg">prompt · inner state · weights</span></li>
+  </ol>
+  <p class="every"><b>On every model.</b> <span class="chip">open weights</span><span class="chip">commercial APIs</span><span class="chip">your own fine-tunes</span></p>
+</section>
 
-
+<section id="film-sec" aria-labelledby="film-h">
+  <div class="film">
+    <button class="poster" type="button" data-film aria-label="Play the YAX film">
+      <img src="assets/film-poster.jpg" alt="Still from the YAX film: the YAX logo on paper">
+      <span class="pbtn" aria-hidden="true"><svg width="20" height="24" viewBox="0 0 12 14"><path d="M0 0L12 7L0 14Z" fill="#fff"/></svg></span>
+    </button>
+    <div class="head" style="margin:0">
+      <p class="eyebrow">The film</p>
+      <h2 id="film-h">How people decide, and how agents learn to.</h2>
+      <p>From demographic personas to decision traits: what we calibrate, how we check it, and where it goes next.</p>
+    </div>
+  </div>
+</section>
 
 <section id="team">
   <div class="head">
@@ -297,19 +302,19 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
   </div>
   <div class="team">
     <div class="person">
-      <img class="avatar" src="assets/xuan.jpg" alt="Portrait of Xuan Liu" width="64" height="64">
+      <div class="avatar" style="background:#3d7fb3" aria-hidden="true">XL</div>
       <div>
         <h3>Xuan Liu</h3>
-        <p class="aff">Co-founder · PhD candidate, UC San Diego</p>
-        <p>First author of CoBRA. Leads research and product.</p>
+        <p class="aff">Co-founder · UC San Diego</p>
+        <p>PhD researcher and first author of CoBRA, the CHI 2026 Best Paper on programmable cognitive bias in AI agents.</p>
       </div>
     </div>
     <div class="person">
-      <img class="avatar" src="assets/haoyang.jpg" alt="Portrait of Haoyang Shang" width="64" height="64">
+      <div class="avatar" style="background:#d64a3a" aria-hidden="true">HS</div>
       <div>
         <h3>Haoyang Shang</h3>
-        <p class="aff">Co-founder · MASc, University of British Columbia</p>
-        <p>Co-author of CoBRA. Leads customers.</p>
+        <p class="aff">Co-founder · University of British Columbia</p>
+        <p>MASc researcher building LLM simulations of social decisions, from persona compatibility to long-horizon outcomes.</p>
       </div>
     </div>
   </div>
@@ -317,7 +322,7 @@ dialog .close{position:absolute;top:-44px;right:0;background:transparent;border:
 
 <section id="contact" class="cta-band">
   <p class="eyebrow">Sample audit</p>
-  <h2 style="margin-top:16px">Have a message, price or concept decision this quarter?</h2>
+  <h2 style="margin-top:16px">Have a message or concept decision this quarter?</h2>
   <div class="mail">
     <a class="addr" id="addr" href="mailto:xul049@ucsd.edu?subject=YAX%20sample%20audit">xul049@ucsd.edu</a>
     <button class="copy" type="button" id="copy">Copy address</button>

@@ -4,16 +4,14 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
-## 2026-09-30: Home page, original style with Deck v11 content
+## 2026-09-30: Home page back to the first draft
 
-- Founders want the original site style kept. The report-style rebuild was reverted.
-- Added from the deck:
-  - the benchmark chart in The problem: personas miss 83%, framing 4.8×, stereotyping 4.2×, fairness and trust disappear;
-  - "Others model who people are. We model how they decide." as the How it works headline;
-  - the CoBRA >0.96 transfer result;
-  - offers: Audit and What-if study, with the trait library owned by YAX;
-  - team photos and deck lines.
-- Removed the proof strip. Contact is xul049@ucsd.edu. The film link reads "Watch the film".
+- The founders preferred the first draft, so it is restored with these changes:
+  - the T04 benchmark chart replaces the placeholder;
+  - the proof strip is removed;
+  - contact is xul049@ucsd.edu;
+  - the film link reads "Watch the film";
+  - the Reuse card now says profiles join the YAX trait library, which YAX owns.
 
 ## 2026-09-29: Company home page draft (yax.clawder.ai)
 
