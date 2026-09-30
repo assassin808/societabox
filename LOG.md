@@ -4,14 +4,15 @@ Newest entries first. Format: `## YYYY-MM-DD: title`, then what happened, what w
 
 ---
 
-## 2026-09-30: Home page cut to four parts
+## 2026-09-30: Home page, toy-shelf version
 
-- The founders want the site very concise. It now has:
-  1. one line: "Simulated customers you can check against real human behaviour.";
-  2. the CoBRA CHI 2026 Best Paper, linked to arXiv;
-  3. the film, playing inline;
-  4. a footer with the co-founders and xul049@ucsd.edu.
-- Everything else was dropped.
+- New headline: "We calibrate AI agents to behave like humans."
+- The look follows the founders' Toy Story cue:
+  - a cloud-wallpaper sky;
+  - the film's pixel cast standing on a wooden shelf like toys; they breathe, blink and hop when clicked;
+  - the AI agent in the middle is tagged "calibrated".
+- Below the hero: the CoBRA CHI 2026 Best Paper rosette card, the film inline, and the co-founders' names with xul049@ucsd.edu.
+- Affiliations removed.
 
 ## 2026-09-29: Company home page draft (yax.clawder.ai)
 
