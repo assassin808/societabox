@@ -12,3 +12,10 @@ The page has four parts:
 
 - `src/page.html` is the same page without the `<html>` and `<head>` wrapper. It is used for the preview: https://claude.ai/artifact/SysvJhvgkZhB9RGCpUgxw9
 - `assets/yax-film.mp4` is a 720p cut of `film/v3`. `assets/film-poster.jpg` is its logo frame.
+
+## Deploy on Vercel
+
+1. In Vercel, choose Add New → Project and import `assassin808/societabox`.
+2. Set Root Directory to `site`, Framework Preset to Other, and leave the build command empty.
+3. Under Settings → Git, set the production branch to the branch that holds this folder (currently `claude/gracious-cori-ditn0v`), or merge it into `main`.
+4. Under Settings → Domains, add `yax.clawder.ai`. At your DNS provider, add a CNAME record for `yax` pointing to `cname.vercel-dns.com`.
