@@ -84,7 +84,7 @@ footer{max-width:1120px;margin:112px auto 0;padding:40px 0 56px;border-top:1px s
 .founders{font:700 20px/1.4 var(--display);font-variation-settings:"SOFT" 100}
 .founders small{display:block;font:700 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .mail{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.addr{font:700 19px/1 var(--body);color:var(--night);text-decoration:none;user-select:all;padding:14px 20px;border-radius:999px;background:var(--gold);box-shadow:0 4px 0 var(--gold-dark)}
+.addr{font:700 19px/1 var(--body);color:var(--night);text-decoration:none;border:0;cursor:pointer;padding:14px 20px;border-radius:999px;background:var(--gold);box-shadow:0 4px 0 var(--gold-dark)}
 .addr:hover{transform:translateY(-1px)}
 .copy{font:700 14px/1 var(--body);padding:14px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
 .copy:hover{border-color:var(--ink)}
@@ -156,10 +156,9 @@ footer{max-width:1120px;margin:112px auto 0;padding:40px 0 56px;border-top:1px s
     </div>
 
     <footer id="contact">
-      <div class="founders"><small>Co-founders</small>Xuan Liu · Haoyang Shang</div>
+      <div class="founders"><small>Co-founders</small>Haoyang Shang · Xuan Liu</div>
       <div class="mail">
-        <a class="addr" id="addr" href="mailto:xul049@ucsd.edu">xul049@ucsd.edu</a>
-        <button class="copy" type="button" id="copy">Copy</button>
+        <button class="addr" type="button" id="copy">Copy our email</button>
       </div>
       <p class="fine">© 2026 YAX</p>
     </footer>
@@ -168,11 +167,12 @@ footer{max-width:1120px;margin:112px auto 0;padding:40px 0 56px;border-top:1px s
 
 <script>
 (()=>{
-  const btn=document.getElementById('copy'),addr=document.getElementById('addr');
+  const btn=document.getElementById('copy');
+  const em=['hs5533','student.ubc.ca'].join('@');
   btn.addEventListener('click',()=>{
-    const done=()=>{btn.textContent='Copied';setTimeout(()=>{btn.textContent='Copy';},1800);};
-    const sel=()=>{const r=document.createRange();r.selectNodeContents(addr);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Press Ctrl+C';};
-    try{navigator.clipboard.writeText('xul049@ucsd.edu').then(done,sel);}catch(e){sel();}
+    const done=()=>{btn.textContent='Copied';setTimeout(()=>{btn.textContent='Copy our email';},1800);};
+    const fallback=()=>{window.prompt('Copy our email:',em);};
+    try{navigator.clipboard.writeText(em).then(done,fallback);}catch(e){fallback();}
   });
   // a toy hops when clicked or tapped
   document.querySelectorAll('.toy').forEach(t=>t.addEventListener('click',()=>{t.style.animation='none';void t.offsetWidth;t.style.animation='hop .55s cubic-bezier(.3,1.6,.5,1)';setTimeout(()=>{t.style.animation='';},600);}));

@@ -6,7 +6,7 @@ The page has four parts:
 1. a one-line statement over a toy shelf of the film's pixel cast;
 2. the CoBRA CHI 2026 Best Paper;
 3. the film;
-4. co-founder contact (xul049@ucsd.edu).
+4. co-founders (Haoyang Shang, then Xuan Liu) and a "Copy our email" button. The address (hs5533@student.ubc.ca) is copied to the clipboard and never shown on the page.
 
 `assets/cast/` holds the pixel sprites (16×17 px, each with a blink frame), exported from the film renderer.
 
